@@ -1,0 +1,5 @@
+CREATE DATABASE raceorganizer CHARACTER SET UTF8;
+CREATE USER 'test' IDENTIFIED BY 'test';
+
+GRANT ALL PRIVILEGES ON raceorganizer.* to 'test'@'localhost';
+FLUSH PRIVILEGES;
