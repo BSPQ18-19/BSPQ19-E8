@@ -33,6 +33,7 @@ class User(models.Model):
         return self.race
 
 
+
 class Race(models.Model):
     edition= models.CharField(max_length=32, unique=True)
     sponsor = models.CharField(max_length=32)
