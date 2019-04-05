@@ -1,7 +1,10 @@
 package pages;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -9,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import net.miginfocom.swing.MigLayout;
 
 public class Login extends JDialog {
 
@@ -35,29 +40,33 @@ public class Login extends JDialog {
 	 * Create the dialog.
 	 */
 	public Login() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 650, 400);
 		contentPanel=new JPanel();
-		contentPanel.setLayout(new FlowLayout());
+		contentPanel.setLayout(new CardLayout(0,0));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
+		setContentPane(contentPanel);
+		setModalityType(ModalityType.APPLICATION_MODAL);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(51, 102, 153));
+		panel.setLayout(null);
+		contentPanel.add(panel);
+		
+		JPanel panel_1 =new JPanel();
+		panel_1.setBorder(new LineBorder(Color.WHITE));
+		panel_1.setOpaque(false);
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(314,92,279,232);
+		panel.add(panel_1);
+		panel_1.setLayout(new MigLayout("", "[][][][]", "[][][][][][][]"));
+		
+		JButton btnLogin = new JButton("Login");
+		panel_1.add(btnLogin, "cell 1 6");
+		
+		JButton btnNewButton_1 = new JButton("Register");
+		panel_1.add(btnNewButton_1, "cell 2 6");
+		
 		
 		setUndecorated(true);
 	}
-
 }
