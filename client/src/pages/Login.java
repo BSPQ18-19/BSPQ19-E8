@@ -77,11 +77,22 @@ public class Login extends JDialog {
 		JButton btnLogin = new JButton("Login");
 		panel_2.add(btnLogin);
 		btnLogin.setBackground(new Color(255, 255, 255));
+		btnLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		JButton btnNewButton_1 = new JButton("Register");
 		panel_2.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Login.this.setVisible(false);
+				Registration res=new Registration();
+				res.setVisible(true);
 			}
 		});
 		btnNewButton_1.setBackground(new Color(255, 255, 255));
@@ -114,6 +125,8 @@ public class Login extends JDialog {
 		panel_3.add(lblUser, gbc_lblUser);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(245, 245, 245));
+		textField.setBorder(new LineBorder(new Color(245, 245, 245)));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.BOTH;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);

@@ -1,5 +1,7 @@
 package pages;
 
-public class Registration {
+import javax.swing.JDialog;
+
+public class Registration extends JDialog{
 
 }
