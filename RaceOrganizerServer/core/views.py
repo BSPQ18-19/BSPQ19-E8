@@ -36,7 +36,7 @@ def signup_post_view(request):
             login(request, user)
             return HttpResponse("Signup Successful", status=201)
         else:
-            return HttpResponse("Signup Failed", )
+            return HttpResponse("Signup Failed")
 
 
 def login_post_view(request):

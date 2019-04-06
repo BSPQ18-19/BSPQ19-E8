@@ -11,7 +11,7 @@ class AuthenticationTest(TestCase):
             'password': 'secret'}
         User.objects.create_user(**self.credentials)
 
-    def test_signup_post(self):
+    def test_signup_post_view(self):
         user = {
             'username': 'test',
             'password': 'test'}
@@ -23,7 +23,7 @@ class AuthenticationTest(TestCase):
         # Check if user has been created
         self.assertTrue(User.objects.filter(username="test").exists())
 
-    def test_login_post(self):
+    def test_login_post_view(self):
         # login
         response = self.client.post('/login/post/', **self.credentials)
         # Check that the response is 200 OK.
