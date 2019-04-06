@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 
-def register(request):
+def signup_view(request):
     """
     Registration process as a HTML form
     """
@@ -24,7 +24,7 @@ def register(request):
     return render(request, 'core/register.html', {'form': form})
 
 
-def signup_view(request):
+def signup_post_view(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
 
@@ -39,7 +39,7 @@ def signup_view(request):
             return HttpResponse("Signup Failed", )
 
 
-def login_view(request):
+def login_post_view(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
 

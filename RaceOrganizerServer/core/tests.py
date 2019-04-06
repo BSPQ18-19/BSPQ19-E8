@@ -11,19 +11,20 @@ class AuthenticationTest(TestCase):
             'password': 'secret'}
         User.objects.create_user(**self.credentials)
 
-    def test_signup(self):
+    def test_signup_post(self):
         user = {
             'username': 'test',
             'password': 'test'}
 
-        response = self.client.post('/signup/', user)
+        response = self.client.post('/signup/post/', user)
 
-        # Check that the response is 200 OK.
+        # Check that the response is 201
         self.assertEqual(response.status_code, 201)
+        # Check if user has been created
         self.assertTrue(User.objects.filter(username="test").exists())
 
-    def test_login(self):
+    def test_login_post(self):
         # login
-        response = self.client.post('/login/', **self.credentials)
+        response = self.client.post('/login/post/', **self.credentials)
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
