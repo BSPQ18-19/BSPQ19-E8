@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import path
 
 from . import views
@@ -5,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
 
-    # TODO Placeholder add a token or some short of security measure
-    path('<str:username>', views.get_user, name='get_user'),
+    url(r'^user/$', views.get_user, name='get_user'),
+    url(r'^profile/$', views.get_profile, name='get_user'),
+
 ]

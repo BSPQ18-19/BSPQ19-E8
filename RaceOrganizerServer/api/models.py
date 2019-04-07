@@ -1,47 +1,41 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
-class User(models.Model):
-    username = models.CharField(max_length=32, unique=True)
-    password = models.CharField(max_length=64)
+class Person(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    name = models.CharField(max_length=32)
-    surname = models.CharField(max_length=32)
     personal_id = models.CharField(max_length=32, unique=True)
-    email = models.CharField(max_length=64, unique=True)
-
-    isOrganizer = models.BooleanField(default=False)
-    isRunner = models.BooleanField(default=False)
-    isVolunteer = models.BooleanField(default=False)
+    birth_date = models.DateField()
 
     def __str__(self):
-        return self.user_text
+        return '%s %s' % (self.user.first_name, self.user.last_name)
 
-    def create_race(self):
-        return self.race
-    def update_race_information(self):
-        return self.info
-    def register_as_user(self):
-        return self.user
-    def delete_from_race(self):
-        return self.race
-    def sign_up_for_a_task(self):
-        return self.task
-    def check_race_details(self):
-        return self.race
-    def set_up_for_a_race(self):
-        return self.race
+    def get_username(self):
+        return self.user.username
 
+    def get_email(self):
+        return self.user.email
 
 
 class Race(models.Model):
-    edition= models.CharField(max_length=32, unique=True)
-    sponsor = models.CharField(max_length=32)
+    race_id = models.AutoField(primary_key=True)
+    edition = models.CharField(max_length=32, unique=True)
+    sponsor = models.CharField(max_length=32, blank=True)
     place = models.CharField(max_length=32)
-    time = models.CharField(max_length=32)
-    prize = models.CharField(max_length=32)
-    price = models.CharField(max_length=32)
+    time = models.DateTimeField()
+    prize = models.IntegerField()
+    price = models.IntegerField()
+
+    organizer = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="organizer")
+    runners = models.ManyToManyField(Person, through='Runner', blank=True)
+    helpers = models.ManyToManyField(Person, related_name="helper", blank=True)
 
     def __str__(self):
-        return self.race_text
+        return '%s - %s' % (self.edition, self.place)
 
+
+class Runner(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    race = models.ForeignKey(Race, on_delete=models.CASCADE)
+    number = models.IntegerField()
