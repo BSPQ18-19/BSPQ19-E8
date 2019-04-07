@@ -6,7 +6,7 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -21,7 +21,7 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Login extends JDialog {
+public class Login extends JFrame {
 
 	/**
 	 * 
@@ -42,7 +42,7 @@ public class Login extends JDialog {
 		contentPanel.setLayout(new CardLayout(0,0));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
-		setModalityType(ModalityType.APPLICATION_MODAL);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(102, 153, 204));
@@ -157,7 +157,7 @@ public class Login extends JDialog {
 		lblRaceOrganizer.setBounds(339, 52, 230, 27);
 		panel.add(lblRaceOrganizer);
 		
-		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 	}
 }

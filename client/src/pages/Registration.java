@@ -12,7 +12,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -21,7 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class Registration extends JDialog{
+public class Registration extends JFrame{
 	
 	/**
 	 * 
@@ -31,31 +32,22 @@ public class Registration extends JDialog{
 	private JTextField username;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
+	private JTextField textField_name;
+	private JTextField textField_surname;
+	private JTextField textField_email;
 	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			Login dialog = new Login();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
 	 */
 	public Registration(Login login) {
-		setBounds(100, 100, 650, 400);
+		setBounds(100, 100, 650, 493);
 		contentPanel=new JPanel();
 		contentPanel.setLayout(new CardLayout(0,0));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
-		setModalityType(ModalityType.APPLICATION_MODAL);
+
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(102, 153, 204));
@@ -66,13 +58,13 @@ public class Registration extends JDialog{
 		panel_1.setBorder(new LineBorder(Color.WHITE));
 		panel_1.setOpaque(false);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(12,74,319,256);
+		panel_1.setBounds(12,74,320,350);
 		panel.add(panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.rowHeights = new int[] {10, 35, 10, 25, 25, 25, 60};
-		gbl_panel_1.columnWidths = new int[] {30, 0, 250, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_panel_1.rowHeights = new int[] {50, 30, 25, 30, 25, 30, 10, 0, 30, 30, 30, 60};
+		gbl_panel_1.columnWidths = new int[] {30, 0, 250, 20};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblUserLogin = new JLabel("User Registration");
@@ -80,7 +72,7 @@ public class Registration extends JDialog{
 		gbc_lblUserLogin.insets = new Insets(0, 0, 5, 0);
 		gbc_lblUserLogin.fill = GridBagConstraints.BOTH;
 		gbc_lblUserLogin.gridx = 2;
-		gbc_lblUserLogin.gridy = 1;
+		gbc_lblUserLogin.gridy = 0;
 		panel_1.add(lblUserLogin, gbc_lblUserLogin);
 		lblUserLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
@@ -89,18 +81,18 @@ public class Registration extends JDialog{
 		gbc_lblUser.fill = GridBagConstraints.BOTH;
 		gbc_lblUser.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUser.gridx = 1;
-		gbc_lblUser.gridy = 3;
+		gbc_lblUser.gridy = 1;
 		panel_1.add(lblUser, gbc_lblUser);
 		lblUser.setIcon(new ImageIcon(Login.class.getResource("/icons/user.png")));
 		
-		username = new JTextField();
+		username = new HintTextField("Username");
 		username.setToolTipText("Username");
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.BOTH;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 3;
-		panel_1.add(username, gbc_textField);
+		GridBagConstraints gbc_textField_username = new GridBagConstraints();
+		gbc_textField_username.fill = GridBagConstraints.BOTH;
+		gbc_textField_username.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_username.gridx = 2;
+		gbc_textField_username.gridy = 1;
+		panel_1.add(username, gbc_textField_username);
 		username.setBackground(new Color(245, 245, 245));
 		username.setBorder(new LineBorder(new Color(245, 245, 245)));
 		username.setColumns(10);
@@ -110,23 +102,37 @@ public class Registration extends JDialog{
 		gbc_lblPassword.fill = GridBagConstraints.BOTH;
 		gbc_lblPassword.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPassword.gridx = 1;
-		gbc_lblPassword.gridy = 4;
+		gbc_lblPassword.gridy = 2;
 		panel_1.add(lblPassword, gbc_lblPassword);
 		lblPassword.setIcon(new ImageIcon(Login.class.getResource("/icons/key.png")));
 		
+		JLabel lblPassword_1 = new JLabel("Password");
+		GridBagConstraints gbc_lblPassword_1 = new GridBagConstraints();
+		gbc_lblPassword_1.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_lblPassword_1.insets = new Insets(0, 0, 5, 0);
+		gbc_lblPassword_1.gridx = 2;
+		gbc_lblPassword_1.gridy = 2;
+		panel_1.add(lblPassword_1, gbc_lblPassword_1);
+		
 		passwordField = new JPasswordField();
-		passwordField.setToolTipText("Password");
 		GridBagConstraints gbc_passwordField = new GridBagConstraints();
 		gbc_passwordField.fill = GridBagConstraints.BOTH;
 		gbc_passwordField.insets = new Insets(0, 0, 5, 0);
 		gbc_passwordField.gridx = 2;
-		gbc_passwordField.gridy = 4;
+		gbc_passwordField.gridy = 3;
 		panel_1.add(passwordField, gbc_passwordField);
 		passwordField.setBackground(new Color(245, 245, 245));
 		passwordField.setBorder(new LineBorder(new Color(245, 245, 245)));
 		
+		JLabel lblConfirmPassword = new JLabel("Confirm Password");
+		GridBagConstraints gbc_lblConfirmPassword = new GridBagConstraints();
+		gbc_lblConfirmPassword.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_lblConfirmPassword.insets = new Insets(0, 0, 5, 0);
+		gbc_lblConfirmPassword.gridx = 2;
+		gbc_lblConfirmPassword.gridy = 4;
+		panel_1.add(lblConfirmPassword, gbc_lblConfirmPassword);
+		
 		passwordField_1 = new JPasswordField();
-		passwordField_1.setToolTipText("Confirm Password");
 		GridBagConstraints gbc_passwordField_1 = new GridBagConstraints();
 		gbc_passwordField_1.insets = new Insets(0, 0, 5, 0);
 		gbc_passwordField_1.fill = GridBagConstraints.BOTH;
@@ -135,6 +141,42 @@ public class Registration extends JDialog{
 		panel_1.add(passwordField_1, gbc_passwordField_1);
 		passwordField_1.setBorder(new LineBorder(new Color(245, 245, 245)));
 		passwordField_1.setBackground(new Color(245, 245, 245));
+		
+		JLabel lblemail = new JLabel("");
+		lblemail.setIcon(new ImageIcon(Registration.class.getResource("/icons/envelope.png")));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 7;
+		panel_1.add(lblemail, gbc_lblNewLabel);
+		
+		textField_email = new HintTextField("Email");
+		GridBagConstraints gbc_textField_email = new GridBagConstraints();
+		gbc_textField_email.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_email.fill = GridBagConstraints.BOTH;
+		gbc_textField_email.gridx = 2;
+		gbc_textField_email.gridy = 7;
+		panel_1.add(textField_email, gbc_textField_email);
+		textField_email.setColumns(10);
+		
+		textField_name = new HintTextField("Nombre");
+		GridBagConstraints gbc_textField_name = new GridBagConstraints();
+		gbc_textField_name.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_name.fill = GridBagConstraints.BOTH;
+		gbc_textField_name.gridx = 2;
+		gbc_textField_name.gridy = 9;
+		panel_1.add(textField_name, gbc_textField_name);
+		textField_name.setColumns(10);
+		
+		textField_surname = new HintTextField("Surname");
+		GridBagConstraints gbc_textField_surname = new GridBagConstraints();
+		gbc_textField_surname.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_surname.fill = GridBagConstraints.BOTH;
+		gbc_textField_surname.gridx = 2;
+		gbc_textField_surname.gridy = 10;
+		panel_1.add(textField_surname, gbc_textField_surname);
+		textField_surname.setColumns(10);
 		
 		JLabel lblicon = new JLabel("");
 		lblicon.setBounds(370, 46, 222, 212);
@@ -148,7 +190,7 @@ public class Registration extends JDialog{
 		panel.add(lblRaceOrganizer);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(353, 271, 257, 35);
+		panel_2.setBounds(353, 388, 257, 35);
 		panel.add(panel_2);
 		panel_2.setOpaque(false);
 		
@@ -176,5 +218,7 @@ public class Registration extends JDialog{
 			}
 		});
 		btnNewButton_1.setBackground(new Color(255, 255, 255));
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }
