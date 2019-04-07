@@ -48,20 +48,22 @@ def signup_post_view(request):
             login(request, user)
             return HttpResponse("Signup Successful", status=201)
         else:
-            return HttpResponse("Signup Failed")
+            return HttpResponse("Signup Failed", status=400)
 
 
 @csrf_exempt
 def login_post_view(request):
+    print(request.POST)
     username = request.POST.get('username')
     password = request.POST.get('password')
+    print(request.POST.get('pass'))
 
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
         return HttpResponse("Login Successful", status=200)
     else:
-        return HttpResponse("Login Failed")
+        return HttpResponse("Login Failed", status=401)
 
 
 @csrf_exempt
