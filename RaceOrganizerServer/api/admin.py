@@ -1,11 +1,23 @@
 from django.contrib import admin
 
-from api.models import User
+from api.models import *
 
 
-class UserAdmin(admin.ModelAdmin):
+class PersonAdmin(admin.ModelAdmin):
     list_display = ('personal_id', 'username', 'email',)
     list_display_links = ('username',)
 
 
-admin.site.register(User, UserAdmin)
+class RaceAdmin(admin.ModelAdmin):
+    list_display = ('race_id', 'edition', 'place', 'time', 'organizer',)
+    list_display_links = ('edition',)
+
+
+class RunnerAdmin(admin.ModelAdmin):
+    list_display = ('person', 'race', 'number')
+    list_display_links = ('person',)
+
+
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Race, RaceAdmin)
+admin.site.register(Runner, RunnerAdmin)

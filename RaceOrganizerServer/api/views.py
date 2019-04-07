@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 
-from api.models import User as UserAPI
+from api.models import Person
 
 
 def index(request):
@@ -10,7 +10,7 @@ def index(request):
 def get_user(request):
     username = request.POST.get('username')
 
-    user = UserAPI.objects.filter(username=username).values('username', 'name', 'surname', 'email')
+    user = Person.objects.filter(username=username).values('username', 'name', 'surname', 'email')
 
     return JsonResponse(list(user), safe=False, status=200)
 
@@ -18,7 +18,7 @@ def get_user(request):
 # TODO doesn't work
 def get_profile(request):
     if request.user.is_authenticated:
-        user = UserAPI.objects.filter(username=request.user.username).values('username', 'personal_id', 'name',
+        user = Person.objects.filter(username=request.user.username).values('username', 'personal_id', 'name',
                                                                              'surname'
                                                                              'email', 'isOrganizer')
         return JsonResponse(list(user), safe=False, status=200)

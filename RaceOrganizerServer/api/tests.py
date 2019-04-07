@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
-from api.models import User as UserAPI
+from api.models import Person as UserAPI
 
 
 class AuthenticationTest(TestCase):
