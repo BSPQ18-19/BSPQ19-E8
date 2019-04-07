@@ -3,10 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 from api.models import Person
 
 
+@csrf_exempt
 def signup_view(request):
     """
     Registration process as a HTML form
@@ -26,6 +28,7 @@ def signup_view(request):
     return render(request, 'core/register.html', {'form': form})
 
 
+@csrf_exempt
 def signup_post_view(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -48,6 +51,7 @@ def signup_post_view(request):
             return HttpResponse("Signup Failed")
 
 
+@csrf_exempt
 def login_post_view(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -60,6 +64,7 @@ def login_post_view(request):
         return HttpResponse("Login Failed")
 
 
+@csrf_exempt
 def logout_view(request):
     logout(request)
 
