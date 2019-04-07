@@ -4,8 +4,8 @@ from api.models import *
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('personal_id', 'username', 'email',)
-    list_display_links = ('username',)
+    list_display = ('personal_id', 'get_username', 'get_email',)
+    list_display_links = ('get_username',)
 
 
 class RaceAdmin(admin.ModelAdmin):
