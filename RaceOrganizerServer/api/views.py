@@ -1,6 +1,6 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
-
-from api.models import Person
 
 
 def index(request):
@@ -10,18 +10,16 @@ def index(request):
 def get_user(request):
     username = request.POST.get('username')
 
-    user = Person.objects.filter(username=username).values('username', 'name', 'surname', 'email')
+    user = User.objects.filter(username=username).values("username", "first_name", "last_name", 'email')
 
     return JsonResponse(list(user), safe=False, status=200)
 
 
-# TODO doesn't work
+@login_required
 def get_profile(request):
-    if request.user.is_authenticated:
-        user = Person.objects.filter(username=request.user.username).values('username', 'personal_id', 'name',
-                                                                             'surname'
-                                                                             'email', 'isOrganizer')
-        return JsonResponse(list(user), safe=False, status=200)
+    username = request.user
 
-    else:
-        return HttpResponse("User not logged in", status=401)
+    user = User.objects.filter(username=username).values("username", "first_name", "last_name", 'email',
+                                                         "person__birth_date", "person__personal_id")
+
+    return JsonResponse(list(user), safe=False, status=200)

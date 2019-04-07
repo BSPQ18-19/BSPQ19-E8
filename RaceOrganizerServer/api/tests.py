@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.models import User
 from django.test import TestCase
 
@@ -6,19 +8,21 @@ from api.models import Person as UserAPI
 
 class AuthenticationTest(TestCase):
     def setUp(self):
-        username = "test"
-        password = "test"
-
         self.credentials = {
-            'username': username,
-            'password': password}
+            'username': "laurence",
+            'password': "1234",
+            'first_name': "Laurence",
+            'last_name': "Richard",
+            'email': "laurence.richard@gmail.com"
 
-        User.objects.create_user(**self.credentials)
-        UserAPI.objects.create(username=username, password=password, name="Test", surname="McTesty",
-                               personal_id="11111111T", email="test@test.com", isOrganizer=False)
+        }
+
+        user = User.objects.create_user(**self.credentials)
+        UserAPI.objects.create(user=user,
+                               personal_id="11111111T", birth_date=datetime.today())
 
     def test_get_user(self):
-        user = {'username': 'test'}
+        user = {'username': 'laurence'}
 
         response = self.client.post('/api/user/', user)
 
@@ -27,10 +31,24 @@ class AuthenticationTest(TestCase):
         # Check if user has been created
         self.assertJSONEqual(
             str(response.content, encoding='utf8'),
-            [{"username": "test", "name": "Test", "surname": "McTesty", "email": "test@test.com"}]
+            [{"username": "laurence", "first_name": "Laurence",
+              "last_name": "Richard", "email": "laurence.richard@gmail.com"}]
         )
 
     def test_get_profile(self):
-        # Check if when not logged in response return 403
+        # Check if when not logged in response return 302
         response = self.client.post('/api/profile/')
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 302)
+
+        # Check if logged in
+        self.client.login(username="laurence", password="1234")
+        response = self.client.post('/api/profile/')
+        self.assertJSONEqual(
+            str(response.content, encoding='utf8'),
+            [{'email': 'laurence.richard@gmail.com',
+              'first_name': 'Laurence',
+              'last_name': 'Richard',
+              'person__birth_date': '2019-04-07',
+              'person__personal_id': '11111111T',
+              'username': 'laurence'}]
+        )
