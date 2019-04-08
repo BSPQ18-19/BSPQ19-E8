@@ -16,3 +16,6 @@ log/
 .project
 .recommenders
 .metadata
+
+# Maven
+target/
