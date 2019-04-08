@@ -3,10 +3,10 @@ package networking;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class AuthenticationTest {
+class AuthenticationTests {
 
     @Test
-    void testLogin() {
+    void loginTest() {
         /* Test Successful Login */
         LoginGateway gw = new LoginGateway("test", "test");
         Assertions.assertTrue(gw.login());
@@ -17,7 +17,7 @@ class AuthenticationTest {
     }
 
     @Test
-    void testSignup() {
+    void signupTest() {
         SignupGateway sw = new SignupGateway("usuario1234", "test", "test", "test",
                 "usuario123@test.com", "52", "1998-05-02");
 
