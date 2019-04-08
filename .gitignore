@@ -1,0 +1,22 @@
+# Python
+venv/
+__pycache__/
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+bin/
+out/
+log/
+
+# Eclipse project file
+.settings/
+.classpath
+.project
+.recommenders
+.metadata
+
+# Maven
+target/
