@@ -21,7 +21,7 @@ RaceOrganizer uses Django's MariaDB integration in order to store the informatio
 diagram:
 
 <p align="center">
-  <img src="" alt="classDiagram"/>
+  <img src="https://github.com/BSPQ18-19/BSPQ19-E8/blob/master/.web/class-diagram.png" alt="classDiagram"/>
 </p>
 
 ## License
