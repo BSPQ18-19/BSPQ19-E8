@@ -1,0 +1,12 @@
+package pages;
+
+import networking.LoginGateway;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		LoginGateway gw = new LoginGateway("test", "test");
+		System.out.println(gw.login());
+	}
+
+}
