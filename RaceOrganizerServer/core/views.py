@@ -30,6 +30,7 @@ def signup_view(request):
 
 @csrf_exempt
 def signup_post_view(request):
+    print(request.POST)
     username = request.POST.get('username')
     password = request.POST.get('password')
     first_name = request.POST.get('first_name')
