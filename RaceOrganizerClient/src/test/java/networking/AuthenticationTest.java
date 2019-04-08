@@ -3,7 +3,7 @@ package networking;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class AuthenticationTests {
+class AuthenticationTest {
 
     @Test
     void loginTest() {
