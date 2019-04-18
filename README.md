@@ -17,6 +17,8 @@ As an event organizer, RaceOrganizer enables to simplify recruiting helpers for 
 ## Architecture
 RaceOrganizer uses a simply REST client-server architecture, with a server on Django and a client written in Java.
 
+Documentation for the API follows the OpenAPI standard and can be found at [SwaggerHub](https://app.swaggerhub.com/apis-docs/rafaelromon/RaceOrganizer/1.0.0#/).
+
 RaceOrganizer uses Django's MariaDB integration in order to store the information using the model in the following 
 diagram:
 
