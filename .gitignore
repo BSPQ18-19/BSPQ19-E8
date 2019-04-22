@@ -1,5 +1,6 @@
 # Python
 venv/
+__pycache__/
 
 # IntelliJ project files 
 *.iml
@@ -14,3 +15,8 @@ log/
 .settings/
 .classpath
 .project
+.recommenders
+.metadata
+
+# Maven
+target/
