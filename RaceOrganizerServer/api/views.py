@@ -8,9 +8,7 @@ def index(request):
 
 
 def get_user(request):
-    username = request.POST.get('username')
-
-    user = User.objects.filter(username=username).values("username", "first_name", "last_name", 'email')
+    user = User.objects.all().values("pk", "username", "first_name", "last_name", 'email')
 
     return JsonResponse(list(user), safe=False, status=200)
 

@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
 
-    url(r'^user/$', views.get_user, name='get_user'),
-    url(r'^profile/$', views.get_profile, name='get_user'),
+    url(r'^users/$', views.get_user, name='get_userlist'),
+    url(r'^profile/$', views.get_profile, name='get_profile'),
 
 ]
