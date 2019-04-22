@@ -23,7 +23,7 @@ class AuthenticationTest(TestCase):
             'birth_date': "2016-04-08"
         }
 
-        response = self.client.post('/signup/post/', user)
+        response = self.client.post('/signup/', user)
 
         # Check that the response is 201
         self.assertEqual(response.status_code, 201)
@@ -32,6 +32,15 @@ class AuthenticationTest(TestCase):
 
     def test_login_post_view(self):
         # login
-        response = self.client.post('/login/post/', **self.credentials)
+        response = self.client.post('/login/', self.credentials)
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
+
+        no_user = {
+            'username': 'john',
+            'password': 'doe'
+        }
+        # login
+        response = self.client.post('/login/', no_user)
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 401)
