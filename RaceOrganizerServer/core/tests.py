@@ -30,17 +30,18 @@ class AuthenticationTest(TestCase):
         # Check if user has been created
         self.assertTrue(User.objects.filter(username="laurence").exists())
 
-    def test_login_post_view(self):
-        # login
-        response = self.client.post('/login/', self.credentials)
-        # Check that the response is 200 OK.
-        self.assertEqual(response.status_code, 200)
-
+    def test_login_logout(self):
         no_user = {
             'username': 'john',
             'password': 'doe'
         }
+
         # login
         response = self.client.post('/login/', no_user)
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 401)
+
+        # login
+        response = self.client.post('/login/', self.credentials)
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
