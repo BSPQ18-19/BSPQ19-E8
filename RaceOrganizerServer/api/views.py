@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from api.models import Person, Race
+from api.models import Person, Race, Runner
 
 
 def index(request):
@@ -95,6 +96,33 @@ def race_view(request, race_id):
         race = Race.objects.get(pk=race_id)
 
         return JsonResponse(race.get_json(), safe=False, status=200)
+
+    elif request.method == "POST":
+
+        username = request.POST.get('username')
+        role = request.POST.get('role')
+
+        if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists:
+
+            race = Race.objects.get(pk=race_id)
+            person = User.objects.get(username=username).person
+
+            if role.lower() == "runner":
+                number = race.runner_set.count() + 1
+
+                runner = Runner.objects.create(race=race, person=person, number=number)
+                race.runner_set.add(runner)
+                return HttpResponse("successful operation", status=200)
+
+            elif role.lower() == "helper":
+                race.helpers.add(person)
+                return HttpResponse("successful operation", status=200)
+
+            else:
+                return HttpResponse("invalid role", status=400)
+
+        else:
+            return HttpResponse("invalid username or race_id supplied", status=400)
 
     else:
         return HttpResponse(status=405)
