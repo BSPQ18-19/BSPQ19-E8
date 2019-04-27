@@ -5,8 +5,11 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
 
-    path('users/', views.get_userlist, name='get_userlist'),
-    path('users/<int:user_id>/', views.get_user, name='get_user'),
-    path('profile/', views.get_profile, name='get_profile'),
+    path('users/', views.user_list, name='user_list'),
+    path('users/<int:user_id>/', views.user_view, name='user_view'),
+    path('profile/', views.profile_view, name='profile_view'),
+
+    path('races/', views.races_list, name='races_list'),
+    path('races/<int:race_id>/', views.race_view, name='race_view'),
 
 ]

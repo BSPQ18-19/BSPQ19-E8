@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
-from api.models import Person as UserAPI
+from api.models import Person as UserAPI, Race
 
 
 class APITest(TestCase):
@@ -68,3 +68,24 @@ class APITest(TestCase):
               'person__personal_id': '11111111T',
               'username': 'laurence'}]
         )
+
+    def test_create_race(self):
+        race = {
+            "edition": "Test Race",
+            "sponsor": "Deusto",
+            "place": "Bilbao",
+            "time": "2019-04-27T16:58:10.926Z",
+            "price": 0,
+            "prize": 0
+        }
+
+        response = self.client.post('/api/races/', race)
+        # Check that the response is 403
+        self.assertEqual(response.status_code, 403)
+
+        self.client.login(username="laurence", password="1234")
+
+        response = self.client.post('/api/races/', race)
+        self.assertEqual(response.status_code, 200)
+        # Check if Race has been created
+        self.assertTrue(Race.objects.filter(edition="Test Race").exists())

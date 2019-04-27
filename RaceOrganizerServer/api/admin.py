@@ -9,7 +9,7 @@ class PersonAdmin(admin.ModelAdmin):
 
 
 class RaceAdmin(admin.ModelAdmin):
-    list_display = ('race_id', 'edition', 'place', 'time', 'organizer',)
+    list_display = ('pk', 'edition', 'place', 'time', 'organizer',)
     list_display_links = ('edition',)
 
 
