@@ -32,6 +32,14 @@ public class Dashboard extends JFrame {
 
 	private JPanel panelRaces;
 
+	private JButton btnRaces;
+
+	private JButton buttonSearch;
+
+	private JPanel panelSearchRaces;
+
+	private JPanel panelmyUser;
+
 	public static void main(String[] args) {
 		Dashboard das = new Dashboard(null, null);
 		das.setVisible(true);
@@ -115,17 +123,26 @@ public class Dashboard extends JFrame {
 		paneldashboard.add(lblDashboard_1);
 		actualpane = 0;
 		
-		content.add(paneldashboard, new Integer(1));
-
 		
-
 		panelRaces = new JPanel();
 		panelRaces.setBackground(Color.WHITE);
 		content.setLayer(panelRaces, 0);
 		panelRaces.setBounds(0, 0, 724, 719);
 		
+		panelSearchRaces = new JPanel();
+		panelSearchRaces.setBackground(Color.WHITE);
+		content.setLayer(panelRaces, 0);
+		panelSearchRaces.setBounds(0, 0, 724, 719);
+		
+		panelmyUser = new JPanel();
+		panelmyUser.setBackground(Color.WHITE);
+		content.setLayer(panelRaces, 0);
+		panelmyUser.setBounds(0, 0, 724, 719);
+		
+		content.add(paneldashboard, new Integer(1));
 		content.add(panelRaces, new Integer(0));
-
+		content.add(panelSearchRaces, new Integer(0));
+		content.add(panelmyUser, new Integer(0));
 
 	
 		/*
@@ -168,7 +185,7 @@ public class Dashboard extends JFrame {
 		gbc_btnDashboard.gridy = 1;
 		menu_bar.add(btnDashboard, gbc_btnDashboard);
 		
-		JButton btnRaces = new JButton("My Races");
+		btnRaces = new JButton("My Races");
 		btnRaces.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnRaces.setOpaque(false);
 		btnRaces.setContentAreaFilled(false);
@@ -180,15 +197,7 @@ public class Dashboard extends JFrame {
 		gbc_btnRaces.gridy = 2;
 		menu_bar.add(btnRaces, gbc_btnRaces);
 
-		JButton buttonSearch = new JButton("Search Races");
-		buttonSearch.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-			}
-		});
-		
+		buttonSearch = new JButton("Search Races");
 		buttonSearch.setOpaque(false);
 		buttonSearch.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		buttonSearch.setContentAreaFilled(false);
@@ -212,6 +221,38 @@ public class Dashboard extends JFrame {
 		gbc_btnMyUser.gridx = 2;
 		gbc_btnMyUser.gridy = 4;
 		menu_bar.add(btnMyUser, gbc_btnMyUser);
+		
+		
+		
+		
+		btnDashboard.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				switch (actualpane) {
+				case 0:
+					btnDashboard.setForeground(Color.BLACK);
+					content.setLayer(paneldashboard, 0);
+					break;
+				case 2:
+					buttonSearch.setForeground(Color.BLACK);
+					content.setLayer(paneldashboard, 0);
+					break;
+				case 3:
+					btnMyUser.setForeground(Color.BLACK);
+					content.setLayer(paneldashboard, 0);
+					break;
+				default:
+					break;
+				}
+				content.setLayer(panelRaces, 1);
+				btnRaces.setForeground(Color.WHITE);
+				actualpane=1;
+			}
+		});
+		
+		
 		btnRaces.addActionListener(new ActionListener() {
 
 			@Override
@@ -240,7 +281,31 @@ public class Dashboard extends JFrame {
 			}
 		});
 
-		
+			buttonSearch.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				switch (actualpane) {
+				case 0:
+					btnDashboard.setForeground(Color.BLACK);
+					content.setLayer(paneldashboard, 0);
+					break;
+				case 1:
+					btnRaces.setForeground(Color.BLACK);
+					content.setLayer(panelRaces, 0);
+					break;
+				case 3:
+					btnMyUser.setForeground(Color.BLACK);
+					content.setLayer(paneldashboard, 0);
+					break;
+				default:
+					break;
+				}
+				content.setLayer(panelRaces, 1);
+				btnRaces.setForeground(Color.WHITE);
+				actualpane=1;
+				
+			}
+		});
 		
 
 	}
