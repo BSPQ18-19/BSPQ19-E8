@@ -15,7 +15,7 @@ public class LoginGateway extends Gateway {
 
 
     public LoginGateway(String username, String password) {
-        requestURL += "login/post/";
+        requestURL += "login/";
         client = HttpClients.custom()
                 .setDefaultRequestConfig(RequestConfig.custom()
                         .setCookieSpec(CookieSpecs.STANDARD).build())
@@ -26,7 +26,7 @@ public class LoginGateway extends Gateway {
         request = new HttpPost(requestURL);
 
     }
-    
+
     public boolean login() {
         int responseCode = -1;
         try {
@@ -44,6 +44,5 @@ public class LoginGateway extends Gateway {
 
         return (responseCode == 200);
     }
-    
-    
+
 }
