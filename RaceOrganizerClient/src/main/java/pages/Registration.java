@@ -4,6 +4,9 @@ package pages;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import networking.SignupGateway;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,10 +46,10 @@ public class Registration extends JFrame {
         panel_1.setBorder(new LineBorder(Color.WHITE));
         panel_1.setOpaque(false);
         panel_1.setBackground(Color.WHITE);
-        panel_1.setBounds(12, 74, 320, 350);
+        panel_1.setBounds(12, 59, 331, 374);
         panel.add(panel_1);
         GridBagLayout gbl_panel_1 = new GridBagLayout();
-        gbl_panel_1.rowHeights = new int[]{50, 30, 25, 30, 25, 30, 10, 0, 30, 30, 30, 60};
+        gbl_panel_1.rowHeights = new int[] {50, 30, 25, 30, 25, 30, 30, 30, 30, 30, 30, 60};
         gbl_panel_1.columnWidths = new int[]{30, 0, 250, 20};
         gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0};
@@ -126,6 +129,15 @@ public class Registration extends JFrame {
         panel_1.add(passwordField_1, gbc_passwordField_1);
         passwordField_1.setBorder(new LineBorder(new Color(245, 245, 245)));
         passwordField_1.setBackground(new Color(245, 245, 245));
+        
+        HintTextField DNI_TextField = new HintTextField("DNI");
+        DNI_TextField.setColumns(10);
+        GridBagConstraints gbc_DNI_TextField = new GridBagConstraints();
+        gbc_DNI_TextField.insets = new Insets(0, 0, 5, 0);
+        gbc_DNI_TextField.fill = GridBagConstraints.HORIZONTAL;
+        gbc_DNI_TextField.gridx = 2;
+        gbc_DNI_TextField.gridy = 6;
+        panel_1.add(DNI_TextField, gbc_DNI_TextField);
 
         JLabel lblemail = new JLabel("");
         lblemail.setIcon(new ImageIcon(Registration.class.getResource("/src/icons/envelope.png")));
@@ -145,7 +157,7 @@ public class Registration extends JFrame {
         panel_1.add(textField_email, gbc_textField_email);
         textField_email.setColumns(10);
 
-        textField_name = new HintTextField("Nombre");
+        textField_name = new HintTextField("Name");
         GridBagConstraints gbc_textField_name = new GridBagConstraints();
         gbc_textField_name.insets = new Insets(0, 0, 5, 0);
         gbc_textField_name.fill = GridBagConstraints.BOTH;
@@ -162,6 +174,15 @@ public class Registration extends JFrame {
         gbc_textField_surname.gridy = 10;
         panel_1.add(textField_surname, gbc_textField_surname);
         textField_surname.setColumns(10);
+        
+        HintTextField txt_birthdate = new HintTextField("Birthdate");
+        txt_birthdate.setColumns(10);
+        GridBagConstraints gbc_txt_birthdate = new GridBagConstraints();
+        gbc_txt_birthdate.anchor = GridBagConstraints.NORTH;
+        gbc_txt_birthdate.fill = GridBagConstraints.HORIZONTAL;
+        gbc_txt_birthdate.gridx = 2;
+        gbc_txt_birthdate.gridy = 11;
+        panel_1.add(txt_birthdate, gbc_txt_birthdate);
 
         JLabel lblicon = new JLabel("");
         lblicon.setBounds(370, 46, 222, 212);
@@ -171,7 +192,7 @@ public class Registration extends JFrame {
 
         JLabel lblRaceOrganizer = new JLabel("RACE ORGANIZER");
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
-        lblRaceOrganizer.setBounds(28, 34, 230, 27);
+        lblRaceOrganizer.setBounds(27, 22, 230, 27);
         panel.add(lblRaceOrganizer);
 
         JPanel panel_2 = new JPanel();
@@ -197,9 +218,20 @@ public class Registration extends JFrame {
         panel_2.add(btnNewButton_1);
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                Registration.this.setVisible(false);
-                Dashboard das = new Dashboard();
-                das.setVisible(true);
+            	String password=String.valueOf(passwordField.getPassword());
+            	if(password.equals(String.valueOf(passwordField_1.getPassword()))) {
+            		SignupGateway sgw =new SignupGateway(username.getText(), password, textField_name.getText(), textField_surname.getText(), textField_email.getText(), DNI_TextField.getText(), txt_birthdate.getText());
+                    if(sgw.signUp()) {
+                    	Registration.this.setVisible(false);
+                        Dashboard das = new Dashboard(login);
+                        das.setVisible(true);
+                    }else {
+                    	JOptionPane.showMessageDialog(Registration.this, "Error while signup. Try again");
+                    }
+            	}else {
+            		JOptionPane.showMessageDialog(Registration.this, "Passwords are not the same. Try again");
+            	}
+            	
             }
         });
         btnNewButton_1.setBackground(new Color(255, 255, 255));

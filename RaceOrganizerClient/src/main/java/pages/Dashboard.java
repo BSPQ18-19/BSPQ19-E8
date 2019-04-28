@@ -15,7 +15,7 @@ public class Dashboard extends JFrame {
     private JPanel contentpane;
     private JLayeredPane content;
 
-    public Dashboard() {
+    public Dashboard(Login login) {
         setBounds(100, 100, 1050, 855);
         contentpane = new JPanel();
         contentpane.setBackground(new Color(51, 102, 153));
@@ -36,7 +36,15 @@ public class Dashboard extends JFrame {
         gbc_panel.gridx = 0;
         gbc_panel.gridy = 0;
         contentpane.add(panel_top, gbc_panel);
-        panel_top.setLayout(new GridLayout(0, 1, 0, 0));
+        panel_top.setLayout(new BorderLayout(0, 0));
+        
+        JPanel panel = new JPanel();
+        panel_top.add(panel, BorderLayout.EAST);
+        panel.setLayout(new GridLayout(0, 1, 0, 0));
+        
+        JButton btnNewButton = new JButton("Log out");
+        panel.add(btnNewButton);
+        btnNewButton.setBackground(Color.WHITE);
 
         JLabel lblRaceOrganizer = new JLabel("Race Organizer");
         lblRaceOrganizer.setAlignmentX(Component.CENTER_ALIGNMENT);

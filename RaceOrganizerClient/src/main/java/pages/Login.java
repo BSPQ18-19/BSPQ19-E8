@@ -3,6 +3,9 @@ package pages;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import networking.LoginGateway;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,9 +57,15 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                Login.this.setVisible(false);
-                Dashboard das = new Dashboard();
-                das.setVisible(true);
+            	LoginGateway lgw=new LoginGateway(txtUsername.getText(), String.valueOf(passwordField.getPassword()));
+            	if(lgw.login()) {
+            		Login.this.setVisible(false);
+                    Dashboard das = new Dashboard(Login.this);
+                    das.setVisible(true);
+            	}else {
+            		JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
+            	}
+                
             }
         });
 

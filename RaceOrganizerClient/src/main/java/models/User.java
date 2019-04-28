@@ -1,12 +1,15 @@
 package models;
 
 public class User {
-
+	
+	private int user_id;
     private String username;
-    private String password;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String birth_date;
+    
+    
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+
 }

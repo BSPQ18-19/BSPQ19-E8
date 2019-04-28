@@ -26,7 +26,7 @@ public class LoginGateway extends Gateway {
         request = new HttpPost(requestURL);
 
     }
-
+    
     public boolean login() {
         int responseCode = -1;
         try {
@@ -44,5 +44,6 @@ public class LoginGateway extends Gateway {
 
         return (responseCode == 200);
     }
-
+    
+    
 }
