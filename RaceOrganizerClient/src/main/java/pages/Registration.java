@@ -159,6 +159,8 @@ public class Registration extends JFrame {
         textField_email.setColumns(10);
         
         JPanel panel_3 = new JPanel();
+        panel_3.setOpaque(false);
+
         GridBagConstraints gbc_panel_3 = new GridBagConstraints();
         gbc_panel_3.insets = new Insets(0, 0, 5, 5);
         gbc_panel_3.fill = GridBagConstraints.BOTH;
@@ -166,15 +168,15 @@ public class Registration extends JFrame {
         gbc_panel_3.gridy = 11;
         panel_1.add(panel_3, gbc_panel_3);
         
-        HintTextField txt_birthdate_day = new HintTextField("Birthdate - day");
+        HintTextField txt_birthdate_day = new HintTextField("Birthdate-day");
         panel_3.add(txt_birthdate_day);
         txt_birthdate_day.setColumns(10);
         
-        HintTextField txt_birthdate_month = new HintTextField("Birthdate - month");
+        HintTextField txt_birthdate_month = new HintTextField("Birthdate-month");
         txt_birthdate_month.setColumns(10);
         panel_3.add(txt_birthdate_month);
         
-        HintTextField txt_birthdate_day_year = new HintTextField("Birthdate - year");
+        HintTextField txt_birthdate_day_year = new HintTextField("Birthdate-year");
         txt_birthdate_day_year.setColumns(10);
         panel_3.add(txt_birthdate_day_year);
 

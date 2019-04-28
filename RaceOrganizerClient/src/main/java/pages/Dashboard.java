@@ -231,24 +231,24 @@ public class Dashboard extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				switch (actualpane) {
-				case 0:
+				case 1:
 					btnDashboard.setForeground(Color.BLACK);
 					content.setLayer(paneldashboard, 0);
 					break;
 				case 2:
 					buttonSearch.setForeground(Color.BLACK);
-					content.setLayer(paneldashboard, 0);
+					content.setLayer(panelSearchRaces, 0);
 					break;
 				case 3:
 					btnMyUser.setForeground(Color.BLACK);
-					content.setLayer(paneldashboard, 0);
+					content.setLayer(panelmyUser, 0);
 					break;
 				default:
 					break;
 				}
-				content.setLayer(panelRaces, 1);
-				btnRaces.setForeground(Color.WHITE);
-				actualpane=1;
+				content.setLayer(paneldashboard, 1);
+				btnDashboard.setForeground(Color.WHITE);
+				actualpane=0;
 			}
 		});
 		
@@ -266,11 +266,11 @@ public class Dashboard extends JFrame {
 					break;
 				case 2:
 					buttonSearch.setForeground(Color.BLACK);
-					content.setLayer(paneldashboard, 0);
+					content.setLayer(panelSearchRaces, 0);
 					break;
 				case 3:
 					btnMyUser.setForeground(Color.BLACK);
-					content.setLayer(paneldashboard, 0);
+					content.setLayer(panelmyUser, 0);
 					break;
 				default:
 					break;
@@ -295,18 +295,44 @@ public class Dashboard extends JFrame {
 					break;
 				case 3:
 					btnMyUser.setForeground(Color.BLACK);
-					content.setLayer(paneldashboard, 0);
+					content.setLayer(panelmyUser, 0);
 					break;
 				default:
 					break;
 				}
-				content.setLayer(panelRaces, 1);
-				btnRaces.setForeground(Color.WHITE);
-				actualpane=1;
+				content.setLayer(panelSearchRaces, 1);
+				buttonSearch.setForeground(Color.WHITE);
+				actualpane=2;
 				
 			}
 		});
 		
+			btnMyUser.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent arg0) {
+					switch (actualpane) {
+					case 0:
+						btnDashboard.setForeground(Color.BLACK);
+						content.setLayer(paneldashboard, 0);
+						break;
+					case 1:
+						btnRaces.setForeground(Color.BLACK);
+						content.setLayer(panelRaces, 0);
+						break;
+					case 2:
+						buttonSearch.setForeground(Color.BLACK);
+						content.setLayer(panelSearchRaces, 0);
+						break;
+					default:
+						break;
+					}
+					content.setLayer(panelmyUser, 1);
+					btnMyUser.setForeground(Color.WHITE);
+					actualpane=3;
+					
+				}
+			});
+			
 
 	}
 }
