@@ -10,7 +10,8 @@ import java.util.List;
 public abstract class Gateway {
 
     protected HttpPost request;
-    protected String requestURL = "https://virtserver.swaggerhub.com/rafaelromon/RaceOrganizer/1.0.0";
+    protected String requestURL = "http://rafaelromon.duckdns.org:8000/";
+    							
     protected List<NameValuePair> params = new ArrayList<NameValuePair>();
     protected CloseableHttpClient client;
 }
