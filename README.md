@@ -27,4 +27,4 @@ diagram:
 </p>
 
 ## License
-This project fall under the GPL 3 license fell free to use it, modify it and let us know of your changes :)
+This project falls under the GPL 3 license, feel free to use it, modify it and maybe notify us know of your changes :)
