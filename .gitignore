@@ -1,5 +1,9 @@
 # Python
 venv/
+ __pycache__/
+ *.py[cod]
+ *$py.class
+
 
 # IntelliJ project files 
 *.iml
@@ -14,5 +18,3 @@ log/
 .settings/
 .classpath
 .project
-.recommenders
-.metadata
