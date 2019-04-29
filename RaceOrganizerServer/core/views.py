@@ -52,6 +52,7 @@ def login_view(request):
 @csrf_exempt
 def logout_view(request):
     logout(request)
+    return HttpResponse("Logout Successful", status=200)
 
 
 def index(request):
