@@ -7,19 +7,24 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class AuthGateway extends Gateway {
 
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();
-		//System.out.println(gw.login("test", "test"));
+		System.out.println(gw.login("test", "test"));
+		UsersGateway ugw = new UsersGateway();
+		ugw.getLoggedProfile();
 		System.out.println(gw.logout());
+
 	}
 	
 	
@@ -29,7 +34,7 @@ public class AuthGateway extends Gateway {
 
     public boolean login(String username, String password) {    	
     	/* POST Request initialisation */
-    	requestURL += "login/";
+    	requestURL = host + "login/";
 		System.out.println(requestURL);
 		client = HttpClients.custom()
 		        .setDefaultRequestConfig(RequestConfig.custom()
@@ -47,30 +52,34 @@ public class AuthGateway extends Gateway {
             e.printStackTrace();
         }
         try {
-            CloseableHttpResponse response = client.execute(postRequest);
+            CloseableHttpResponse response = client.execute(postRequest, httpContext);
             responseCode = response.getStatusLine().getStatusCode();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
+    
 
         return (responseCode == 200);
     }
     
     public boolean logout() {
     	int responseCode = -1;
-    	requestURL += "logout/";
+    	requestURL = host + "logout/";
+		System.out.println(requestURL);
+
     	client = HttpClientBuilder.create().build();
     	getRequest = new HttpGet(requestURL);
     	HttpResponse response = null;
     	try {
-    		response = client.execute(getRequest);
+    		response = client.execute(getRequest, httpContext);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	System.out.println("Response Code : " 
-                + response.getStatusLine().getStatusCode());
-    	return false;
+    	responseCode =response.getStatusLine().getStatusCode();
+    	System.out.println("Response Code : " + responseCode);
+    	return (responseCode == 200);
+    	
     }
 
 }
