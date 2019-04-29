@@ -238,7 +238,7 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(self.race1.helpers.count(), 1)
 
-        # Check failure to duplicate Users in race
+        # Check failure to add duplicate users to race
         response = self.client.post('/api/races/%i/' % self.race1.pk, runner)
         self.assertEqual(response.status_code, 400)
 

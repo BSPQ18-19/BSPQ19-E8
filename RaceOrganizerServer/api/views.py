@@ -6,7 +6,7 @@ from api.models import Person, Race, Runner
 
 
 def index(request):
-    return HttpResponse("I think you are lost")
+    return HttpResponse("i think you are lost")
 
 
 # Users API Methods
