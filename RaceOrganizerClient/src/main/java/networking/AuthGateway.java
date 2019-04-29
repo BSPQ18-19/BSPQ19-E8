@@ -22,8 +22,8 @@ public class AuthGateway extends Gateway {
 		AuthGateway gw = new AuthGateway();
 		System.out.println(gw.login("test", "test"));
 		UsersGateway ugw = new UsersGateway();
-		ugw.getLoggedProfile();
-		System.out.println(gw.logout());
+		ugw.getUserByID(1);
+		//System.out.println(gw.logout());
 
 	}
 	

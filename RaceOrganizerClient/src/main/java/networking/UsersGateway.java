@@ -61,28 +61,44 @@ public class UsersGateway extends Gateway {
     	User user=null;
     	
     	requestURL = host + "api/users/"+user_id;
-    	postRequest = new HttpPost(requestURL);
-        
     	int responseCode = -1;
-        try {
-        	postRequest.setEntity(new UrlEncodedFormEntity(params));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            CloseableHttpResponse response = client.execute(postRequest, httpContext);
-            responseCode = response.getStatusLine().getStatusCode();
-           
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       	System.out.println(requestURL);
 
+    	client = HttpClientBuilder.create().build();
+    	getRequest = new HttpGet(requestURL);
+    	HttpResponse response = null;
+    	try {
+    		response = client.execute(getRequest, httpContext);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	responseCode =response.getStatusLine().getStatusCode();
+    	System.out.println("Response Code : " + responseCode);
+    	
+    	/*Read response*/
+    	BufferedReader rd = null;
+		try {
+			rd = new BufferedReader(
+			        new InputStreamReader(response.getEntity().getContent()));
+		} catch (UnsupportedOperationException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
-        if (responseCode == 200) {
-        	return user;
-        }else {
-        	return null;
-        }
+    	StringBuffer result = new StringBuffer();
+    	String line = "";
+    	try {
+			while ((line = rd.readLine()) != null) {
+				result.append(line);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	System.out.println("Response: " + result);
+    	
+    	return user;
     }
     
     public User getLoggedProfile() {
