@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -7,7 +6,7 @@ from api.models import Person, Race, Runner
 
 
 def index(request):
-    return HttpResponse("I think you are lost")
+    return HttpResponse("i think you are lost")
 
 
 # Users API Methods
@@ -15,7 +14,6 @@ def index(request):
 def user_list(request):
     if request.method == "GET":
         users = Person.objects.all()
-
         users_json = []
 
         for user in users:
@@ -29,30 +27,36 @@ def user_list(request):
 
 def user_view(request, user_id):
     if request.method == "GET":
-        user = Person.objects.get(pk=user_id)
 
-        return JsonResponse(user.get_json(), safe=False, status=200)
+        if Person.objects.filter(pk=user_id).exists():
+            user = Person.objects.get(pk=user_id)
+            return JsonResponse(user.get_json(), safe=False, status=200)
+        else:
+            return HttpResponse("user not found", status=404)
 
     else:
         return HttpResponse(status=405)
 
 
-@login_required
 def profile_view(request):
     if request.method == "GET":
-        person = request.user.person
 
-        return JsonResponse(person.get_profile_json(), safe=False, status=200)
+        if request.user.is_authenticated:
+            person = request.user.person
+
+            return JsonResponse(person.get_profile_json(), safe=False, status=200)
+        else:
+            return HttpResponse("user must be logged in", status=401)
 
     else:
         return HttpResponse(status=405)
 
 
 # Races API Methods
+@csrf_exempt
 def races_list(request):
     if request.method == "GET":
         races = Race.objects.all()
-
         races_json = []
 
         for race in races:
@@ -61,7 +65,6 @@ def races_list(request):
         return JsonResponse(races_json, safe=False, status=200)
 
     elif request.method == "POST":
-
         if request.user.is_authenticated:
 
             edition = request.POST.get('edition')
@@ -79,12 +82,13 @@ def races_list(request):
 
                 Race.objects.create(organizer=request.user.person, **race)
 
-                return HttpResponse("successful operation", status=200)
+                return HttpResponse("successful operation", status=201)
+
             else:
                 return HttpResponse("invalid edition", status=400)
 
         else:
-            return HttpResponse("user must be logged in", status=403)
+            return HttpResponse("user must be logged in", status=401)
 
     else:
         return HttpResponse(status=405)
@@ -93,36 +97,54 @@ def races_list(request):
 @csrf_exempt
 def race_view(request, race_id):
     if request.method == "GET":
-        race = Race.objects.get(pk=race_id)
+        if Race.objects.filter(pk=race_id).exists():
+            race = Race.objects.get(pk=race_id)
 
-        return JsonResponse(race.get_json(), safe=False, status=200)
+            return JsonResponse(race.get_json(), safe=False, status=200)
+        else:
+            return HttpResponse("race not found", status=404)
 
     elif request.method == "POST":
 
-        username = request.POST.get('username')
-        role = request.POST.get('role')
+        if request.user.is_authenticated:
 
-        if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists:
+            username = request.POST.get('username')
+            role = request.POST.get('role')
 
-            race = Race.objects.get(pk=race_id)
-            person = User.objects.get(username=username).person
+            if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists():
 
-            if role.lower() == "runner":
-                number = race.runner_set.count() + 1
+                race = Race.objects.get(pk=race_id)
+                person = User.objects.get(username=username).person
 
-                runner = Runner.objects.create(race=race, person=person, number=number)
-                race.runner_set.add(runner)
-                return HttpResponse("successful operation", status=200)
+                if race.organizer.user == request.user or request.user == person.user:
 
-            elif role.lower() == "helper":
-                race.helpers.add(person)
-                return HttpResponse("successful operation", status=200)
+                    if person in race.runners.all() or person in race.helpers.all():
+                        return HttpResponse("person already takes part in race", status=400)
+
+                    else:
+
+                        if role.lower() == "runner":
+                            number = race.runner_set.count() + 1
+                            runner = Runner.objects.create(race=race, person=person, number=number)
+                            race.runner_set.add(runner)
+
+                            return HttpResponse("successful operation", status=201)
+
+                        elif role.lower() == "helper":
+                            race.helpers.add(person)
+
+                            return HttpResponse("successful operation", status=201)
+
+                        else:
+                            return HttpResponse("invalid role", status=400)
+
+                else:
+                    return HttpResponse("user does not have permission to add this user to the race", status=403)
 
             else:
-                return HttpResponse("invalid role", status=400)
+                return HttpResponse("user or race not found", status=404)
 
         else:
-            return HttpResponse("invalid username or race_id supplied", status=400)
-
+            return HttpResponse("user must be logged in", status=401)
     else:
         return HttpResponse(status=405)

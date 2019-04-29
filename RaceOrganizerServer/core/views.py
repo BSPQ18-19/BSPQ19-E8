@@ -8,9 +8,6 @@ from api.models import Person
 
 @csrf_exempt
 def signup_view(request):
-    """
-    Registration process as a HTML form
-    """
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -29,9 +26,12 @@ def signup_view(request):
 
             if user is not None:
                 login(request, user)
-                return HttpResponse("Signup Successful", status=201)
-            else:
-                return HttpResponse("Signup Failed", status=400)
+                return HttpResponse("successful operation", status=201)
+
+        return HttpResponse("invalid username or personal_id password supplied", status=400)
+
+    else:
+        return HttpResponse(status=405)
 
 
 @csrf_exempt
@@ -44,15 +44,26 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponse("Login Successful", status=200)
+            return HttpResponse("successful operation", status=200)
         else:
-            return HttpResponse("Login Failed", status=401)
+            return HttpResponse("invalid username/password supplied", status=401)
+
+    else:
+        return HttpResponse(status=405)
 
 
 @csrf_exempt
 def logout_view(request):
-    logout(request)
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            logout(request)
+            return HttpResponse("successful operation", status=200)
+        else:
+            return HttpResponse("user must be logged in", status=401)
+
+    else:
+        return HttpResponse(status=405)
 
 
 def index(request):
-    return HttpResponse("Nothing to see here")
+    return HttpResponse("nothing to see here")

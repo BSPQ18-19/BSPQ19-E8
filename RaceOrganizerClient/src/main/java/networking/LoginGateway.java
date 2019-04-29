@@ -15,7 +15,7 @@ public class LoginGateway extends Gateway {
 
 
     public LoginGateway(String username, String password) {
-        requestURL += "login/post/";
+        requestURL += "login/";
         client = HttpClients.custom()
                 .setDefaultRequestConfig(RequestConfig.custom()
                         .setCookieSpec(CookieSpecs.STANDARD).build())

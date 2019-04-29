@@ -10,7 +10,8 @@ import java.util.List;
 public abstract class Gateway {
 
     protected HttpPost request;
-    protected String requestURL = "http://127.0.0.1:8000/";
+    protected String requestURL = "http://rafaelromon.duckdns.org:8000/";
+    							
     protected List<NameValuePair> params = new ArrayList<NameValuePair>();
     protected CloseableHttpClient client;
 }
