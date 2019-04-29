@@ -6,7 +6,7 @@ from api.models import Person, Race, Runner
 
 
 def index(request):
-    return HttpResponse("I think you are lost")
+    return HttpResponse("i think you are lost")
 
 
 # Users API Methods
@@ -106,31 +106,45 @@ def race_view(request, race_id):
 
     elif request.method == "POST":
 
-        username = request.POST.get('username')
-        role = request.POST.get('role')
+        if request.user.is_authenticated:
 
-        if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists:
+            username = request.POST.get('username')
+            role = request.POST.get('role')
 
-            race = Race.objects.get(pk=race_id)
-            person = User.objects.get(username=username).person
+            if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists():
 
-            if role.lower() == "runner":
-                number = race.runner_set.count() + 1
-                runner = Runner.objects.create(race=race, person=person, number=number)
-                race.runner_set.add(runner)
+                race = Race.objects.get(pk=race_id)
+                person = User.objects.get(username=username).person
 
-                return HttpResponse("successful operation", status=201)
+                if race.organizer.user == request.user or request.user == person.user:
 
-            elif role.lower() == "helper":
-                race.helpers.add(person)
+                    if person in race.runners.all() or person in race.helpers.all():
+                        return HttpResponse("person already takes part in race", status=400)
 
-                return HttpResponse("successful operation", status=201)
+                    else:
+
+                        if role.lower() == "runner":
+                            number = race.runner_set.count() + 1
+                            runner = Runner.objects.create(race=race, person=person, number=number)
+                            race.runner_set.add(runner)
+
+                            return HttpResponse("successful operation", status=201)
+
+                        elif role.lower() == "helper":
+                            race.helpers.add(person)
+
+                            return HttpResponse("successful operation", status=201)
+
+                        else:
+                            return HttpResponse("invalid role", status=400)
+
+                else:
+                    return HttpResponse("user does not have permission to add this user to the race", status=403)
 
             else:
-                return HttpResponse("invalid role", status=400)
+                return HttpResponse("user or race not found", status=404)
 
         else:
-            return HttpResponse("ser or race not found", status=404)
-
+            return HttpResponse("user must be logged in", status=401)
     else:
         return HttpResponse(status=405)
