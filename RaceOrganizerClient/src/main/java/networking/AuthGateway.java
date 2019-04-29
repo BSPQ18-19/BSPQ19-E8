@@ -21,9 +21,13 @@ public class AuthGateway extends Gateway {
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();
 		System.out.println(gw.login("test", "test"));
-		UsersGateway ugw = new UsersGateway();
-		ugw.getUserByID(1);
-		//System.out.println(gw.logout());
+		/*UsersGateway ugw = new UsersGateway();
+		ugw.getUsers();
+		*/		
+		RaceGateway rgw = new RaceGateway();
+		rgw.getRace(1);
+		System.out.println(gw.logout());
+		
 
 	}
 	
@@ -57,9 +61,6 @@ public class AuthGateway extends Gateway {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-    
-
         return (responseCode == 200);
     }
     
@@ -78,6 +79,7 @@ public class AuthGateway extends Gateway {
 		}
     	responseCode =response.getStatusLine().getStatusCode();
     	System.out.println("Response Code : " + responseCode);
+    	if(responseCode == 200) flushSession(); /*Flush session cookies to avoid further errors */
     	return (responseCode == 200);
     	
     }

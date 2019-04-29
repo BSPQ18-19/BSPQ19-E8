@@ -28,11 +28,10 @@ public class Gateway {
     protected static CookieStore cookieStore = null;
     protected static HttpContext httpContext = new BasicHttpContext();
     
-    public void init(){
+    protected void init(){
     	String result ="";
     	if(cookieStore == null) {
-    		cookieStore =  new BasicCookieStore();
-            httpContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
+    		
     	}
     	 try {
     		BufferedReader bfr = new BufferedReader(new FileReader(requestURLFile));
@@ -45,6 +44,12 @@ public class Gateway {
 			e.printStackTrace();
 		}
     	 host = result; 
+    }
+    
+    protected static void flushSession() {
+    		cookieStore =  new BasicCookieStore();
+    		httpContext = new BasicHttpContext();
+            httpContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore); 
     }
     							
     protected List<NameValuePair> params = new ArrayList<NameValuePair>();

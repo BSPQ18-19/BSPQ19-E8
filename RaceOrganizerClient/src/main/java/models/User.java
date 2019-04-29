@@ -10,7 +10,7 @@ public class User {
     private String personal_id;
     private String birth_date;
     
-	public User(int user_id, String username, String first_name, String last_name, String email, String personal_id, String birth_date) {
+	public User(int user_id, String username, String first_name, String last_name, String email, String birth_date) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
@@ -18,7 +18,6 @@ public class User {
 		this.last_name = last_name;
 		this.email = email;
 		this.birth_date = birth_date;
-		this.personal_id=personal_id;
 	}
 
 	public int getUser_id() {
