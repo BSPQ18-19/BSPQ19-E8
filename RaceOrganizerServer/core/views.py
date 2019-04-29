@@ -2,11 +2,13 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from silk.profiling.profiler import silk_profile
 
 from api.models import Person
 
 
 @csrf_exempt
+@silk_profile(name='Signup')
 def signup_view(request):
 
     if request.method == 'POST':
@@ -35,6 +37,7 @@ def signup_view(request):
 
 
 @csrf_exempt
+@silk_profile(name='Login')
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -53,6 +56,7 @@ def login_view(request):
 
 
 @csrf_exempt
+@silk_profile(name='Logout')
 def logout_view(request):
     if request.method == 'GET':
         if request.user.is_authenticated:

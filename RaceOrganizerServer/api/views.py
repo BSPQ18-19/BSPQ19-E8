@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from silk.profiling.profiler import silk_profile
 
 from api.models import Person, Race, Runner
 
@@ -10,7 +11,7 @@ def index(request):
 
 
 # Users API Methods
-
+@silk_profile(name='User List')
 def user_list(request):
     if request.method == "GET":
         users = Person.objects.all()
@@ -25,6 +26,7 @@ def user_list(request):
         return HttpResponse(status=405)
 
 
+@silk_profile(name='User View')
 def user_view(request, user_id):
     if request.method == "GET":
 
@@ -38,6 +40,7 @@ def user_view(request, user_id):
         return HttpResponse(status=405)
 
 
+@silk_profile(name='Profile View')
 def profile_view(request):
     if request.method == "GET":
 
@@ -54,6 +57,7 @@ def profile_view(request):
 
 # Races API Methods
 @csrf_exempt
+@silk_profile(name='Races List')
 def races_list(request):
     if request.method == "GET":
         races = Race.objects.all()
@@ -95,6 +99,7 @@ def races_list(request):
 
 
 @csrf_exempt
+@silk_profile(name='Race View')
 def race_view(request, race_id):
     if request.method == "GET":
         if Race.objects.filter(pk=race_id).exists():
