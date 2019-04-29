@@ -31,16 +31,16 @@ public class UsersGateway extends Gateway {
     	ArrayList<User> listusers=new ArrayList<>();
     	
     	requestURL += "api/users";
-    	request = new HttpPost(requestURL);
+    	postRequest = new HttpPost(requestURL);
         
     	int responseCode = -1;
         try {
-            request.setEntity(new UrlEncodedFormEntity(params));
+            postRequest.setEntity(new UrlEncodedFormEntity(params));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         try {
-            CloseableHttpResponse response = client.execute(request);
+            CloseableHttpResponse response = client.execute(postRequest);
             responseCode = response.getStatusLine().getStatusCode();
            
         } catch (IOException e) {
@@ -59,16 +59,16 @@ public class UsersGateway extends Gateway {
     	User user=null;
     	
     	requestURL += "api/users/"+user_id;
-    	request = new HttpPost(requestURL);
+    	postRequest = new HttpPost(requestURL);
         
     	int responseCode = -1;
         try {
-            request.setEntity(new UrlEncodedFormEntity(params));
+        	postRequest.setEntity(new UrlEncodedFormEntity(params));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         try {
-            CloseableHttpResponse response = client.execute(request);
+            CloseableHttpResponse response = client.execute(postRequest);
             responseCode = response.getStatusLine().getStatusCode();
            
         } catch (IOException e) {
@@ -87,16 +87,16 @@ public class UsersGateway extends Gateway {
     	User user=null;
     	
     	requestURL += "api/profile";
-    	request = new HttpPost(requestURL);
+    	postRequest = new HttpPost(requestURL);
         
     	int responseCode = -1;
         try {
-            request.setEntity(new UrlEncodedFormEntity(params));
+        	postRequest.setEntity(new UrlEncodedFormEntity(params));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         try {
-            CloseableHttpResponse response = client.execute(request);
+            CloseableHttpResponse response = client.execute(postRequest);
             responseCode = response.getStatusLine().getStatusCode();
            
         } catch (IOException e) {

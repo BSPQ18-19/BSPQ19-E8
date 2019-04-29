@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import networking.LoginGateway;
+import networking.AuthGateway;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -57,7 +57,7 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-            	LoginGateway lgw=new LoginGateway(txtUsername.getText(), String.valueOf(passwordField.getPassword()));
+            	AuthGateway lgw=new AuthGateway(txtUsername.getText(), String.valueOf(passwordField.getPassword()));
             	if(lgw.login()) {
             		
             		Login.this.setVisible(false);
