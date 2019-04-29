@@ -70,6 +70,9 @@
 					</execution>
 				</executions>
 				<configuration>
+					<excludes>
+                        <exclude>**<!-- insert GUI here -->**</exclude>
+					</excludes>
 					<rules>
 						<rule>
 							<element>BUNDLE</element>
