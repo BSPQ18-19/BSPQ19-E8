@@ -24,7 +24,6 @@ public class RaceGateway extends Gateway {
 		}
 	
 		public Race[] getRaces() {
-			ArrayList<User> raceList =new ArrayList<>();
 	    	requestURL = host + "api/races";
 	    	int responseCode = -1;
 	       	System.out.println(requestURL);
@@ -61,9 +60,11 @@ public class RaceGateway extends Gateway {
 				e.printStackTrace();
 			}
 	    	
+	    	Race[] races = gson.fromJson(result.toString(), Race[].class);
+	    	
 	    	System.out.println("Response: " + result);
 	    	
-	    	return null;
+	    	return races;
 		}
 		
 		public boolean addRace(Race r) {
@@ -107,7 +108,9 @@ public class RaceGateway extends Gateway {
 				e.printStackTrace();
 			}
 	    	
-	    	System.out.println("Response: " + result);
+	    	Race r = gson.fromJson(result.toString(), Race.class);
+	    	
+	    	System.out.println("Response: " + r.toString());
 	    	
 	    	return null;
 	    	}

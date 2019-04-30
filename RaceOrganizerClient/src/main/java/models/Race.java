@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Race {
@@ -12,11 +13,11 @@ public class Race {
 	private float price;
 	private float prize;
 	
-	private User[] runners;
+	private Runner[] runners;
 	private User[] helpers;
 	
 	public Race(int race_id, String edition, String sponsor, String place, Date time, float price, float prize,
-			User[] runners, User[] helpers) {
+			Runner[] runners, User[] helpers) {
 		super();
 		this.race_id = race_id;
 		this.edition = edition;
@@ -85,11 +86,11 @@ public class Race {
 		this.prize = prize;
 	}
 
-	public User[] getRunners() {
+	public Runner[] getRunners() {
 		return runners;
 	}
 
-	public void setRunners(User[] runners) {
+	public void setRunners(Runner[] runners) {
 		this.runners = runners;
 	}
 
@@ -99,6 +100,13 @@ public class Race {
 
 	public void setHelpers(User[] helpers) {
 		this.helpers = helpers;
+	}
+
+	@Override
+	public String toString() {
+		return "Race [race_id=" + race_id + ", edition=" + edition + ", sponsor=" + sponsor + ", place=" + place
+				+ ", time=" + time + ", price=" + price + ", prize=" + prize + ", runners=" + Arrays.toString(runners)
+				+ ", helpers=" + Arrays.toString(helpers) + "]";
 	}
 	
 	

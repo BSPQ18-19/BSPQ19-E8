@@ -21,11 +21,11 @@ public class AuthGateway extends Gateway {
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();
 		System.out.println(gw.login("test", "test"));
-		UsersGateway ugw = new UsersGateway();
-		ugw.getUserByID(1);
-//			
-//		RaceGateway rgw = new RaceGateway();
-//		rgw.getRace(1);
+//		UsersGateway ugw = new UsersGateway();
+//		ugw.getUserByID(1);
+			
+		RaceGateway rgw = new RaceGateway();
+		rgw.getRace(1);
 		System.out.println(gw.logout());
 		
 
