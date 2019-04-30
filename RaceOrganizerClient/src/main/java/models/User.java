@@ -22,6 +22,7 @@ public class User {
 		this.last_name = last_name;
 		this.email = email;
 		this.birth_date = birth_date;
+		
 	}
 	
 	

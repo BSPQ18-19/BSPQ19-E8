@@ -5,13 +5,16 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import models.User;
-
+import models.Race;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
@@ -47,6 +50,13 @@ public class Dashboard extends JFrame {
 	private JPanel panel_dashboard_mid;
 	private JLabel lblNextRaces;
 	private JPanel panel_next_races;
+	private JScrollPane scrollPane_1;
+	private JPanel panel_races_top;
+	private JPanel panel_races_mid;
+	private JPanel panel_races_runner;
+	private JLabel lblMyRacesRunner;
+	private JLabel lblMyOrganisedRaces;
+	private JLabel lblRacesIveVolunteered;
 
 	public static void main(String[] args) {
 		Dashboard das = new Dashboard(null, null);
@@ -54,15 +64,11 @@ public class Dashboard extends JFrame {
 	}
 
 	public Dashboard(Login login, User user) {
-		
-		User user1=new User(1, "user", "Usuario", "Usuario", "user@email.com" , "1998/01/01");
-		actualuser=user1;
-		
-		//actualuser=user;
-		
-		
-		
 
+		User user1 = new User(1, "user", "Usuario", "Usuario", "user@email.com", "1998/01/01");
+		actualuser = user1;
+
+		// actualuser=user;
 
 		setBounds(100, 100, 1050, 855);
 		contentpane = new JPanel();
@@ -126,42 +132,39 @@ public class Dashboard extends JFrame {
 		gbc_content.gridx = 1;
 		gbc_content.gridy = 1;
 		contentpane.add(content, gbc_content);
-		
+
 		/*
-		 * Panel Dashboard 
+		 * Panel Dashboard
 		 */
-		
+
 		paneldashboard = new JPanel();
 		paneldashboard.setBackground(Color.WHITE);
 		content.setLayer(paneldashboard, 1);
 		paneldashboard.setBounds(0, 0, 724, 719);
 		paneldashboard.setLayout(new BorderLayout(0, 0));
 		actualpane = 0;
-		content.add(paneldashboard, new Integer(1));
-		
+		content.add(paneldashboard, new Integer(0));
+
 		panel_dashboard_top = new JPanel();
 		panel_dashboard_top.setOpaque(false);
 		paneldashboard.add(panel_dashboard_top, BorderLayout.NORTH);
-		JLabel lblDashboard_1 = new JLabel("Welcome "+actualuser.getFirst_name() );
+		JLabel lblDashboard_1 = new JLabel("Welcome " + actualuser.getFirst_name());
 		lblDashboard_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblDashboard_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_dashboard_top.add(lblDashboard_1);
 		lblDashboard_1.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
-		
+
 		panel_dashboard_mid = new JPanel();
 		panel_dashboard_mid.setBackground(Color.WHITE);
 		panel_dashboard_mid.setOpaque(false);
 		paneldashboard.add(panel_dashboard_mid, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_dashboard_mid = new GridBagLayout();
-		gbl_panel_dashboard_mid.columnWidths = new int[] {224, 500};
-		gbl_panel_dashboard_mid.rowHeights = new int[] {150, 300, 30, 30, 30, 30, 200};
-		gbl_panel_dashboard_mid.columnWeights = new double[]{0.0, 1.0};
-		gbl_panel_dashboard_mid.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_dashboard_mid.columnWidths = new int[] { 224, 500 };
+		gbl_panel_dashboard_mid.rowHeights = new int[] { 150, 300, 30, 30, 30, 30, 200 };
+		gbl_panel_dashboard_mid.columnWeights = new double[] { 0.0, 1.0 };
+		gbl_panel_dashboard_mid.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_dashboard_mid.setLayout(gbl_panel_dashboard_mid);
-	
-		
-		
-		
+
 		lblNextRaces = new JLabel("Next Races");
 		lblNextRaces.setFont(new Font("Tahoma", Font.BOLD, 24));
 		GridBagConstraints gbc_lblNextRaces = new GridBagConstraints();
@@ -170,11 +173,11 @@ public class Dashboard extends JFrame {
 		gbc_lblNextRaces.gridx = 0;
 		gbc_lblNextRaces.gridy = 1;
 		panel_dashboard_mid.add(lblNextRaces, gbc_lblNextRaces);
-		
+
 		panel_next_races = new JPanel();
 		panel_next_races.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, null, null, null));
 		panel_next_races.setBackground(Color.WHITE);
-		
+
 		JScrollPane scrollPane = new JScrollPane(panel_next_races);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -182,44 +185,92 @@ public class Dashboard extends JFrame {
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 1;
 		panel_dashboard_mid.add(scrollPane, gbc_scrollPane);
-		
-		
-		
+
 		/*
 		 * Panel Races
 		 */
-		
+
 		panelRaces = new JPanel();
 		panelRaces.setBackground(Color.WHITE);
 		content.setLayer(panelRaces, 0);
 		panelRaces.setBounds(0, 0, 724, 719);
-		
+
 		/*
 		 * Panel Search Races
 		 */
-		
+
 		panelSearchRaces = new JPanel();
 		panelSearchRaces.setBackground(Color.WHITE);
 		content.setLayer(panelRaces, 0);
 		panelSearchRaces.setBounds(0, 0, 724, 719);
-		
+
 		/*
 		 * 
 		 */
-		
+
 		panelmyUser = new JPanel();
 		panelmyUser.setBackground(Color.WHITE);
 		content.setLayer(panelRaces, 0);
 		panelmyUser.setBounds(0, 0, 724, 719);
+
+		content.add(panelRaces, new Integer(1));
+		panelRaces.setLayout(new BorderLayout(0, 0));
+		
+		panel_races_top = new JPanel();
+		panel_races_top.setBackground(Color.WHITE);
+		FlowLayout flowLayout = (FlowLayout) panel_races_top.getLayout();
+		flowLayout.setVgap(25);
+		flowLayout.setHgap(80);
+		panelRaces.add(panel_races_top, BorderLayout.NORTH);
+		
+		lblMyRacesRunner = new JLabel("Races I've registered");
+		lblMyRacesRunner.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblMyRacesRunner.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_races_top.add(lblMyRacesRunner);
+		
+		lblMyOrganisedRaces = new JLabel("Races I've Organised");
+		lblMyOrganisedRaces.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_races_top.add(lblMyOrganisedRaces);
+		
+		lblRacesIveVolunteered = new JLabel("Races I've Volunteered");
+		lblRacesIveVolunteered.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_races_top.add(lblRacesIveVolunteered);
+		
+		panel_races_mid = new JPanel();
+		panel_races_mid.setBackground(Color.WHITE);
+		panelRaces.add(panel_races_mid);
+		GridBagLayout gbl_panel_races_mid = new GridBagLayout();
+		gbl_panel_races_mid.columnWidths = new int[] {250, 250, 250};
+		gbl_panel_races_mid.rowHeights = new int[] {700, 0};
+		gbl_panel_races_mid.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_races_mid.rowWeights = new double[]{0.0, 1.0};
+		panel_races_mid.setLayout(gbl_panel_races_mid);
 		
 		
 		
+		panel_races_runner = new JPanel();
+		panel_races_runner.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, null, null, null));
+		panel_races_runner.setBackground(Color.WHITE);
+		scrollPane_1 = new JScrollPane(panel_races_runner);
+		GridBagLayout gbl_panel_races_runner = new GridBagLayout();
+		gbl_panel_races_runner.columnWidths = new int[] {250};
+		gbl_panel_races_runner.rowHeights = new int[] {75};
+		gbl_panel_races_runner.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_panel_races_runner.rowWeights = new double[]{Double.MIN_VALUE};
+		panel_races_runner.setLayout(gbl_panel_races_runner);
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridy = 0;
+		panel_races_mid.add(scrollPane_1, gbc_scrollPane_1);
 		
-		content.add(panelRaces, new Integer(0));
+//		for(Race r:user.getRunner_races()) {
+//			panel_races_runner.add(new JLabel(""+r.getRace_id()));
+//		}
 		content.add(panelSearchRaces, new Integer(0));
 		content.add(panelmyUser, new Integer(0));
 
-	
 		/*
 		 * Menu Panel
 		 */
@@ -259,7 +310,7 @@ public class Dashboard extends JFrame {
 		gbc_btnDashboard.gridx = 2;
 		gbc_btnDashboard.gridy = 1;
 		menu_bar.add(btnDashboard, gbc_btnDashboard);
-		
+
 		btnRaces = new JButton("My Races");
 		btnRaces.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnRaces.setOpaque(false);
@@ -296,12 +347,9 @@ public class Dashboard extends JFrame {
 		gbc_btnMyUser.gridx = 2;
 		gbc_btnMyUser.gridy = 4;
 		menu_bar.add(btnMyUser, gbc_btnMyUser);
-		
-		
-		
-		
+
 		btnDashboard.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -323,17 +371,16 @@ public class Dashboard extends JFrame {
 				}
 				content.setLayer(paneldashboard, 1);
 				btnDashboard.setForeground(Color.WHITE);
-				actualpane=0;
+				actualpane = 0;
 			}
 		});
-		
-		
+
 		btnRaces.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 				switch (actualpane) {
 				case 0:
 					btnDashboard.setForeground(Color.BLACK);
@@ -352,12 +399,12 @@ public class Dashboard extends JFrame {
 				}
 				content.setLayer(panelRaces, 1);
 				btnRaces.setForeground(Color.WHITE);
-				actualpane=1;
+				actualpane = 1;
 			}
 		});
 
-			buttonSearch.addActionListener(new ActionListener() {
-			
+		buttonSearch.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent arg0) {
 				switch (actualpane) {
 				case 0:
@@ -377,37 +424,51 @@ public class Dashboard extends JFrame {
 				}
 				content.setLayer(panelSearchRaces, 1);
 				buttonSearch.setForeground(Color.WHITE);
-				actualpane=2;
-				
+				actualpane = 2;
+
 			}
 		});
-		
-			btnMyUser.addActionListener(new ActionListener() {
-				
-				public void actionPerformed(ActionEvent arg0) {
-					switch (actualpane) {
-					case 0:
-						btnDashboard.setForeground(Color.BLACK);
-						content.setLayer(paneldashboard, 0);
-						break;
-					case 1:
-						btnRaces.setForeground(Color.BLACK);
-						content.setLayer(panelRaces, 0);
-						break;
-					case 2:
-						buttonSearch.setForeground(Color.BLACK);
-						content.setLayer(panelSearchRaces, 0);
-						break;
-					default:
-						break;
-					}
-					content.setLayer(panelmyUser, 1);
-					btnMyUser.setForeground(Color.WHITE);
-					actualpane=3;
-					
+
+		btnMyUser.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				switch (actualpane) {
+				case 0:
+					btnDashboard.setForeground(Color.BLACK);
+					content.setLayer(paneldashboard, 0);
+					break;
+				case 1:
+					btnRaces.setForeground(Color.BLACK);
+					content.setLayer(panelRaces, 0);
+					break;
+				case 2:
+					buttonSearch.setForeground(Color.BLACK);
+					content.setLayer(panelSearchRaces, 0);
+					break;
+				default:
+					break;
 				}
-			});
-			
+				content.setLayer(panelmyUser, 1);
+				btnMyUser.setForeground(Color.WHITE);
+				actualpane = 3;
+
+			}
+		});
+
+		addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+
+				int result = JOptionPane.showConfirmDialog(Dashboard.this,
+						"Are you sure you want to exit the application?", "Exit Application",
+						JOptionPane.YES_NO_OPTION);
+
+				if (result == JOptionPane.YES_OPTION)
+					Dashboard.this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
+
+		});
 
 	}
 }
