@@ -47,7 +47,7 @@ public class Dashboard extends JFrame {
 
 	public Dashboard(Login login, User user) {
 		
-		User user1=new User(1, "user", "Usuario", "Usuario", "user@email.com", "1234567A" , "1998/01/01");
+		User user1=new User(1, "user", "Usuario", "Usuario", "user@email.com" , "1998/01/01");
 		actualuser=user1;
 		
 		//actualuser=user;

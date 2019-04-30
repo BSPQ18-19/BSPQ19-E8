@@ -57,8 +57,8 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-            	AuthGateway lgw=new AuthGateway(txtUsername.getText(), String.valueOf(passwordField.getPassword()));
-            	if(lgw.login()) {
+            	AuthGateway lgw=new AuthGateway( );
+            	if(lgw.login(txtUsername.getText(),String.valueOf(passwordField.getPassword()))) {
             		
             		Login.this.setVisible(false);
                     Dashboard das = new Dashboard(Login.this, null);
