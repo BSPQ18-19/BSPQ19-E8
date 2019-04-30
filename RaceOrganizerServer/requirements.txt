@@ -1,4 +1,7 @@
+locust
 Django
 pytz
 mysqlclient
 setuptools
+django-silk
+locustio
