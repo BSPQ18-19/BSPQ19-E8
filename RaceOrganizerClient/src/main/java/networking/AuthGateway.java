@@ -18,7 +18,6 @@ import java.util.List;
 
 public class AuthGateway extends Gateway {
 	
-	private boolean isLoggedIn = false;
 
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();

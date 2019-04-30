@@ -28,6 +28,7 @@ public class Gateway {
     protected String host;
     protected String requestURL;
     protected Gson gson;
+	protected boolean isLoggedIn = false;
     protected static CookieStore cookieStore = null;
     protected static HttpContext httpContext = new BasicHttpContext();
     
