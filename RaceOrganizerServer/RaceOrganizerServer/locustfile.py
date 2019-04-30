@@ -1,27 +1,11 @@
-import random
-import string
+import json
 
 from locust import HttpLocust, TaskSet, task
 
-REGISTERED = False
-
 
 class UserBehaviour(TaskSet):
-    username = ''.join(random.choice(
-        string.ascii_uppercase + string.digits
-    ) for _ in range(6))
-    password = ''.join(random.choice(
-        string.ascii_uppercase + string.digits
-    ) for _ in range(6))
-
-    token = None
 
     def on_start(self):
-        # global REGISTERED
-        #
-        # if not REGISTERED:
-        #     REGISTERED = True
-        #     self.signup()
 
         self.login()
 
@@ -41,15 +25,23 @@ class UserBehaviour(TaskSet):
         })
 
     def logout(self):
-        self.logout()
+        self.client.get("/logout/")
 
     @task(1)
-    def get_userlist(self):
-        self.client.get("/api/users/")
+    def get_users(self):
+        response = self.client.get("/api/users/")
+        user_data = json.loads(str(response.content, encoding='utf8'))
+
+        for i in range(1, len(user_data) + 1):
+            self.client.get("/api/users/%i/" % i)
 
     @task(1)
-    def get_racelist(self):
-        self.client.get("/api/races")
+    def get_races(self):
+        response = self.client.get("/api/races")
+        race_data = json.loads(str(response.content, encoding='utf8'))
+
+        for i in range(1, len(race_data) + 1):
+            self.client.get("/api/races/%i/" % i)
 
 
 class WebsiteUser(HttpLocust):

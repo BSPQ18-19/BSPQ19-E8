@@ -1,3 +1,4 @@
+locust
 Django
 pytz
 mysqlclient
