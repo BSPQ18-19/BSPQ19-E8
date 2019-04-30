@@ -12,8 +12,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
+import models.Organizer;
+import models.Race;
+import models.Runner;
+import models.User;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.List;
 
 public class AuthGateway extends Gateway {
@@ -22,11 +28,17 @@ public class AuthGateway extends Gateway {
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();
 		System.out.println(gw.login("test", "test"));
-//		UsersGateway ugw = new UsersGateway();
-//		ugw.getUserByID(1);
-			
+		UsersGateway ugw = new UsersGateway();
+		Runner[] u  = new Runner[1];
+		Organizer[] o = new Organizer[0];
+		u[0] = new Runner(ugw.getLoggedProfile(), 5);
 		RaceGateway rgw = new RaceGateway();
-		rgw.getRace(1);
+		Race myRace = new Race("4", "BBK", "Indonesia", new Date(System.currentTimeMillis()), 15f, 1000f, u, o);
+		rgw.addRace(myRace);
+		Race[] serverRaces = rgw.getRaces();
+		for(int i = 0; i < serverRaces.length) {
+			System.out.println();
+		}
 		System.out.println(gw.logout());
 		
 

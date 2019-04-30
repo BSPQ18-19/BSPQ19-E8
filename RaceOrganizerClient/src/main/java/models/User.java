@@ -100,6 +100,10 @@ public class User {
 		return helper_races;
 	}
     
+	
+	public  String getRole() {
+		return "none";
+	}
     
 
 

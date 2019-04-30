@@ -29,6 +29,22 @@ public class Race {
 		this.runners = runners;
 		this.helpers = helpers;
 	}
+	
+	public Race(String edition, String sponsor, String place, Date time, float price, float prize,
+			Runner[] runners, User[] helpers) {
+		super();
+		this.race_id = race_id;
+		this.edition = edition;
+		this.sponsor = sponsor;
+		this.place = place;
+		this.time = time;
+		this.price = price;
+		this.prize = prize;
+		this.runners = runners;
+		this.helpers = helpers;
+	}
+	
+	
 
 	public int getRace_id() {
 		return race_id;
