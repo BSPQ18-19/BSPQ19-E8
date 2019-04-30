@@ -17,6 +17,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public class AuthGateway extends Gateway {
+	
+	private boolean isLoggedIn = false;
 
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();
@@ -61,7 +63,10 @@ public class AuthGateway extends Gateway {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return (responseCode == 200);
+        
+        isLoggedIn = (responseCode == 200);
+        
+        return isLoggedIn;
     }
     
     public boolean logout() {
@@ -78,9 +83,9 @@ public class AuthGateway extends Gateway {
 			e.printStackTrace();
 		}
     	responseCode =response.getStatusLine().getStatusCode();
-    	System.out.println("Response Code : " + responseCode);
-    	if(responseCode == 200) flushSession(); /*Flush session cookies to avoid further errors */
-    	return (responseCode == 200);
+        isLoggedIn = !(responseCode == 200);
+    	if(!isLoggedIn) flushSession(); /*Flush session cookies to avoid further errors */
+    	return (!isLoggedIn);  /*if user is not logged in at the end of logout we assume logout succeeded */
     	
     }
 
