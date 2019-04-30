@@ -4,6 +4,11 @@ venv/
  *.py[cod]
  *$py.class
 
+# Miscellaneos Django Files
+local_settings.py
+
+# Silk Profiles
+*.prof
 
 # IntelliJ project files 
 *.iml

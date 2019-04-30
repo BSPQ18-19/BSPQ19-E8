@@ -124,3 +124,8 @@ SILKY_PYTHON_PROFILER_RESULT_PATH = '/profiles/'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+try:
+    from RaceOrganizerServer.local_settings import *
+except ImportError:
+    pass

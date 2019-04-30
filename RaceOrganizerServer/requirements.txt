@@ -3,3 +3,4 @@ pytz
 mysqlclient
 setuptools
 django-silk
+locustio
