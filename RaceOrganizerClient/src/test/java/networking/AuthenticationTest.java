@@ -8,12 +8,12 @@ class AuthenticationTest {
     @Test
     void loginTest() {
         /* Test Successful Login */
-        AuthGateway gw = new AuthGateway("test", "test");
-        Assertions.assertTrue(gw.login());
+        AuthGateway gw = new AuthGateway();
+        Assertions.assertTrue(gw.login("test", "test"));
 
         /* Test failed login */
-        gw = new AuthGateway("test", "1234");
-        Assertions.assertFalse(gw.login());
+        gw = new AuthGateway();
+        Assertions.assertFalse(gw.login("test", "1234"));
     }
 
     @Test

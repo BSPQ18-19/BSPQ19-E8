@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import networking.AuthGateway;
+import networking.UsersGateway;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -61,9 +62,10 @@ public class Login extends JFrame {
                 // TODO Auto-generated method stub
             	AuthGateway lgw=new AuthGateway( );
             	if(lgw.login(txtUsername.getText(),String.valueOf(passwordField.getPassword()))) {
+            		UsersGateway ugw=new UsersGateway();
             		
             		Login.this.setVisible(false);
-                    Dashboard das = new Dashboard(Login.this, null);
+                    Dashboard das = new Dashboard(Login.this, ugw.getLoggedProfile());
                     das.setVisible(true);
             	}else {
             		JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
@@ -154,7 +156,7 @@ public class Login extends JFrame {
         lblRaceOrganizer.setBounds(339, 52, 230, 27);
         panel.add(lblRaceOrganizer);
 
-addWindowListener(new WindowAdapter() {
+        addWindowListener(new WindowAdapter() {
 			
 			@Override
 			public void windowClosing(WindowEvent e) {

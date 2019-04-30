@@ -5,7 +5,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import models.User;
-
+import models.Race;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +50,13 @@ public class Dashboard extends JFrame {
 	private JPanel panel_dashboard_mid;
 	private JLabel lblNextRaces;
 	private JPanel panel_next_races;
+	private JScrollPane scrollPane_1;
+	private JPanel panel_races_top;
+	private JPanel panel_races_mid;
+	private JPanel panel_races_runner;
+	private JLabel lblMyRacesRunner;
+	private JLabel lblMyOrganisedRaces;
+	private JLabel lblRacesIveVolunteered;
 
 	public static void main(String[] args) {
 		Dashboard das = new Dashboard(null, null);
@@ -136,7 +143,7 @@ public class Dashboard extends JFrame {
 		paneldashboard.setBounds(0, 0, 724, 719);
 		paneldashboard.setLayout(new BorderLayout(0, 0));
 		actualpane = 0;
-		content.add(paneldashboard, new Integer(1));
+		content.add(paneldashboard, new Integer(0));
 
 		panel_dashboard_top = new JPanel();
 		panel_dashboard_top.setOpaque(false);
@@ -206,7 +213,61 @@ public class Dashboard extends JFrame {
 		content.setLayer(panelRaces, 0);
 		panelmyUser.setBounds(0, 0, 724, 719);
 
-		content.add(panelRaces, new Integer(0));
+		content.add(panelRaces, new Integer(1));
+		panelRaces.setLayout(new BorderLayout(0, 0));
+		
+		panel_races_top = new JPanel();
+		panel_races_top.setBackground(Color.WHITE);
+		FlowLayout flowLayout = (FlowLayout) panel_races_top.getLayout();
+		flowLayout.setVgap(25);
+		flowLayout.setHgap(80);
+		panelRaces.add(panel_races_top, BorderLayout.NORTH);
+		
+		lblMyRacesRunner = new JLabel("Races I've registered");
+		lblMyRacesRunner.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblMyRacesRunner.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_races_top.add(lblMyRacesRunner);
+		
+		lblMyOrganisedRaces = new JLabel("Races I've Organised");
+		lblMyOrganisedRaces.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_races_top.add(lblMyOrganisedRaces);
+		
+		lblRacesIveVolunteered = new JLabel("Races I've Volunteered");
+		lblRacesIveVolunteered.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel_races_top.add(lblRacesIveVolunteered);
+		
+		panel_races_mid = new JPanel();
+		panel_races_mid.setBackground(Color.WHITE);
+		panelRaces.add(panel_races_mid);
+		GridBagLayout gbl_panel_races_mid = new GridBagLayout();
+		gbl_panel_races_mid.columnWidths = new int[] {250, 250, 250};
+		gbl_panel_races_mid.rowHeights = new int[] {700, 0};
+		gbl_panel_races_mid.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_races_mid.rowWeights = new double[]{0.0, 1.0};
+		panel_races_mid.setLayout(gbl_panel_races_mid);
+		
+		
+		
+		panel_races_runner = new JPanel();
+		panel_races_runner.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, null, null, null));
+		panel_races_runner.setBackground(Color.WHITE);
+		scrollPane_1 = new JScrollPane(panel_races_runner);
+		GridBagLayout gbl_panel_races_runner = new GridBagLayout();
+		gbl_panel_races_runner.columnWidths = new int[] {250};
+		gbl_panel_races_runner.rowHeights = new int[] {75};
+		gbl_panel_races_runner.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_panel_races_runner.rowWeights = new double[]{Double.MIN_VALUE};
+		panel_races_runner.setLayout(gbl_panel_races_runner);
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridy = 0;
+		panel_races_mid.add(scrollPane_1, gbc_scrollPane_1);
+		
+//		for(Race r:user.getRunner_races()) {
+//			panel_races_runner.add(new JLabel(""+r.getRace_id()));
+//		}
 		content.add(panelSearchRaces, new Integer(0));
 		content.add(panelmyUser, new Integer(0));
 
