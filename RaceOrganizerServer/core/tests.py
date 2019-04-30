@@ -23,15 +23,41 @@ class AuthenticationTest(TestCase):
             'birth_date': "2016-04-08"
         }
 
-        response = self.client.post('/signup/post/', user)
+        response = self.client.post('/signup/', user)
 
         # Check that the response is 201
         self.assertEqual(response.status_code, 201)
         # Check if user has been created
         self.assertTrue(User.objects.filter(username="laurence").exists())
 
-    def test_login_post_view(self):
-        # login
-        response = self.client.post('/login/post/', **self.credentials)
+        # Check failure to add duplicate users to race
+        response = self.client.post('/signup/', user)
+        self.assertEqual(response.status_code, 400)
+
+    def test_login(self):
+        no_user = {
+            'username': 'john',
+            'password': 'doe'
+        }
+
+        # Failed login
+        response = self.client.post('/login/', no_user)
+        # Check that the response is 401 OK.
+        self.assertEqual(response.status_code, 401)
+
+        # Successful login
+        response = self.client.post('/login/', self.credentials)
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
+
+    def test_logout(self):
+        # Successful logout
+        self.client.login(**self.credentials)
+        response = self.client.get('/logout/')
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        # Logout when user not logged in
+        response = self.client.get('/logout/')
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 401)

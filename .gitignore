@@ -1,6 +1,14 @@
 # Python
 venv/
-__pycache__/
+ __pycache__/
+ *.py[cod]
+ *$py.class
+
+# Miscellaneos Django Files
+local_settings.py
+
+# Silk Profiles
+*.prof
 
 # IntelliJ project files 
 *.iml
@@ -15,8 +23,5 @@ log/
 .settings/
 .classpath
 .project
-.recommenders
-.metadata
-
-# Maven
-target/
+/.metadata/
+/.recommenders/
