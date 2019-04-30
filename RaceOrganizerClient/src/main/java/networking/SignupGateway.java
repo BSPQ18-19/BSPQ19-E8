@@ -29,19 +29,19 @@ public class SignupGateway extends Gateway {
 
         System.out.println(params.toString());
 
-        request = new HttpPost(requestURL);
+        postRequest = new HttpPost(requestURL);
 
     }
 
     public boolean signUp() {
         int responseCode = -1;
         try {
-            request.setEntity(new UrlEncodedFormEntity(params));
+            postRequest.setEntity(new UrlEncodedFormEntity(params));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         try {
-            CloseableHttpResponse response = client.execute(request);
+            CloseableHttpResponse response = client.execute(postRequest);
             responseCode = response.getStatusLine().getStatusCode();
         } catch (IOException e) {
             e.printStackTrace();

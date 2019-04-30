@@ -4,11 +4,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import networking.LoginGateway;
+import networking.AuthGateway;
+import networking.UsersGateway;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Login extends JFrame {
 
@@ -57,11 +60,12 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-            	LoginGateway lgw=new LoginGateway(txtUsername.getText(), String.valueOf(passwordField.getPassword()));
-            	if(lgw.login()) {
+            	AuthGateway lgw=new AuthGateway( );
+            	if(lgw.login(txtUsername.getText(),String.valueOf(passwordField.getPassword()))) {
+            		UsersGateway ugw=new UsersGateway();
             		
             		Login.this.setVisible(false);
-                    Dashboard das = new Dashboard(Login.this, null);
+                    Dashboard das = new Dashboard(Login.this, ugw.getLoggedProfile());
                     das.setVisible(true);
             	}else {
             		JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
@@ -152,7 +156,15 @@ public class Login extends JFrame {
         lblRaceOrganizer.setBounds(339, 52, 230, 27);
         panel.add(lblRaceOrganizer);
 
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        addWindowListener(new WindowAdapter() {
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				 
+			    System.exit(0);
+			 
+			}
+			
+			});
     }
 }
