@@ -10,6 +10,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -25,11 +27,13 @@ public class Gateway {
     private File requestURLFile = new File("res/serverhost.txt");
     protected String host;
     protected String requestURL;
+    protected Gson gson;
     protected static CookieStore cookieStore = null;
     protected static HttpContext httpContext = new BasicHttpContext();
     
     protected void init(){
     	String result ="";
+    	gson = new Gson();
     	if(cookieStore == null) {
     		
     	}

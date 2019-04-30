@@ -12,6 +12,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
+import com.google.gson.Gson;
+
 import models.User;
 
 import java.io.BufferedReader;
@@ -30,8 +32,7 @@ public class UsersGateway extends Gateway {
     }
     
     
-    public ArrayList<User> getUsers() {
-    	ArrayList<User> listusers=new ArrayList<>();
+    public User[] getUsers() {
     	requestURL = host + "api/users";
     	int responseCode = -1;
        	System.out.println(requestURL);
@@ -68,9 +69,10 @@ public class UsersGateway extends Gateway {
 			e.printStackTrace();
 		}
     	
-    	System.out.println("Response: " + result);
+    	User[] users = gson.fromJson(result.toString(), User[].class);
     	
-    	return listusers;
+    	
+    	return users;
     }
     
     public User getUserByID(int user_id) {
@@ -111,6 +113,8 @@ public class UsersGateway extends Gateway {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
+    	user = gson.fromJson(result.toString(), User.class);
     	
     	System.out.println("Response: " + result);
     	
@@ -156,6 +160,8 @@ public class UsersGateway extends Gateway {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
+    	user = gson.fromJson(result.toString(), User.class);
     	
     	System.out.println("Response: " + result);
     	

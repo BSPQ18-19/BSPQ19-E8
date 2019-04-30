@@ -10,6 +10,10 @@ public class User {
     private String personal_id;
     private String birth_date;
     
+    private Race[] runner_races;
+    private Race[] organizer_races;
+    private Race[] helper_races;
+    
 	public User(int user_id, String username, String first_name, String last_name, String email, String birth_date) {
 		super();
 		this.user_id = user_id;
@@ -19,6 +23,8 @@ public class User {
 		this.email = email;
 		this.birth_date = birth_date;
 	}
+	
+	
 
 	public int getUser_id() {
 		return user_id;
@@ -74,6 +80,24 @@ public class User {
 
 	public void setBirth_date(String birth_date) {
 		this.birth_date = birth_date;
+	}
+
+
+
+	public Race[] getRunner_races() {
+		return runner_races;
+	}
+
+
+
+	public Race[] getOrganizer_races() {
+		return organizer_races;
+	}
+
+
+
+	public Race[] getHelper_races() {
+		return helper_races;
 	}
     
     
