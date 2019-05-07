@@ -30,18 +30,21 @@ class UserBehaviour(TaskSet):
     @task(1)
     def get_users(self):
         response = self.client.get("/api/users/")
-        user_data = json.loads(str(response.content, encoding='utf8'))
 
-        for i in range(1, len(user_data) + 1):
-            self.client.get("/api/users/%i/" % i)
+        if response.status_code == 200:
+            user_data = json.loads(str(response.content, encoding='utf8'))
+
+            for i in range(1, len(user_data) + 1):
+                self.client.get("/api/users/%i/" % i)
 
     @task(1)
     def get_races(self):
         response = self.client.get("/api/races")
-        race_data = json.loads(str(response.content, encoding='utf8'))
+        if response.status_code == 200:
+            race_data = json.loads(str(response.content, encoding='utf8'))
 
-        for i in range(1, len(race_data) + 1):
-            self.client.get("/api/races/%i/" % i)
+            for i in range(1, len(race_data) + 1):
+                self.client.get("/api/races/%i/" % i)
 
 
 class WebsiteUser(HttpLocust):

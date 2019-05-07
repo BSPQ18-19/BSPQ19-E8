@@ -23,3 +23,5 @@ log/
 .settings/
 .classpath
 .project
+/.metadata/
+/.recommenders/
