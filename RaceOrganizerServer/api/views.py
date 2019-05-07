@@ -18,7 +18,6 @@ def user_list(request):
         users_json = []
 
         if request.GET.get('s'):
-            print(request.GET.get('s'))
             users = users.filter(user__username__icontains=request.GET.get('s'))
 
         for user in users:
