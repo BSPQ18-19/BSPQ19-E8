@@ -17,6 +17,10 @@ def user_list(request):
         users = Person.objects.all()
         users_json = []
 
+        if request.GET.get('s'):
+            print(request.GET.get('s'))
+            users = users.filter(user__username__icontains=request.GET.get('s'))
+
         for user in users:
             users_json.append(user.get_simple_json())
 
@@ -62,6 +66,10 @@ def races_list(request):
     if request.method == "GET":
         races = Race.objects.all()
         races_json = []
+
+        if request.GET.get('s'):
+            print(request.GET.get('s'))
+            races = races.filter(edition__icontains=request.GET.get('s'))
 
         for race in races:
             races_json.append(race.get_simple_json())
