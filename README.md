@@ -1,4 +1,4 @@
-# RaceOrganizer
+# RaceOrganizer [![Build Status](https://travis-ci.org/BSPQ18-19/BSPQ19-E8.svg?branch=master)](https://travis-ci.org/BSPQ18-19/BSPQ19-E8)
 Student project for Software Process and Quality course at Deusto University 
 
 Members:
