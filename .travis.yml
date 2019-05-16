@@ -13,12 +13,6 @@ env: # => 4
 install: # => 5
   - pip install -r RaceOrganizerServer/requirements.txt
 
-before_script: # => 6
-  - mysql -u root -e "CREATE DATABASE test_raceorganizer CHARACTER SET UTF8;"
-  - mysql -u root -e "CREATE USER 'test'@'%' IDENTIFIED BY 'test';"
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON test_raceorganizer.* to 'test'@'%';"
-  - mysql -u root -e "FLUSH PRIVILEGES"
-
 script: # => 7
   - cd RaceOrganizerServer
   - python manage.py test
