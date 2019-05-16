@@ -16,8 +16,7 @@ install: # => 5
 before_script: # => 6
   - mysql -u root -e "CREATE DATABASE raceorganizer CHARACTER SET UTF8;"
   - mysql -u root -e "CREATE USER 'test'@'%' IDENTIFIED BY 'test';"
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON raceorganizer.* to 'test'@'%';"
-  - mysql -u root -e "ALTER USER test CREATEDB;"
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* to 'test'@'%';"
   - mysql -u root -e "FLUSH PRIVILEGES"
 
 script: # => 7
