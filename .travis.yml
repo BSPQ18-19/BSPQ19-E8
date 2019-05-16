@@ -19,5 +19,5 @@ language: python # => 1
 
       - mysql -e 'create database test;' -u root
     script: # => 7
-
+      - cd RaceOrganizerServer
       - python manage.py test
