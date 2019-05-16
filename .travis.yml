@@ -1,3 +1,4 @@
+dist: xenial   # required for Python >= 3.7
 language: python # => 1
 
 python: # => 2
@@ -14,7 +15,7 @@ install: # => 5
 
 before_script: # => 6
   - mysql -e 'create database test;' -u root
-  - 
+  -
 script: # => 7
   - cd RaceOrganizerServer
   - python manage.py test
