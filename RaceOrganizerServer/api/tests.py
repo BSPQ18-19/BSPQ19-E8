@@ -76,6 +76,14 @@ class APITest(TestCase):
         self.assertEqual(userlist[1]["last_name"], self.person2.user.last_name)
         self.assertEqual(userlist[1]["email"], self.person2.user.email)
 
+        # Test searching by username
+        response = self.client.get('/api/users/?s=%s' % self.person1.user.username)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if userlist now has 1 user instead of 2
+        userlist = json.loads(str(response.content, encoding='utf8'))
+        self.assertEqual(len(userlist), 1)
+
     def test_get_user(self):
         # Check if method returns correct information
         response = self.client.get('/api/users/%i/' % self.person2.pk)
@@ -133,6 +141,14 @@ class APITest(TestCase):
 
         self.assertEqual(racelist[1]["race_id"], self.race2.pk)
         self.assertEqual(racelist[1]["edition"], self.race2.edition)
+
+        # Test searching by edition
+        response = self.client.get('/api/races/?s=%s' % self.race1.edition)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if userlist now has 1 user instead of 2
+        racelist = json.loads(str(response.content, encoding='utf8'))
+        self.assertEqual(len(racelist), 1)
 
     def test_create_race(self):
         race = {
