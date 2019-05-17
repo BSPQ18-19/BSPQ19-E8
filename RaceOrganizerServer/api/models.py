@@ -132,7 +132,7 @@ class Task(models.Model):
     description = models.CharField(max_length=256)
     completed = models.BooleanField(default=False)
 
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, blank=True, null=True)
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
 
     def get_simple_json(self):
