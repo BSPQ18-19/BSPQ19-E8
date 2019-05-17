@@ -199,64 +199,71 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_add_people_to_races(self):
-        runner = {
-            "role": "runner",
-            "username": self.person1.user.username
-        }
-
-        helper = {
-            "role": "helper",
-            "username": self.person2.user.username
-        }
-
-        duplicate_helper = {
-            "role": "helper",
-            "username": self.person1.user.username
-        }
-
         nonexistent_runner = {
-            "role": "runner",
             "username": "I do not exists"
         }
 
-        invalid_role = {
-            "role": "icecream man",
-            "username": self.person1.user.username
-        }
-
         # Check failure when unauthorised
-        response = self.client.post('/api/races/%i/' % self.race1.pk, runner)
+        response = self.client.post('/api/races/%i/add_runner' % self.race1.pk, self.person1.get_simple_json())
         self.assertEqual(response.status_code, 401)
 
         self.client.login(username="laurence", password="1234")
 
         # Check failure when race or user do not exist
-        response = self.client.post('/api/races/56/', runner)
+        response = self.client.post('/api/races/56/add_runner', self.person1.get_simple_json())
         self.assertEqual(response.status_code, 404)
 
-        response = self.client.post('/api/races/%i/' % self.race2.pk, nonexistent_runner)
+        response = self.client.post('/api/races/%i/add_runner' % self.race2.pk, nonexistent_runner)
         self.assertEqual(response.status_code, 404)
 
         # Check failure when user does not have the permissions to add another user
-        response = self.client.post('/api/races/%i/' % self.race2.pk, helper)
+        response = self.client.post('/api/races/%i/add_helper' % self.race2.pk, self.person2.get_simple_json())
         self.assertEqual(response.status_code, 403)
 
-        # Check invalid role failure
-        response = self.client.post('/api/races/%i/' % self.race1.pk, invalid_role)
-        self.assertEqual(response.status_code, 400)
-
         # Check successful method calls
-        response = self.client.post('/api/races/%i/' % self.race1.pk, runner)
+        response = self.client.post('/api/races/%i/add_runner' % self.race1.pk, self.person1.get_simple_json())
         self.assertEqual(response.status_code, 201)
         self.assertEqual(self.race1.runner_set.count(), 1)
 
-        response = self.client.post('/api/races/%i/' % self.race1.pk, helper)
+        response = self.client.post('/api/races/%i/add_helper' % self.race1.pk, self.person2.get_simple_json())
         self.assertEqual(response.status_code, 201)
         self.assertEqual(self.race1.helpers.count(), 1)
 
         # Check failure to add duplicate users to race
-        response = self.client.post('/api/races/%i/' % self.race1.pk, runner)
+        response = self.client.post('/api/races/%i/add_runner' % self.race1.pk, self.person1.get_simple_json())
         self.assertEqual(response.status_code, 400)
 
-        response = self.client.post('/api/races/%i/' % self.race1.pk, duplicate_helper)
+        response = self.client.post('/api/races/%i/add_helper' % self.race1.pk, self.person1.get_simple_json())
         self.assertEqual(response.status_code, 400)
+
+    def test_add_tasks(self):
+        new_task = {
+            "description": "test_description"
+        }
+
+        empty_task = {
+            "description": "       "
+        }
+
+        # Check failure when unauthorised
+        response = self.client.post('/api/races/%i/new_task' % self.race2.pk, new_task)
+        self.assertEqual(response.status_code, 401)
+
+        self.client.login(username="laurence", password="1234")
+
+        # Check failure when race or user do not exist
+        response = self.client.post('/api/races/56/new_task', new_task)
+        self.assertEqual(response.status_code, 404)
+
+        # Check failure when user does not have the permissions to add another user
+        response = self.client.post('/api/races/%i/new_task' % self.race2.pk, new_task)
+        self.assertEqual(response.status_code, 403)
+
+        # Check failure when empty description
+        response = self.client.post('/api/races/%i/new_task' % self.race1.pk, empty_task)
+        self.assertEqual(response.status_code, 400)
+
+        # Check successful method calls
+        response = self.client.post('/api/races/%i/new_task' % self.race1.pk, new_task)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(self.race1.task_set.count(), 1)
