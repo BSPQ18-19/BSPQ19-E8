@@ -268,7 +268,7 @@ class APITest(TestCase):
         # Check successful method calls
         response = self.client.post('/api/races/%i/new_task' % self.race1.pk, new_task)
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(self.race1.task_set.count(), 1)
+        self.assertEqual(self.race1.task_set.count(), 2)
 
     # TODO these tests work manually but not in a test database
     # def test_modify_task(self):
