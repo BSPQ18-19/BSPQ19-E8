@@ -63,7 +63,6 @@ public class Login extends JFrame {
             	AuthGateway lgw=new AuthGateway( );
             	if(lgw.login(txtUsername.getText(),String.valueOf(passwordField.getPassword()))) {
             		UsersGateway ugw=new UsersGateway();
-            		
             		Login.this.setVisible(false);
                     Dashboard das = new Dashboard(Login.this, ugw.getLoggedProfile());
                     das.setVisible(true);

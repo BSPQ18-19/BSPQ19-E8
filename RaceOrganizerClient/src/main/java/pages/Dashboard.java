@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import models.User;
+import networking.RaceGateway;
 import models.Race;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -57,6 +58,7 @@ public class Dashboard extends JFrame {
 	private JLabel lblMyRacesRunner;
 	private JLabel lblMyOrganisedRaces;
 	private JLabel lblRacesIveVolunteered;
+	private JButton btnAddRace;
 
 	public static void main(String[] args) {
 		Dashboard das = new Dashboard(null, null);
@@ -147,11 +149,24 @@ public class Dashboard extends JFrame {
 
 		panel_dashboard_top = new JPanel();
 		panel_dashboard_top.setOpaque(false);
+		panel_dashboard_top.setBorder(new EmptyBorder(10, 10, 20, 10));
 		paneldashboard.add(panel_dashboard_top, BorderLayout.NORTH);
+		GridBagLayout gbl_panel_dashboard_top = new GridBagLayout();
+		gbl_panel_dashboard_top.columnWidths = new int[]{704, 0};
+		gbl_panel_dashboard_top.rowHeights = new int[]{36, 0, 0};
+		gbl_panel_dashboard_top.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel_dashboard_top.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel_dashboard_top.setLayout(gbl_panel_dashboard_top);
 		JLabel lblDashboard_1 = new JLabel("Welcome " + actualuser.getFirst_name());
+		lblDashboard_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblDashboard_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblDashboard_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_dashboard_top.add(lblDashboard_1);
+		GridBagConstraints gbc_lblDashboard_1 = new GridBagConstraints();
+		gbc_lblDashboard_1.anchor = GridBagConstraints.NORTH;
+		gbc_lblDashboard_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblDashboard_1.gridx = 0;
+		gbc_lblDashboard_1.gridy = 1;
+		panel_dashboard_top.add(lblDashboard_1, gbc_lblDashboard_1);
 		lblDashboard_1.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 
 		panel_dashboard_mid = new JPanel();
@@ -160,8 +175,8 @@ public class Dashboard extends JFrame {
 		paneldashboard.add(panel_dashboard_mid, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_dashboard_mid = new GridBagLayout();
 		gbl_panel_dashboard_mid.columnWidths = new int[] { 224, 500 };
-		gbl_panel_dashboard_mid.rowHeights = new int[] { 150, 300, 30, 30, 30, 30, 200 };
-		gbl_panel_dashboard_mid.columnWeights = new double[] { 0.0, 1.0 };
+		gbl_panel_dashboard_mid.rowHeights = new int[] {30, 300, 30, 30, 80, 30, 100};
+		gbl_panel_dashboard_mid.columnWeights = new double[] { 0.0, 0.0 };
 		gbl_panel_dashboard_mid.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_dashboard_mid.setLayout(gbl_panel_dashboard_mid);
 
@@ -185,6 +200,25 @@ public class Dashboard extends JFrame {
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 1;
 		panel_dashboard_mid.add(scrollPane, gbc_scrollPane);
+		
+		btnAddRace = new JButton("Create Race");
+		btnAddRace.setFont(new Font("Tahoma", Font.BOLD, 24));
+		btnAddRace.setBackground(Color.WHITE);
+		btnAddRace.setPreferredSize(new Dimension(240, 40));
+		btnAddRace.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CreateRace cr=new CreateRace();
+				cr.setVisible(true);
+				
+			}
+		});
+		GridBagConstraints gbc_btnAddRace_1 = new GridBagConstraints();
+		gbc_btnAddRace_1.anchor = GridBagConstraints.WEST;
+		gbc_btnAddRace_1.weightx = 1.0;
+		gbc_btnAddRace_1.insets = new Insets(5, 0, 5, 0);
+		gbc_btnAddRace_1.gridx = 1;
+		gbc_btnAddRace_1.gridy = 4;
+		panel_dashboard_mid.add(btnAddRace, gbc_btnAddRace_1);
 
 		/*
 		 * Panel Races
@@ -205,7 +239,7 @@ public class Dashboard extends JFrame {
 		panelSearchRaces.setBounds(0, 0, 724, 719);
 
 		/*
-		 * 
+		 * Panel MyUser
 		 */
 
 		panelmyUser = new JPanel();
@@ -213,7 +247,7 @@ public class Dashboard extends JFrame {
 		content.setLayer(panelRaces, 0);
 		panelmyUser.setBounds(0, 0, 724, 719);
 
-		content.add(panelRaces, new Integer(1));
+		content.add(panelRaces);
 		panelRaces.setLayout(new BorderLayout(0, 0));
 		
 		panel_races_top = new JPanel();
@@ -238,7 +272,7 @@ public class Dashboard extends JFrame {
 		
 		panel_races_mid = new JPanel();
 		panel_races_mid.setBackground(Color.WHITE);
-		panelRaces.add(panel_races_mid);
+		panelRaces.add(panel_races_mid, BorderLayout.WEST);
 		GridBagLayout gbl_panel_races_mid = new GridBagLayout();
 		gbl_panel_races_mid.columnWidths = new int[] {250, 250, 250};
 		gbl_panel_races_mid.rowHeights = new int[] {700, 0};
@@ -328,12 +362,12 @@ public class Dashboard extends JFrame {
 		buttonSearch.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		buttonSearch.setContentAreaFilled(false);
 		buttonSearch.setBorderPainted(false);
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.anchor = GridBagConstraints.WEST;
-		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 2;
-		gbc_button.gridy = 3;
-		menu_bar.add(buttonSearch, gbc_button);
+		GridBagConstraints gbc_buttonSearch = new GridBagConstraints();
+		gbc_buttonSearch.anchor = GridBagConstraints.WEST;
+		gbc_buttonSearch.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonSearch.gridx = 2;
+		gbc_buttonSearch.gridy = 3;
+		menu_bar.add(buttonSearch, gbc_buttonSearch);
 
 		btnMyUser = new JButton("My User");
 		btnMyUser.setBackground(Color.WHITE);
