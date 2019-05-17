@@ -1,9 +1,9 @@
+import json
 import re
 
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.utils import json
 from silk.profiling.profiler import silk_profile
 
 from api.models import Person, Race, Runner, Task
@@ -67,7 +67,6 @@ def races_list(request):
         races_json = []
 
         if request.GET.get('s'):
-            print(request.GET.get('s'))
             races = races.filter(edition__icontains=request.GET.get('s'))
 
         for race in races:
@@ -132,8 +131,6 @@ def body_to_dict(request):
 @silk_profile(name="Add Task")
 def task_view(request, race_id, task_id):
     if request.method == "PUT":
-        print(request.body)
-        print(request.POST)
         put = body_to_dict(request)
 
         if request.user.is_authenticated:
@@ -162,8 +159,6 @@ def task_view(request, race_id, task_id):
                     task.completed = completed
 
                 task.save()
-                print(task.get_person_json())
-
                 return HttpResponse("successful operation", status=200)
 
             else:
