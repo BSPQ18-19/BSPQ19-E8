@@ -115,13 +115,18 @@ def race_view(request, race_id):
             return JsonResponse(race.get_json(), safe=False, status=200)
         else:
             return HttpResponse("race not found", status=404)
+    else:
+        return HttpResponse(status=405)
 
-    elif request.method == "POST":
+
+@csrf_exempt
+@silk_profile(name="Add Runner to Race")
+def add_runner(request, race_id):
+    if request.method == "POST":
 
         if request.user.is_authenticated:
 
             username = request.POST.get('username')
-            role = request.POST.get('role')
 
             if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists():
 
@@ -135,20 +140,45 @@ def race_view(request, race_id):
 
                     else:
 
-                        if role.lower() == "runner":
-                            number = race.runner_set.count() + 1
-                            runner = Runner.objects.create(race=race, person=person, number=number)
-                            race.runner_set.add(runner)
+                        number = race.runner_set.count() + 1
+                        runner = Runner.objects.create(race=race, person=person, number=number)
+                        race.runner_set.add(runner)
 
-                            return HttpResponse("successful operation", status=201)
+                        return HttpResponse("successful operation", status=201)
 
-                        elif role.lower() == "helper":
-                            race.helpers.add(person)
+                else:
+                    return HttpResponse("user does not have permission to add this user to the race", status=403)
 
-                            return HttpResponse("successful operation", status=201)
+            else:
+                return HttpResponse("user or race not found", status=404)
+        else:
+            return HttpResponse("user must be logged in", status=401)
+    else:
+        return HttpResponse(status=405)
 
-                        else:
-                            return HttpResponse("invalid role", status=400)
+
+@csrf_exempt
+@silk_profile(name="Add Helper to Race")
+def add_helper(request, race_id):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+
+            username = request.POST.get('username')
+
+            if Race.objects.filter(pk=race_id).exists() and User.objects.filter(username=username).exists():
+
+                race = Race.objects.get(pk=race_id)
+                person = User.objects.get(username=username).person
+
+                if race.organizer.user == request.user or request.user == person.user:
+
+                    if person in race.runners.all() or person in race.helpers.all():
+                        return HttpResponse("person already takes part in race", status=400)
+
+                    else:
+                        race.helpers.add(person)
+
+                        return HttpResponse("successful operation", status=201)
 
                 else:
                     return HttpResponse("user does not have permission to add this user to the race", status=403)
