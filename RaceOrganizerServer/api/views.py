@@ -1,9 +1,11 @@
+import re
+
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from silk.profiling.profiler import silk_profile
 
-from api.models import Person, Race, Runner
+from api.models import Person, Race, Runner, Task
 
 
 def index(request):
@@ -115,6 +117,39 @@ def race_view(request, race_id):
             return JsonResponse(race.get_json(), safe=False, status=200)
         else:
             return HttpResponse("race not found", status=404)
+    else:
+        return HttpResponse(status=405)
+
+
+@csrf_exempt
+@silk_profile(name="Add Task")
+def new_task(request, race_id):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+
+            if Race.objects.filter(pk=race_id).exists():
+                race = Race.objects.get(pk=race_id)
+
+                if race.organizer.user == request.user:
+
+                    description = request.POST.get('description')
+                    pattern = re.compile("[a-zA-Z]")
+
+                    if pattern.match(description):
+
+                        Task.objects.create(description=description, race=race)
+
+                        return HttpResponse("successful operation", status=201)
+
+                    else:
+                        return HttpResponse("empty description", status=400)
+                else:
+                    return HttpResponse("user does not have permission to create a task in this race", status=403)
+
+            else:
+                return HttpResponse("race not found", status=404)
+        else:
+            return HttpResponse("user must be logged in", status=401)
     else:
         return HttpResponse(status=405)
 
