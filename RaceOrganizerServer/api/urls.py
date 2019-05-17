@@ -13,5 +13,7 @@ urlpatterns = [
     path('races/<int:race_id>/', views.race_view, name='race_view'),
     path('races/<int:race_id>/add_runner', views.add_runner, name='add_runner'),
     path('races/<int:race_id>/add_helper', views.add_helper, name='add_helper'),
+
     path('races/<int:race_id>/new_task', views.new_task, name='new_task'),
+    path('races/<int:race_id>/<int:task_id>/', views.task_view, name='task_view'),
 ]

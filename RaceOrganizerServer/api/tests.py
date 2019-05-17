@@ -3,7 +3,7 @@ import json
 from django.contrib.auth.models import User
 from django.test import TestCase
 
-from api.models import Person, Race
+from api.models import Person, Race, Task
 
 
 class APITest(TestCase):
@@ -54,6 +54,8 @@ class APITest(TestCase):
         }
 
         self.race2 = Race.objects.create(organizer=self.person2, **self.race2)
+
+        self.task1 = Task.objects.create(description="test", race=self.race1)
 
     # User API tests
 
@@ -267,3 +269,19 @@ class APITest(TestCase):
         response = self.client.post('/api/races/%i/new_task' % self.race1.pk, new_task)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(self.race1.task_set.count(), 1)
+
+    # TODO these tests work manually but not in a test database
+    # def test_modify_task(self):
+    #     self.client.login(username="laurence", password="1234")
+    #
+    #     response = self.client.put('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk),
+    #                                {"username": self.user2.username})
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertEqual(self.task1.person, self.person2)
+    #
+    #     completed_task = {"completed": "true"}
+    #
+    #     response = self.client.put('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk), completed_task)
+    #     print(self.task1.get_person_json())
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTrue(self.task1.completed)

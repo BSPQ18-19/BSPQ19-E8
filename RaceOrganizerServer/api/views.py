@@ -3,6 +3,7 @@ import re
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.utils import json
 from silk.profiling.profiler import silk_profile
 
 from api.models import Person, Race, Runner, Task
@@ -55,9 +56,6 @@ def profile_view(request):
             return JsonResponse(person.get_profile_json(), safe=False, status=200)
         else:
             return HttpResponse("user must be logged in", status=401)
-
-    else:
-        return HttpResponse(status=405)
 
 
 # Races API Methods
@@ -117,6 +115,61 @@ def race_view(request, race_id):
             return JsonResponse(race.get_json(), safe=False, status=200)
         else:
             return HttpResponse("race not found", status=404)
+    else:
+        return HttpResponse(status=405)
+
+
+"""
+This is a bit dirty but implementing a new package at this stage would take a lot of time
+"""
+
+
+def body_to_dict(request):
+    return json.loads(str(request.body, encoding='utf8').replace("'", '"'))
+
+
+@csrf_exempt
+@silk_profile(name="Add Task")
+def task_view(request, race_id, task_id):
+    if request.method == "PUT":
+        print(request.body)
+        print(request.POST)
+        put = body_to_dict(request)
+
+        if request.user.is_authenticated:
+
+            if Task.objects.filter(pk=task_id, race_id=race_id).exists():
+                task = Task.objects.get(pk=task_id)
+
+                if put.get("username"):
+
+                    username = put.get("username")
+
+                    if Person.objects.filter(user__username=username).exists():
+                        person = Person.objects.get(user__username=username)
+                        task.person = person
+
+                    else:
+                        return HttpResponse("user not found", status=404)
+
+                if put.get("completed"):
+
+                    if put.get("completed").lower() == "true":
+                        completed = True
+                    else:
+                        completed = False
+
+                    task.completed = completed
+
+                task.save()
+                print(task.get_person_json())
+
+                return HttpResponse("successful operation", status=200)
+
+            else:
+                return HttpResponse("race not found", status=404)
+        else:
+            return HttpResponse("user must be logged in", status=401)
     else:
         return HttpResponse(status=405)
 
