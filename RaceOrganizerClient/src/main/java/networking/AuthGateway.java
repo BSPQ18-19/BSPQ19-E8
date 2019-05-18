@@ -1,8 +1,5 @@
 package networking;
 
-import models.Organizer;
-import models.Race;
-import models.Runner;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -10,13 +7,20 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
+import models.Organizer;
+import models.Race;
+import models.Runner;
+import models.User;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+import java.util.List;
 
 public class AuthGateway extends Gateway {
 	
@@ -32,11 +36,9 @@ public class AuthGateway extends Gateway {
 		Race myRace = new Race("4", "BBK", "Indonesia", new Date(System.currentTimeMillis()), 15f, 1000f, u, o);
 		rgw.addRace(myRace);
 		Race[] serverRaces = rgw.getRaces();
-
-        for (Race race : serverRaces) {
-            System.out.println(rgw.getRace(race.getRace_id()));
-        }
-
+		for(int i = 0; i < serverRaces.length; i++) {
+			System.out.println(serverRaces[i].toString());
+		}
 		System.out.println(gw.logout());
 		
 
