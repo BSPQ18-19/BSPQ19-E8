@@ -18,6 +18,12 @@ class RunnerAdmin(admin.ModelAdmin):
     list_display_links = ('person',)
 
 
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ('race', 'person', 'description', 'completed')
+    list_display_links = ('description',)
+
+
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Race, RaceAdmin)
 admin.site.register(Runner, RunnerAdmin)
+admin.site.register(Task, TaskAdmin)

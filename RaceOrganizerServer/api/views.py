@@ -1,3 +1,4 @@
+import json
 import re
 
 from django.contrib.auth.models import User
@@ -56,9 +57,6 @@ def profile_view(request):
         else:
             return HttpResponse("user must be logged in", status=401)
 
-    else:
-        return HttpResponse(status=405)
-
 
 # Races API Methods
 @csrf_exempt
@@ -69,7 +67,6 @@ def races_list(request):
         races_json = []
 
         if request.GET.get('s'):
-            print(request.GET.get('s'))
             races = races.filter(edition__icontains=request.GET.get('s'))
 
         for race in races:
@@ -121,37 +118,9 @@ def race_view(request, race_id):
         return HttpResponse(status=405)
 
 
-@csrf_exempt
-@silk_profile(name="Add Task")
-def new_task(request, race_id):
-    if request.method == "POST":
-        if request.user.is_authenticated:
-
-            if Race.objects.filter(pk=race_id).exists():
-                race = Race.objects.get(pk=race_id)
-
-                if race.organizer.user == request.user:
-
-                    description = request.POST.get('description')
-                    pattern = re.compile("[a-zA-Z]")
-
-                    if pattern.match(description):
-
-                        Task.objects.create(description=description, race=race)
-
-                        return HttpResponse("successful operation", status=201)
-
-                    else:
-                        return HttpResponse("empty description", status=400)
-                else:
-                    return HttpResponse("user does not have permission to create a task in this race", status=403)
-
-            else:
-                return HttpResponse("race not found", status=404)
-        else:
-            return HttpResponse("user must be logged in", status=401)
-    else:
-        return HttpResponse(status=405)
+"""
+This is a bit dirty but implementing a new package at this stage would take a lot of time
+"""
 
 
 @csrf_exempt
@@ -221,6 +190,135 @@ def add_helper(request, race_id):
             else:
                 return HttpResponse("user or race not found", status=404)
 
+        else:
+            return HttpResponse("user must be logged in", status=401)
+    else:
+        return HttpResponse(status=405)
+
+
+def body_to_dict(request):
+    return json.loads(str(request.body, encoding='utf8').replace("'", '"'))
+
+
+@csrf_exempt
+@silk_profile(name="Add Task")
+def new_task(request, race_id):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+
+            if Race.objects.filter(pk=race_id).exists():
+                race = Race.objects.get(pk=race_id)
+
+                if race.organizer.user == request.user:
+
+                    description = request.POST.get('description')
+                    pattern = re.compile("[a-zA-Z]")
+
+                    if pattern.match(description):
+
+                        Task.objects.create(description=description, race=race)
+
+                        return HttpResponse("successful operation", status=201)
+
+                    else:
+                        return HttpResponse("empty description", status=400)
+                else:
+                    return HttpResponse("user does not have permission to create a task in this race", status=403)
+
+            else:
+                return HttpResponse("race not found", status=404)
+        else:
+            return HttpResponse("user must be logged in", status=401)
+    else:
+        return HttpResponse(status=405)
+
+
+@csrf_exempt
+@silk_profile(name="Add Task")
+def task_view(request, race_id, task_id):
+    if request.method == "PUT":
+        put = body_to_dict(request)
+
+        if request.user.is_authenticated:
+
+            if Task.objects.filter(pk=task_id, race_id=race_id).exists():
+                task = Task.objects.get(pk=task_id)
+
+                if put.get("description"):
+                    description = put.get("description")
+
+                    if description != task.description:
+
+                        if task.race.organizer.user == request.user:
+
+                            pattern = re.compile("[a-zA-Z]")
+
+                            if pattern.match(description):
+                                task.description = description
+
+                            else:
+                                return HttpResponse("empty description", status=400)
+                        else:
+                            return HttpResponse("user does not have permission to modify this task", status=403)
+
+                if put.get("username"):
+                    username = put.get("username")
+
+                    if Person.objects.filter(user__username=username).exists():
+                        person = Person.objects.get(user__username=username)
+
+                        if task.person is None:
+                            task.person = person
+
+                        else:
+                            if person != task.person:
+                                if task.race.organizer.user == request.user or task.person.user == request.user:
+                                    task.person = person
+                                else:
+                                    return HttpResponse("user does not have permission to modify this task", status=403)
+
+                    else:
+                        return HttpResponse("user not found", status=404)
+
+                if put.get("completed"):
+
+                    if task.person is not None:
+                        if put.get("completed").lower() == "true":
+                            completed = True
+                        else:
+                            completed = False
+
+                        if completed != task.completed:
+
+                            if task.race.organizer.user == request.user or task.person.user == request.user:
+                                task.completed = completed
+                            else:
+                                return HttpResponse("user does not have permission to modify this task", status=403)
+
+                    else:
+                        return HttpResponse("cannot set completed if task is not assigned", status=400)
+
+                task.save()
+                return HttpResponse("successful operation", status=200)
+
+            else:
+                return HttpResponse("race or task not found", status=404)
+        else:
+            return HttpResponse("user must be logged in", status=401)
+
+    if request.method == "DELETE":
+        if request.user.is_authenticated:
+            if Task.objects.filter(pk=task_id, race_id=race_id).exists():
+                task = Task.objects.get(pk=task_id)
+
+                if task.race.organizer.user == request.user:
+                    task.delete()
+                    return HttpResponse("successful operation", status=200)
+                else:
+                    return HttpResponse("user does not have permission to delete this task", status=403)
+
+            else:
+                return HttpResponse("race or task not found", status=404)
         else:
             return HttpResponse("user must be logged in", status=401)
     else:
