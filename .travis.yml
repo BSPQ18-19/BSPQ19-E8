@@ -22,3 +22,8 @@ before_script: # => 6
 script: # => 7
   - cd RaceOrganizerServer
   - python manage.py test
+
+notifications:
+  slack:
+    on_success: change
+    on_failure: change

@@ -270,18 +270,23 @@ class APITest(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(self.race1.task_set.count(), 2)
 
-    # TODO these tests work manually but not in a test database
-    # def test_modify_task(self):
-    #     self.client.login(username="laurence", password="1234")
-    #
-    #     response = self.client.put('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk),
-    #                                {"username": self.user2.username})
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(self.task1.person, self.person2)
-    #
-    #     completed_task = {"completed": "true"}
-    #
-    #     response = self.client.put('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk), completed_task)
-    #     print(self.task1.get_person_json())
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTrue(self.task1.completed)
+    # TODO these tests work manually but not in a test database, as such we will only test status_codes
+    def test_modify_task(self):
+        self.client.login(username="laurence", password="1234")
+
+        response = self.client.put('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk),
+                                   {"username": self.user2.username})
+        self.assertEqual(response.status_code, 200)
+
+        completed_task = {"completed": "true"}
+
+        response = self.client.put('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk), completed_task)
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_delete_task(self):
+        self.client.login(username="laurence", password="1234")
+
+        response = self.client.delete('/api/races/%i/%i/' % (self.race1.pk, self.task1.pk))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.race1.task_set.count(), 0)

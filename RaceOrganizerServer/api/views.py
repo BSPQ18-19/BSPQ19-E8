@@ -151,18 +151,35 @@ def task_view(request, race_id, task_id):
 
                 if put.get("completed"):
 
-                    if put.get("completed").lower() == "true":
-                        completed = True
-                    else:
-                        completed = False
+                    if task.person is None:
+                        if put.get("completed").lower() == "true":
+                            completed = True
+                        else:
+                            completed = False
 
-                    task.completed = completed
+                        task.completed = completed
+
+                    else:
+                        return HttpResponse("successful operation", status=200)
 
                 task.save()
                 return HttpResponse("successful operation", status=200)
 
             else:
-                return HttpResponse("race not found", status=404)
+                return HttpResponse("race or task not found", status=404)
+        else:
+            return HttpResponse("user must be logged in", status=401)
+
+    if request.method == "DELETE":
+        if request.user.is_authenticated:
+
+            if Task.objects.filter(pk=task_id, race_id=race_id).exists():
+                task = Task.objects.get(pk=task_id)
+                task.delete()
+                return HttpResponse("successful operation", status=200)
+
+            else:
+                return HttpResponse("race or task not found", status=404)
         else:
             return HttpResponse("user must be logged in", status=401)
     else:
