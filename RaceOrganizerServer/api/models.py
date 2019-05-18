@@ -28,9 +28,17 @@ class Person(models.Model):
         return json
 
     def get_json(self):
-        json = {"user_id": self.pk, "username": self.user.username, "first_name": self.user.first_name,
-                "last_name": self.user.last_name, "email": self.user.email, "birth_date": self.birth_date,
-                "runner_races": [], "organizer_races": [], "helper_races": []}
+        json = {"user_id": self.pk,
+                "username": self.user.username,
+                "first_name": self.user.first_name,
+                "last_name": self.user.last_name,
+                "email": self.user.email,
+                "birth_date": self.birth_date,
+                "runner_races": [],
+                "organizer_races": [],
+                "helper_races": [],
+
+                }
 
         for runner_race in self.runner_set.all():
             json["runner_races"].append(runner_race.get_simple_race_json())
@@ -46,12 +54,14 @@ class Person(models.Model):
     def get_profile_json(self):
         json = self.get_json()
         json["personal_id"] = self.personal_id
+        json["tasks"] = []
+        for task in self.task_set.all():
+            json["tasks"].append(task.get_race_json())
 
         return json
 
 
 class Race(models.Model):
-
     edition = models.CharField(max_length=32, unique=True)
     sponsor = models.CharField(max_length=32, blank=True)
     place = models.CharField(max_length=32)
@@ -84,14 +94,18 @@ class Race(models.Model):
             "prize": self.prize,
             "organizer": self.organizer.get_simple_json(),
             "runners": [],
-            "helpers": []
+            "helpers": [],
+            "tasks": []
         }
 
         for runner in self.runner_set.all():
             json["runners"].append(runner.get_simple_person_json())
 
-        for helpers in self.helpers.all():
-            json["helpers"].append(helpers.get_simple_json())
+        for helper in self.helpers.all():
+            json["helpers"].append(helper.get_simple_json())
+
+        for task in self.task_set.all():
+            json["tasks"].append(task.get_person_json())
 
         return json
 
@@ -110,5 +124,37 @@ class Runner(models.Model):
     def get_simple_race_json(self):
         json = self.race.get_simple_json()
         json["number"] = self.number
+
+        return json
+
+
+class Task(models.Model):
+    description = models.CharField(max_length=256)
+    completed = models.BooleanField(default=False)
+
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, blank=True, null=True)
+    race = models.ForeignKey(Race, on_delete=models.CASCADE)
+
+    def get_simple_json(self):
+        json = {
+            "task_id": self.pk,
+            "description": self.description,
+            "completed": self.completed,
+        }
+
+        return json
+
+    def get_person_json(self):
+        json = self.get_simple_json()
+        if self.person is not None:
+            json["person"] = self.person.get_simple_json()
+        else:
+            json["person"] = None
+
+        return json
+
+    def get_race_json(self):
+        json = self.get_simple_json()
+        json["race"] = self.race.get_simple_json()
 
         return json

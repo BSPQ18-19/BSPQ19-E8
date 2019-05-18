@@ -1,14 +1,7 @@
 package networking;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
+import models.Race;
+import models.User;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -20,8 +13,13 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
-import models.Race;
-import models.User;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RaceGateway extends Gateway {
 	
@@ -76,7 +74,7 @@ public class RaceGateway extends Gateway {
 		}
 		
 		/** @category POST api/races 
-		 * @param Race to add
+		 * @param r to add
 		 * @return True if race is added correctly **/
 
 		
@@ -163,12 +161,10 @@ public class RaceGateway extends Gateway {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	    	
-	    	//Race r = gson.fromJson(result.toString(), Race.class);
-	    	
-	    	System.out.println("Response: " /*r.toString()*/);
-	    	
-	    	return null;
+
+			Race r = gson.fromJson(result.toString(), Race.class);
+
+			return r;
 	    	}
 		
 		/** POST api/races/{race_id} **/
