@@ -38,17 +38,13 @@ public class AuthGateway extends Gateway {
 		for(int i = 0; i < serverRaces.length; i++) {
 			System.out.println(serverRaces[i].toString());
 		}*/
-		User[] users = ugw.getUsers();
-		for (int i = 0; i < users.length; i++) {
-			System.out.println(users[i].getUsername());
-		}
+//		TODO Commenting this to check
+
 		RaceGateway rgw = new RaceGateway();
-		Race[] serverRaces = rgw.getRaces();
-		
-		for (int i = 0; i < serverRaces.length; i++) {
-			rgw.addHelperToRace(users[2], serverRaces[i], RaceGateway.USER_RUNNER);
-		}
-		
+		Race race = rgw.getRace(1);
+		User user = ugw.getUserByID(3);
+
+		rgw.addUserToRace(user, race, RaceGateway.USER_HELPER);
 		
 		System.out.println(gw.logout());
 		

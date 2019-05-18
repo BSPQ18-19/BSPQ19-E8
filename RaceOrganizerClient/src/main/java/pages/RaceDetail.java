@@ -150,12 +150,13 @@ public class RaceDetail extends JFrame {
 		}
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RaceGateway rgw = new RaceGateway();
-				if (rgw.addToRace(u)) {
-					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
-				} else {
-					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
-				}
+//				RaceGateway rgw = new RaceGateway();
+//				TODO missing race parameter
+//				if (rgw.addUserToRace(u, RaceGateway.USER_RUNNER)) {
+//					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
+//				} else {
+//					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
+//				}
 
 			}
 		});

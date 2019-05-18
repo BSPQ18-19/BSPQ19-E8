@@ -174,7 +174,7 @@ public class RaceGateway extends Gateway {
 		
 	/** POST api/races/{race_id}/add_helper  && POST api/races/{race_id}/add_runner **/
 		
-		boolean addHelperToRace(User u, Race r, int type) {
+		public boolean addUserToRace(User u, Race r, int type) {
 			
 			if(type ==  USER_RUNNER) {
 				requestURL = host + "api/races/" + r.getRace_id() + "/add_runner";
@@ -189,7 +189,7 @@ public class RaceGateway extends Gateway {
 			        .setDefaultRequestConfig(RequestConfig.custom()
 			                .setCookieSpec(CookieSpecs.STANDARD).build())
 			        .build();
-			params.add(new BasicNameValuePair("username ", u.getUser_id()+""));
+			params.add(new BasicNameValuePair("username", u.getUsername()));
 			System.out.println(u.getUsername());
 			
 			postRequest = new HttpPost(requestURL);
@@ -209,9 +209,5 @@ public class RaceGateway extends Gateway {
 	        System.out.println(responseCode);
 	        return true;
 		}
-		
-
-	
-	
 }
 
