@@ -29,16 +29,27 @@ public class AuthGateway extends Gateway {
 		AuthGateway gw = new AuthGateway();
 		System.out.println(gw.login("test", "test"));
 		UsersGateway ugw = new UsersGateway();
-		Runner[] u  = new Runner[1];
+		/*Runner[] u  = new Runner[1];
 		Organizer[] o = new Organizer[0];
 		u[0] = new Runner(ugw.getLoggedProfile(), 5);
-		RaceGateway rgw = new RaceGateway();
 		Race myRace = new Race("4", "BBK", "Indonesia", new Date(System.currentTimeMillis()), 15f, 1000f, u, o);
 		rgw.addRace(myRace);
 		Race[] serverRaces = rgw.getRaces();
 		for(int i = 0; i < serverRaces.length; i++) {
 			System.out.println(serverRaces[i].toString());
+		}*/
+		User[] users = ugw.getUsers();
+		for (int i = 0; i < users.length; i++) {
+			System.out.println(users[i].getUsername());
 		}
+		RaceGateway rgw = new RaceGateway();
+		Race[] serverRaces = rgw.getRaces();
+		
+		for (int i = 0; i < serverRaces.length; i++) {
+			rgw.addHelperToRace(users[2], serverRaces[i], RaceGateway.USER_RUNNER);
+		}
+		
+		
 		System.out.println(gw.logout());
 		
 

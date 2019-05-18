@@ -1,6 +1,8 @@
 package networking;
 
+import models.Helper;
 import models.Race;
+import models.Runner;
 import models.User;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.CookieSpecs;
@@ -22,6 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RaceGateway extends Gateway {
+	
+	public final static int USER_RUNNER = 1;
+	public final static int USER_HELPER = 2;
 	
 		public RaceGateway() {
 			this.init();		
@@ -167,12 +172,46 @@ public class RaceGateway extends Gateway {
 			return r;
 	    	}
 		
-		/** POST api/races/{race_id} **/
-
+	/** POST api/races/{race_id}/add_helper  && POST api/races/{race_id}/add_runner **/
 		
-		public boolean addToRace(User u) {
-			return false;
+		boolean addHelperToRace(User u, Race r, int type) {
+			
+			if(type ==  USER_RUNNER) {
+				requestURL = host + "api/races/" + r.getRace_id() + "/add_runner";
+			}else if(type ==  USER_HELPER) {
+				requestURL = host + "api/races/" + r.getRace_id() + "/add_helper";
+			}else {
+				return false;
+			}
+			
+			System.out.println(requestURL);
+			client = HttpClients.custom()
+			        .setDefaultRequestConfig(RequestConfig.custom()
+			                .setCookieSpec(CookieSpecs.STANDARD).build())
+			        .build();
+			params.add(new BasicNameValuePair("username ", u.getUser_id()+""));
+			System.out.println(u.getUsername());
+			
+			postRequest = new HttpPost(requestURL);
+			/* POST Request initialisation end */
+	        int responseCode = -1;
+	        try {
+	            postRequest.setEntity(new UrlEncodedFormEntity(params));
+	        } catch (UnsupportedEncodingException e) {
+	            e.printStackTrace();
+	        }
+	        try {
+	            CloseableHttpResponse response = client.execute(postRequest, httpContext);
+	            responseCode = response.getStatusLine().getStatusCode();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        System.out.println(responseCode);
+	        return true;
 		}
+		
+
 	
 	
 }
+
