@@ -26,6 +26,7 @@ import javax.swing.border.LineBorder;
 
 import models.Race;
 import models.Runner;
+import models.Task;
 import models.User;
 import networking.RaceGateway;
 
@@ -236,7 +237,8 @@ public class CreateRace extends JFrame {
 				}
 				Runner[] runners=null;
 				User[] users=null;
-				Race r=new Race(TxtEdition.getText(), textFieldSponsor.getText(), textField_place.getText(), date, Float.parseFloat(textField_price.getText()), Float.parseFloat(textFieldPrize.getText()),runners, users);
+				Task[] tasks=null;
+				Race r=new Race(TxtEdition.getText(), textFieldSponsor.getText(), textField_place.getText(), date, Float.parseFloat(textField_price.getText()), Float.parseFloat(textFieldPrize.getText()),runners, users, tasks);
 				if (rgw.addRace(r)) {
 					JOptionPane.showMessageDialog(CreateRace.this, "Race Created");
 				} else {
