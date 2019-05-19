@@ -36,25 +36,24 @@ public class RaceDetail extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPanel;
-	private boolean running=false;
-	private boolean helper=false;
+	private boolean running = false;
+	private boolean helper = false;
 
 	public RaceDetail(Race r, User u) {
-		Runner myrunner=null;
-		for (Runner runner:r.getRunners()) {
-			if (runner.getUser_id()==u.getUser_id()) {
-				running=true;
-				myrunner=runner;
+		Runner myrunner = null;
+		for (Runner runner : r.getRunners()) {
+			if (runner.getUser_id() == u.getUser_id()) {
+				running = true;
+				myrunner = runner;
 			}
 		}
-		
-		for (User user:r.getHelpers()) {
-			if (user.getUser_id()==u.getUser_id()) {
-				helper=true;
+
+		for (User user : r.getHelpers()) {
+			if (user.getUser_id() == u.getUser_id()) {
+				helper = true;
 			}
 		}
-		
-		
+
 		setBounds(100, 100, 650, 493);
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new CardLayout(0, 0));
@@ -80,7 +79,7 @@ public class RaceDetail extends JFrame {
 				0.0 };
 		panel_1.setLayout(gbl_panel_1);
 
-		JLabel lblEdition = new JLabel("Edition: "+r.getEdition());
+		JLabel lblEdition = new JLabel("Edition: " + r.getEdition());
 		GridBagConstraints gbc_lblEdition = new GridBagConstraints();
 		gbc_lblEdition.anchor = GridBagConstraints.WEST;
 		gbc_lblEdition.insets = new Insets(0, 0, 5, 0);
@@ -88,7 +87,7 @@ public class RaceDetail extends JFrame {
 		gbc_lblEdition.gridy = 1;
 		panel_1.add(lblEdition, gbc_lblEdition);
 
-		JLabel lblSponsor = new JLabel("Sponsor: "+r.getSponsor());
+		JLabel lblSponsor = new JLabel("Sponsor: " + r.getSponsor());
 		GridBagConstraints gbc_lblSponsor = new GridBagConstraints();
 		gbc_lblSponsor.anchor = GridBagConstraints.WEST;
 		gbc_lblSponsor.insets = new Insets(0, 0, 5, 0);
@@ -96,7 +95,7 @@ public class RaceDetail extends JFrame {
 		gbc_lblSponsor.gridy = 2;
 		panel_1.add(lblSponsor, gbc_lblSponsor);
 
-		JLabel labelPlace = new JLabel("Place: "+r.getPlace());
+		JLabel labelPlace = new JLabel("Place: " + r.getPlace());
 		GridBagConstraints gbc_labelPlace = new GridBagConstraints();
 		gbc_labelPlace.anchor = GridBagConstraints.WEST;
 		gbc_labelPlace.insets = new Insets(0, 0, 5, 0);
@@ -104,7 +103,7 @@ public class RaceDetail extends JFrame {
 		gbc_labelPlace.gridy = 3;
 		panel_1.add(labelPlace, gbc_labelPlace);
 
-		JLabel labeltimedate = new JLabel("Time & Date: "+r.getTime().toString());
+		JLabel labeltimedate = new JLabel("Time & Date: " + r.getTime().toString());
 		GridBagConstraints gbc_labeltimedate = new GridBagConstraints();
 		gbc_labeltimedate.anchor = GridBagConstraints.WEST;
 		gbc_labeltimedate.insets = new Insets(0, 0, 5, 0);
@@ -112,7 +111,7 @@ public class RaceDetail extends JFrame {
 		gbc_labeltimedate.gridy = 4;
 		panel_1.add(labeltimedate, gbc_labeltimedate);
 
-		JLabel lblPrice = new JLabel("Price: "+r.getPrice());
+		JLabel lblPrice = new JLabel("Price: " + r.getPrice());
 		GridBagConstraints gbc_lblPrice = new GridBagConstraints();
 		gbc_lblPrice.anchor = GridBagConstraints.WEST;
 		gbc_lblPrice.insets = new Insets(0, 0, 5, 0);
@@ -120,16 +119,13 @@ public class RaceDetail extends JFrame {
 		gbc_lblPrice.gridy = 5;
 		panel_1.add(lblPrice, gbc_lblPrice);
 
-		JLabel lblPrize = new JLabel("Prize: "+r.getPrize());
+		JLabel lblPrize = new JLabel("Prize: " + r.getPrize());
 		GridBagConstraints gbc_lblPrize = new GridBagConstraints();
 		gbc_lblPrize.anchor = GridBagConstraints.WEST;
 		gbc_lblPrize.insets = new Insets(0, 0, 5, 0);
 		gbc_lblPrize.gridx = 2;
 		gbc_lblPrize.gridy = 6;
 		panel_1.add(lblPrize, gbc_lblPrize);
-		
-		
-		
 
 		JButton btnRun = new JButton("Run");
 		GridBagConstraints gbc_btnRun = new GridBagConstraints();
@@ -138,9 +134,9 @@ public class RaceDetail extends JFrame {
 		gbc_btnRun.gridx = 2;
 		gbc_btnRun.gridy = 10;
 		panel_1.add(btnRun, gbc_btnRun);
-		if(running) {
+		if (running) {
 			btnRun.setEnabled(false);
-			JLabel labelNumber = new JLabel("My Number: "+myrunner.getNumber());
+			JLabel labelNumber = new JLabel("My Number: " + myrunner.getNumber());
 			GridBagConstraints gbc_labelNumber = new GridBagConstraints();
 			gbc_labelNumber.anchor = GridBagConstraints.WEST;
 			gbc_labelNumber.insets = new Insets(0, 0, 5, 0);
@@ -150,8 +146,9 @@ public class RaceDetail extends JFrame {
 		}
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				RaceGateway rgw = new RaceGateway();
-				if (rgw.addHelperToRace(u, r, 1)) {
+				if (rgw.addUserToRace(u, r, 1)) {
 					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
 				} else {
 					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
@@ -169,17 +166,16 @@ public class RaceDetail extends JFrame {
 		gbc_btnHelp.gridx = 2;
 		gbc_btnHelp.gridy = 11;
 		panel_1.add(btnHelp, gbc_btnHelp);
+
 		
-		helper=true; //Always disable not gateway
-		if(helper) {
+		if (helper) {
 			btnHelp.setEnabled(false);
 		}
-		
-		
+
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RaceGateway rgw = new RaceGateway();
-				if (rgw.addHelperToRace(u, r, 2)) {
+				if (rgw.addUserToRace(u, r, 2)) {
 					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to heelp ");
 				} else {
 					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
