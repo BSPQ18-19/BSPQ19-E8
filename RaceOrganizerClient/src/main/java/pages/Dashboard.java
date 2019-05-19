@@ -1,29 +1,16 @@
 package pages;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
 import models.User;
 import networking.RaceGateway;
 import models.Race;
-import models.Runner;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 
@@ -67,9 +54,7 @@ public class Dashboard extends JFrame {
 	private JLabel lblSearch_edition;
 	private JButton btnSeach;
 	private JTextField textField_search_place;
-	private JScrollPane scrollPane_4;
 	private JPanel panel_search_results;
-
 	private JScrollPane scrollPane_search_results;
 	private RaceGateway rgw;
 	private JPanel panel_1;
@@ -92,20 +77,25 @@ public class Dashboard extends JFrame {
 	}
 
 	public Dashboard(Login login, User user) {
-		rgw=new RaceGateway();
+		 rgw=new RaceGateway();
+		 
+		 /*
+		  * Datos de prueba 
+		  */
+		 
 //		User user1 = new User(1, "user", "Usuario", "Usuario", "user@email.com", "1998/01/01");
 //		User user2 = new User(2, "user2", "Usuario", "Usuario", "user@email.com", "1998/01/01");
-//		Runner[] runners = { new Runner(user1, 1), new Runner(user2, 2) };
-//		User[] users = { user2};
+//		Runner[] runners = { new Runner(user1, 1) };
+//		Runner[] runners2 = { new Runner(user2, 1) };
+//		User[] users = { user2 };
 //		Race[] runraces = {
 //				new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
 //						runners, users),
 //				new Race("2nd Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
-//						runners, users) };
-//		Race[] runraces2 = {
-//				new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
-//						runners, users)};
-//		user1.setRunner_races(runraces);
+//						runners2, users) };
+//		Race[] runraces2 = { new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f,
+//				1500.0f, runners, users) };
+//		user1.setRunner_races(runraces2);
 //		user1.setOrganizer_races(runraces);
 //		user1.setHelper_races(runraces2);
 
@@ -181,11 +171,11 @@ public class Dashboard extends JFrame {
 		 */
 
 		paneldashboard = new JPanel();
-		content.setLayer(paneldashboard, 0);
 		paneldashboard.setBackground(Color.WHITE);
 		paneldashboard.setBounds(0, 0, 724, 719);
 		paneldashboard.setLayout(new BorderLayout(0, 0));
 		actualpane = 0;
+		content.setLayer(paneldashboard, 1);
 		content.add(paneldashboard);
 
 		panel_dashboard_top = new JPanel();
@@ -234,10 +224,10 @@ public class Dashboard extends JFrame {
 		panel_next_races.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, null, null, null));
 		panel_next_races.setBackground(Color.WHITE);
 		panel_next_races.setLayout(new GridLayout(5, 1, 0, 0));
-		// int row=0;
+		
 		if (actualuser.getRunner_races() != null) {
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces next_race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces next_race = new PanelRaces(rgw.getRace(r.getRace_id()),actualuser, 1);
 				panel_next_races.add(next_race);
 			}
 		} else {
@@ -280,14 +270,10 @@ public class Dashboard extends JFrame {
 		 */
 
 		panelRaces = new JPanel();
-		content.setLayer(panelRaces, 0);
 		panelRaces.setBackground(Color.WHITE);
+		content.setLayer(panelRaces, 0);
 		content.add(panelRaces);
 		panelRaces.setBounds(0, 0, 724, 719);
-
-		/*
-		 * Labels for each type of Race registration
-		 */
 
 		/*
 		 * Mid Panel
@@ -298,8 +284,8 @@ public class Dashboard extends JFrame {
 		panel_races_mid.setBackground(Color.WHITE);
 		panelRaces.add(panel_races_mid);
 		GridBagLayout gbl_panel_races_mid = new GridBagLayout();
-		gbl_panel_races_mid.columnWidths = new int[] {30, 600, 50};
-		gbl_panel_races_mid.rowHeights = new int[] {50, 280, 30, 50, 280};
+		gbl_panel_races_mid.columnWidths = new int[] { 30, 600, 50 };
+		gbl_panel_races_mid.rowHeights = new int[] { 50, 280, 30, 50, 280 };
 		gbl_panel_races_mid.columnWeights = new double[] { 1.0, 0.0 };
 		gbl_panel_races_mid.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0 };
 		panel_races_mid.setLayout(gbl_panel_races_mid);
@@ -307,16 +293,16 @@ public class Dashboard extends JFrame {
 		/*
 		 * Panel for races as runner
 		 */
-		
-				lblMyRacesRunner = new JLabel("Races Im running");
-				GridBagConstraints gbc_lblMyRacesRunner = new GridBagConstraints();
-				gbc_lblMyRacesRunner.anchor = GridBagConstraints.WEST;
-				gbc_lblMyRacesRunner.insets = new Insets(0, 0, 5, 0);
-				gbc_lblMyRacesRunner.gridx = 1;
-				gbc_lblMyRacesRunner.gridy = 0;
-				panel_races_mid.add(lblMyRacesRunner, gbc_lblMyRacesRunner);
-				lblMyRacesRunner.setVerticalAlignment(SwingConstants.BOTTOM);
-				lblMyRacesRunner.setFont(new Font("Tahoma", Font.PLAIN, 16));
+
+		lblMyRacesRunner = new JLabel("Races Im running");
+		GridBagConstraints gbc_lblMyRacesRunner = new GridBagConstraints();
+		gbc_lblMyRacesRunner.anchor = GridBagConstraints.WEST;
+		gbc_lblMyRacesRunner.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMyRacesRunner.gridx = 1;
+		gbc_lblMyRacesRunner.gridy = 0;
+		panel_races_mid.add(lblMyRacesRunner, gbc_lblMyRacesRunner);
+		lblMyRacesRunner.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblMyRacesRunner.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		panel_races_runner = new JPanel();
 		panel_races_runner.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, null, null, null));
@@ -336,7 +322,7 @@ public class Dashboard extends JFrame {
 		panel_races_mid.add(scrollPane_1, gbc_scrollPane_1);
 
 		if (actualuser.getRunner_races() != null) {
-			int i=0;
+			int i = 0;
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
 				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
@@ -361,15 +347,15 @@ public class Dashboard extends JFrame {
 		/*
 		 * Panel for races as helper
 		 */
-		
-				lblRacesIveVolunteered = new JLabel("Races I've Volunteered");
-				GridBagConstraints gbc_lblRacesIveVolunteered = new GridBagConstraints();
-				gbc_lblRacesIveVolunteered.anchor = GridBagConstraints.WEST;
-				gbc_lblRacesIveVolunteered.insets = new Insets(0, 0, 5, 0);
-				gbc_lblRacesIveVolunteered.gridx = 1;
-				gbc_lblRacesIveVolunteered.gridy = 3;
-				panel_races_mid.add(lblRacesIveVolunteered, gbc_lblRacesIveVolunteered);
-				lblRacesIveVolunteered.setFont(new Font("Tahoma", Font.PLAIN, 16));
+
+		lblRacesIveVolunteered = new JLabel("Races I've Volunteered");
+		GridBagConstraints gbc_lblRacesIveVolunteered = new GridBagConstraints();
+		gbc_lblRacesIveVolunteered.anchor = GridBagConstraints.WEST;
+		gbc_lblRacesIveVolunteered.insets = new Insets(0, 0, 5, 0);
+		gbc_lblRacesIveVolunteered.gridx = 1;
+		gbc_lblRacesIveVolunteered.gridy = 3;
+		panel_races_mid.add(lblRacesIveVolunteered, gbc_lblRacesIveVolunteered);
+		lblRacesIveVolunteered.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		panel_races_helper = new JPanel();
 		panel_races_helper.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, null, null, null));
@@ -388,7 +374,7 @@ public class Dashboard extends JFrame {
 		panel_races_mid.add(scrollPane_3, gbc_scrollPane_3);
 
 		if (actualuser.getHelper_races() != null) {
-			int i=0;
+			int i = 0;
 			for (Race r : getNextRaces(actualuser.getHelper_races())) {
 				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
@@ -411,11 +397,11 @@ public class Dashboard extends JFrame {
 		 */
 
 		panelSearchRaces = new JPanel();
-		content.setLayer(panelSearchRaces, 1);
 		panelSearchRaces.setBackground(Color.WHITE);
+		content.setLayer(panelSearchRaces, 0);
 		panelSearchRaces.setBounds(0, 0, 724, 719);
 
-		content.add(panelSearchRaces);
+		content.add(panelSearchRaces, 0);
 		GridBagLayout gbl_panelSearchRaces = new GridBagLayout();
 		gbl_panelSearchRaces.columnWidths = new int[] { 724, 0 };
 		gbl_panelSearchRaces.rowHeights = new int[] { 200, 600, 10, 0 };
@@ -489,49 +475,47 @@ public class Dashboard extends JFrame {
 		gbc_panel_search_mid.gridy = 1;
 		panelSearchRaces.add(panel_search_mid, gbc_panel_search_mid);
 		GridBagLayout gbl_panel_search_mid = new GridBagLayout();
-		gbl_panel_search_mid.columnWidths = new int[] {20, 600};
-		gbl_panel_search_mid.rowHeights = new int[] {30, 400};
-		gbl_panel_search_mid.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_panel_search_mid.rowWeights = new double[]{0.0, 0.0};
+		gbl_panel_search_mid.columnWidths = new int[] { 20, 600 };
+		gbl_panel_search_mid.rowHeights = new int[] { 30, 400 };
+		gbl_panel_search_mid.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panel_search_mid.rowWeights = new double[] { 0.0, 0.0 };
 		panel_search_mid.setLayout(gbl_panel_search_mid);
-		
-				panel_search_results = new JPanel();
-				scrollPane_search_results = new JScrollPane(panel_search_results);
-				GridBagLayout gbl_panel_search_results = new GridBagLayout();
-				gbl_panel_search_results.columnWidths = new int[]{0};
-				gbl_panel_search_results.rowHeights = new int[]{0};
-				gbl_panel_search_results.columnWeights = new double[]{Double.MIN_VALUE};
-				gbl_panel_search_results.rowWeights = new double[]{Double.MIN_VALUE};
-				panel_search_results.setLayout(gbl_panel_search_results);
-				GridBagConstraints gbc_scrollPane_search_results = new GridBagConstraints();
-				gbc_scrollPane_search_results.fill = GridBagConstraints.BOTH;
-				gbc_scrollPane_search_results.gridx = 1;
-				gbc_scrollPane_search_results.gridy = 1;
-				panel_search_mid.add(scrollPane_search_results, gbc_scrollPane_search_results);
 
-		 Race[] allraces=rgw.getRaces();
-				if (allraces != null) {
-					int i=0;
-					for (Race r : allraces) {
-						PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
-						GridBagConstraints gbc_races = new GridBagConstraints();
-						gbc_races.insets = new Insets(0, 0, 5, 0);
-						gbc_races.fill = GridBagConstraints.BOTH;
-						gbc_races.gridx = 0;
-						gbc_races.gridy = i;
-						panel_search_results.add(race, gbc_races);
-						System.out.println("DSGsag");
-						i++;
-						
-					}	
-				} else {
-					JLabel lblNoraces = new JLabel("No Races Found");
-					lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel_races_helper.add(lblNoraces);
+		panel_search_results = new JPanel();
+		scrollPane_search_results = new JScrollPane(panel_search_results);
+		GridBagLayout gbl_panel_search_results = new GridBagLayout();
+		gbl_panel_search_results.columnWidths = new int[] { 0 };
+		gbl_panel_search_results.rowHeights = new int[] { 0 };
+		gbl_panel_search_results.columnWeights = new double[] { Double.MIN_VALUE };
+		gbl_panel_search_results.rowWeights = new double[] { Double.MIN_VALUE };
+		panel_search_results.setLayout(gbl_panel_search_results);
+		GridBagConstraints gbc_scrollPane_search_results = new GridBagConstraints();
+		gbc_scrollPane_search_results.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_search_results.gridx = 1;
+		gbc_scrollPane_search_results.gridy = 1;
+		panel_search_mid.add(scrollPane_search_results, gbc_scrollPane_search_results);
 
-				}
-			
-		
+		Race[] allraces=rgw.getRaces();
+		if (allraces != null) {
+			int i = 0;
+			for (Race r : allraces) {
+				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
+				GridBagConstraints gbc_races = new GridBagConstraints();
+				gbc_races.insets = new Insets(0, 0, 5, 0);
+				gbc_races.fill = GridBagConstraints.BOTH;
+				gbc_races.gridx = 0;
+				gbc_races.gridy = i;
+				panel_search_results.add(race, gbc_races);
+				System.out.println("DSGsag");
+				i++;
+
+			}
+		} else {
+			JLabel lblNoraces = new JLabel("No Races Found");
+			lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			panel_races_helper.add(lblNoraces);
+
+		}
 
 		btnSeach.addActionListener(new ActionListener() {
 
@@ -539,7 +523,7 @@ public class Dashboard extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				search(textField_search_edition.getText(), textField_search_place.getText(), allraces);
-				
+
 			}
 		});
 
@@ -588,10 +572,9 @@ public class Dashboard extends JFrame {
 		GridBagConstraints gbc_lblMyUser_icon = new GridBagConstraints();
 		gbc_lblMyUser_icon.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMyUser_icon.gridheight = 5;
-		gbc_lblMyUser_icon.gridx = 2;
+		gbc_lblMyUser_icon.gridx = 3;
 		gbc_lblMyUser_icon.gridy = 0;
-		lblMyUser_icon.setIcon(new ImageIcon(
-				("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
+		lblMyUser_icon.setIcon(new ImageIcon(("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
 		panel_2.add(lblMyUser_icon, gbc_lblMyUser_icon);
 
 		lblMyUser_firstname = new JLabel("First Name: " + actualuser.getFirst_name());
@@ -661,7 +644,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getOrganizer_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getOrganizer_races())) {
-				PanelRaces race = new PanelRaces(r, actualuser, 2);
+				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 2);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -893,7 +876,7 @@ public class Dashboard extends JFrame {
 				i++;
 			}
 
-		}		
+		}
 		panel_search_results.updateUI();
 	}
 
