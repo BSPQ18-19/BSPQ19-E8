@@ -174,7 +174,7 @@ public class RaceGateway extends Gateway {
 		
 	/** POST api/races/{race_id}/add_helper  && POST api/races/{race_id}/add_runner **/
 		
-		boolean addHelperToRace(User u, Race r, int type) {
+		public boolean addHelperToRace(User u, Race r, int type) {
 			
 			if(type ==  USER_RUNNER) {
 				requestURL = host + "api/races/" + r.getRace_id() + "/add_runner";

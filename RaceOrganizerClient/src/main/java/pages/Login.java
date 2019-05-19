@@ -26,6 +26,7 @@ public class Login extends JFrame {
     /**
      * Create the frame.
      */
+    
     public Login() {
         setBounds(100, 100, 650, 400);
         contentPanel = new JPanel();
@@ -158,11 +159,8 @@ public class Login extends JFrame {
 			
 			@Override
 			public void windowClosing(WindowEvent e) {
-				 
-			    System.exit(0);
-			 
+				     System.exit(0);
 			}
-			
-			});
+		});
     }
 }

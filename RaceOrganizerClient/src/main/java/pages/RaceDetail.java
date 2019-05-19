@@ -151,7 +151,7 @@ public class RaceDetail extends JFrame {
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RaceGateway rgw = new RaceGateway();
-				if (rgw.addToRace(u)) {
+				if (rgw.addHelperToRace(u, r, 1)) {
 					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
 				} else {
 					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
@@ -174,19 +174,19 @@ public class RaceDetail extends JFrame {
 		if(helper) {
 			btnHelp.setEnabled(false);
 		}
-		/*Gateway Method not avaiable yet*/
 		
-//		btnHelp.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				RaceGateway rgw = new RaceGateway();
-//				if (rgw.addToRace(u)) {
-//					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
-//				} else {
-//					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
-//				}
-//
-//			}
-//		});
+		
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RaceGateway rgw = new RaceGateway();
+				if (rgw.addHelperToRace(u, r, 2)) {
+					JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to heelp ");
+				} else {
+					JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
+				}
+
+			}
+		});
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
 
