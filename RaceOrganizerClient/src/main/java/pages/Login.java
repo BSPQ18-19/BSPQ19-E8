@@ -26,7 +26,7 @@ public class Login extends JFrame {
     /**
      * Create the frame.
      */
-    
+
     public Login() {
         setBounds(100, 100, 650, 400);
         contentPanel = new JPanel();
@@ -55,22 +55,18 @@ public class Login extends JFrame {
         JButton btnLogin = new JButton("Login");
         panel_2.add(btnLogin);
         btnLogin.setBackground(new Color(255, 255, 255));
-        btnLogin.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-            	AuthGateway lgw=new AuthGateway( );
-            	if(lgw.login(txtUsername.getText(),String.valueOf(passwordField.getPassword()))) {
-            		UsersGateway ugw=new UsersGateway();
-            		Login.this.setVisible(false);
-                    Dashboard das = new Dashboard(Login.this, ugw.getLoggedProfile());
-                    das.setVisible(true);
-            	}else {
-            		JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
-            	}
-                
+        btnLogin.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            AuthGateway lgw = new AuthGateway();
+            if (lgw.login(txtUsername.getText(), String.valueOf(passwordField.getPassword()))) {
+                UsersGateway ugw = new UsersGateway();
+                Login.this.setVisible(false);
+                Dashboard das = new Dashboard(Login.this, ugw.getLoggedProfile());
+                das.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
             }
+
         });
 
         JButton btnNewButton_1 = new JButton("Register");
@@ -156,11 +152,11 @@ public class Login extends JFrame {
         panel.add(lblRaceOrganizer);
 
         addWindowListener(new WindowAdapter() {
-			
-			@Override
-			public void windowClosing(WindowEvent e) {
-				     System.exit(0);
-			}
-		});
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
     }
 }

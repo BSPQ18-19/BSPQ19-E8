@@ -1,11 +1,15 @@
 package pages;
 
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import models.Race;
+import models.Runner;
+import models.Task;
+import models.User;
+import networking.RaceGateway;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
@@ -13,27 +17,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
-import models.Race;
-import models.Runner;
-import models.Task;
-import models.User;
-import networking.RaceGateway;
-
 public class CreateRace extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPanel;
@@ -66,11 +53,11 @@ public class CreateRace extends JFrame {
 		panel_1.setBounds(10, 59, 331, 374);
 		panel.add(panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.rowHeights = new int[] { 50, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 };
-		gbl_panel_1.columnWidths = new int[] { 30, 0, 250, 20 };
-		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
-				0.0 };
+		gbl_panel_1.rowHeights = new int[]{50, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30};
+		gbl_panel_1.columnWidths = new int[]{30, 0, 250, 20};
+		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
+				0.0};
 		panel_1.setLayout(gbl_panel_1);
 
 		JLabel lblEdition = new JLabel("Edition");
@@ -197,7 +184,7 @@ public class CreateRace extends JFrame {
 		lblicon.setBounds(370, 85, 222, 212);
 		panel.add(lblicon);
 		lblicon.setHorizontalAlignment(SwingConstants.CENTER);
-		lblicon.setIcon(new ImageIcon(Registration.class.getResource("/icons/icon.png")));
+		lblicon.setIcon(new ImageIcon("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"));
 
 		JLabel lblRaceOrganizer = new JLabel("Create Race");
 		lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -227,7 +214,7 @@ public class CreateRace extends JFrame {
 		panel_2.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RaceGateway rgw=new RaceGateway();
+				RaceGateway rgw = new RaceGateway();
 				DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 				Date date = null;
 				try {
@@ -236,10 +223,10 @@ public class CreateRace extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Runner[] runners=null;
-				User[] users=null;
-				Task[] tasks=null;
-				Race r=new Race(TxtEdition.getText(), textFieldSponsor.getText(), textField_place.getText(), date, Float.parseFloat(textField_price.getText()), Float.parseFloat(textFieldPrize.getText()),runners, users, tasks);
+				Runner[] runners = null;
+				User[] users = null;
+				Task[] tasks = null;
+				Race r = new Race(TxtEdition.getText(), textFieldSponsor.getText(), textField_place.getText(), date, Float.parseFloat(textField_price.getText()), Float.parseFloat(textFieldPrize.getText()), runners, users, tasks);
 				if (rgw.addRace(r)) {
 					JOptionPane.showMessageDialog(CreateRace.this, "Race Created");
 				} else {
