@@ -27,6 +27,24 @@ public class User {
 	
 	
 
+	public void setRunner_races(Race[] runner_races) {
+		this.runner_races = runner_races;
+	}
+
+
+
+	public void setOrganizer_races(Race[] organizer_races) {
+		this.organizer_races = organizer_races;
+	}
+
+
+
+	public void setHelper_races(Race[] helper_races) {
+		this.helper_races = helper_races;
+	}
+
+
+
 	public int getUser_id() {
 		return user_id;
 	}
