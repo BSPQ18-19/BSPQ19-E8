@@ -47,7 +47,7 @@ public class CreateRace extends JFrame {
 	/**
 	 * Window for creating races
 	 */
-	public CreateRace() {
+	public CreateRace(Dashboard vAnterior) {
 		setBounds(100, 100, 650, 493);
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new CardLayout(0, 0));
@@ -218,6 +218,7 @@ public class CreateRace extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				CreateRace.this.setVisible(false);
+				vAnterior.revalidate();
 
 			}
 		});

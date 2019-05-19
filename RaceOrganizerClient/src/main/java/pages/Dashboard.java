@@ -257,7 +257,7 @@ public class Dashboard extends JFrame {
 		btnAddRace.setPreferredSize(new Dimension(240, 40));
 		btnAddRace.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CreateRace cr = new CreateRace();
+				CreateRace cr = new CreateRace(Dashboard.this);
 				cr.setVisible(true);
 			}
 		});
