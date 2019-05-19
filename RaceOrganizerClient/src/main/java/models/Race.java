@@ -3,7 +3,7 @@ package models;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Race {
+public class Race implements Comparable<Race>{
 	
 	private int race_id;
 	private String edition;
@@ -125,6 +125,10 @@ public class Race {
 				+ ", helpers=" + Arrays.toString(helpers) + "]";
 	}
 	
-	
-
+	@Override
+	 public int compareTo(Race r) {
+		    if (getTime() == null || r.getTime() == null)
+		      return 0;
+		    return getTime().compareTo(r.getTime());
+		  }
 }
