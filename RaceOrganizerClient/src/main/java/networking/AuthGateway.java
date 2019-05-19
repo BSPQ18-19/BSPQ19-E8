@@ -28,11 +28,11 @@ public class AuthGateway extends Gateway {
 	public static void main(String[] args) {
 		AuthGateway gw = new AuthGateway();
 		System.out.println(gw.login("test", "test"));
-		UsersGateway ugw = new UsersGateway();
+		//UsersGateway ugw = new UsersGateway();
 		/*Runner[] u  = new Runner[1];
 		Organizer[] o = new Organizer[0];
 		u[0] = new Runner(ugw.getLoggedProfile(), 5);
-		Race myRace = new Race("4", "BBK", "Indonesia", new Date(System.currentTimeMillis()), 15f, 1000f, u, o);
+		Race myRace = new Race("4", "BBK", "Indonesia", new Date(Syst em.currentTimeMillis()), 15f, 1000f, u, o);
 		rgw.addRace(myRace);
 		Race[] serverRaces = rgw.getRaces();
 		for(int i = 0; i < serverRaces.length; i++) {
@@ -41,10 +41,11 @@ public class AuthGateway extends Gateway {
 //		TODO Commenting this to check
 
 		RaceGateway rgw = new RaceGateway();
-		Race race = rgw.getRace(1);
-		User user = ugw.getUserByID(3);
-
-		rgw.addUserToRace(user, race, RaceGateway.USER_HELPER);
+		TaskGateway tgw = new TaskGateway();
+		Race race = rgw.getRace(2);
+		//User user = ugw.getUserByID(3);
+		tgw.addTask(race, "Test task 1");
+		//rgw.addUserToRace(user, race, RaceGateway.USER_RUNNER);
 		
 		System.out.println(gw.logout());
 		
