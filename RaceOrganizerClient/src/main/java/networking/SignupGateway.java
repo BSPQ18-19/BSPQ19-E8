@@ -15,7 +15,7 @@ public class SignupGateway extends Gateway {
 
     public SignupGateway(String username, String password, String firstName, String lastname, String email, String personal_id, String birth_date) {
         this.init();
-    	requestURL = host +  "signup/";
+        requestURL = host + "signup/";
         client = HttpClients.custom()
                 .setDefaultRequestConfig(RequestConfig.custom()
                         .setCookieSpec(CookieSpecs.STANDARD).build())

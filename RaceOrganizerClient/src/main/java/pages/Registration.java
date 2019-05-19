@@ -1,13 +1,10 @@
 package pages;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import networking.SignupGateway;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
-import networking.SignupGateway;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,10 +47,10 @@ public class Registration extends JFrame {
 		panel_1.setBounds(10, 46, 331, 388);
 		panel.add(panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.rowHeights = new int[] {50, 30, 10, 30, 25, 30, 30, 30, 30, 30, 30, 70};
-		gbl_panel_1.columnWidths = new int[] { 30, 0, 250, 20 };
-		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0 };
+		gbl_panel_1.rowHeights = new int[]{50, 30, 10, 30, 25, 30, 30, 30, 30, 30, 30, 70};
+		gbl_panel_1.columnWidths = new int[]{30, 0, 250, 20};
+		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0};
 		panel_1.setLayout(gbl_panel_1);
 
 		JLabel lblUserLogin = new JLabel("User Registration");
@@ -72,7 +69,7 @@ public class Registration extends JFrame {
 		gbc_lblUser.gridx = 1;
 		gbc_lblUser.gridy = 1;
 		panel_1.add(lblUser, gbc_lblUser);
-		lblUser.setIcon(new ImageIcon("/icons/user.png"));
+		lblUser.setIcon(new ImageIcon("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/user.png"));
 
 		username = new HintTextField("Username");
 		username.setToolTipText("Username");
@@ -93,7 +90,7 @@ public class Registration extends JFrame {
 		gbc_lblPassword.gridx = 1;
 		gbc_lblPassword.gridy = 2;
 		panel_1.add(lblPassword, gbc_lblPassword);
-		lblPassword.setIcon(new ImageIcon("/icons/key.png"));
+		lblPassword.setIcon(new ImageIcon("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/key.png"));
 
 		JLabel lblPassword_1 = new JLabel("Password");
 		GridBagConstraints gbc_lblPassword_1 = new GridBagConstraints();
@@ -141,7 +138,7 @@ public class Registration extends JFrame {
 		panel_1.add(DNI_TextField, gbc_DNI_TextField);
 
 		JLabel lblemail = new JLabel("");
-		lblemail.setIcon(new ImageIcon("/icons/envelope.png"));
+		lblemail.setIcon(new ImageIcon("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/envelope.png"));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
@@ -202,7 +199,7 @@ public class Registration extends JFrame {
 		lblicon.setBounds(370, 46, 222, 212);
 		panel.add(lblicon);
 		lblicon.setHorizontalAlignment(SwingConstants.CENTER);
-		lblicon.setIcon(new ImageIcon("/icons/icon.png"));
+		lblicon.setIcon(new ImageIcon("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"));
 
 		JLabel lblRaceOrganizer = new JLabel("RACE ORGANIZER");
 		lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
