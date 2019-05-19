@@ -237,7 +237,7 @@ public class Dashboard extends JFrame {
 		// int row=0;
 		if (actualuser.getRunner_races() != null) {
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces next_race = new PanelRaces(r, actualuser, 1);
+				PanelRaces next_race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
 				panel_next_races.add(next_race);
 			}
 		} else {
@@ -338,7 +338,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getRunner_races() != null) {
 			int i=0;
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces race = new PanelRaces(r, actualuser, 1);
+				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -390,7 +390,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getHelper_races() != null) {
 			int i=0;
 			for (Race r : getNextRaces(actualuser.getHelper_races())) {
-				PanelRaces race = new PanelRaces(r, actualuser, 1);
+				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -510,7 +510,6 @@ public class Dashboard extends JFrame {
 				panel_search_mid.add(scrollPane_search_results, gbc_scrollPane_search_results);
 
 		 Race[] allraces=rgw.getRaces();
-				//if (runraces != null) {
 				if (allraces != null) {
 					int i=0;
 					for (Race r : allraces) {
