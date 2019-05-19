@@ -76,6 +76,11 @@ public class Dashboard extends JFrame {
 		das.setVisible(true);
 	}
 
+	/**
+	 * Main Window
+	 * @param login login window
+	 * @param user user that has logged in
+	 */
 	public Dashboard(Login login, User user) {
 		 rgw=new RaceGateway();
 		 
@@ -861,6 +866,12 @@ public class Dashboard extends JFrame {
 
 	}
 
+	/**
+	 * Search the array with two criteria and shows the result
+	 * @param searchfield_edition edition of the race
+	 * @param searchfield_places city of the race
+	 * @param races  array with the races
+	 */
 	private void search(String searchfield_edition, String searchfield_places, Race[] races) {
 		int i = 0;
 		panel_search_results.removeAll();
@@ -880,6 +891,11 @@ public class Dashboard extends JFrame {
 		panel_search_results.updateUI();
 	}
 
+	/**
+	 * Sorts an array from earliest date to latest
+	 * @param races array of races
+	 * @return order races
+	 */
 	private Race[] getNextRaces(Race[] races) {
 		Arrays.sort(races);
 		return races;

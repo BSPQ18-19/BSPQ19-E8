@@ -43,6 +43,9 @@ public class CreateRace extends JFrame {
 	private JTextField textField_place;
 	private JTextField textFieldPrize;
 
+	/**
+	 * Window for creating races
+	 */
 	public CreateRace() {
 		setBounds(100, 100, 650, 493);
 		contentPanel = new JPanel();
