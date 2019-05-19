@@ -1,0 +1,246 @@
+[
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$150000$5wiOAbKGYyFh$9uYP7EyodbQzi/pimwlQ4D0zqgP2H1xG56WqacjH/jg=",
+      "last_login": "2019-05-19T20:09:30Z",
+      "is_superuser": true,
+      "username": "a.santiago",
+      "first_name": "Amy",
+      "last_name": "Santiago",
+      "email": "a.santiago@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-04-29T17:00:54Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$150000$4JogAyXdTeYK$6xzxOlDPZWelHl18qL9zfURoNyh6398ZpDU6o2w97f8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "john.doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-04-29T17:31:13Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$150000$LHSnYRhx7R44$7sIeQPK0cFRex3NKrzv749kY04+wvCq9HfY61w1FbC4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jane.doe",
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "email": "jane.doe@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-04-29T17:32:20Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$150000$oU2Gpuektujz$PqvNIGppivsIjJueDoCmNcz2zeJR1WA7mjMcKrMFPQg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "laurence",
+      "first_name": "Laurence",
+      "last_name": "Richard",
+      "email": "laurence.richard@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-04-29T17:34:25Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$150000$YzMrBawaogk9$A0dWYaXQikPR5WYC3AGgZDxChBOtPNgRmCtfFORsft8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "linda.hoffman",
+      "first_name": "Linda",
+      "last_name": "Hoffman",
+      "email": "linda.hoffman@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-04-29T17:39:48Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$150000$NDOxGBFEByE6$74j6fUpQuQ/atVmhdT3SR7IDmj/YpCUW5RC5FRITbsI=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jim.smith",
+      "first_name": "Jim",
+      "last_name": "Smith",
+      "email": "jim.smith@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-04-29T17:41:07Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.person",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "personal_id": "70000000R",
+      "birth_date": "1998-05-18"
+    }
+  },
+  {
+    "model": "api.person",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "personal_id": "71259862R",
+      "birth_date": "1998-03-21"
+    }
+  },
+  {
+    "model": "api.person",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "personal_id": "71259864R",
+      "birth_date": "1965-03-21"
+    }
+  },
+  {
+    "model": "api.person",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "personal_id": "8004597Q",
+      "birth_date": "2010-03-21"
+    }
+  },
+  {
+    "model": "api.person",
+    "pk": 5,
+    "fields": {
+      "user": 6,
+      "personal_id": "71255234R",
+      "birth_date": "1994-03-21"
+    }
+  },
+  {
+    "model": "api.race",
+    "pk": 1,
+    "fields": {
+      "edition": "2019 Brookyn's Marathon",
+      "sponsor": "99th Precinct",
+      "place": "Brooklyn, NY",
+      "time": "2019-07-29T17:42:02Z",
+      "prize": 75,
+      "price": 10,
+      "organizer": 2,
+      "helpers": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "api.race",
+    "pk": 2,
+    "fields": {
+      "edition": "2019 Burgos Marathon",
+      "sponsor": "",
+      "place": "Burgos",
+      "time": "2019-10-29T17:42:38Z",
+      "prize": 100,
+      "price": 5,
+      "organizer": 5,
+      "helpers": []
+    }
+  },
+  {
+    "model": "api.runner",
+    "pk": 1,
+    "fields": {
+      "person": 1,
+      "race": 2,
+      "number": 1
+    }
+  },
+  {
+    "model": "api.runner",
+    "pk": 2,
+    "fields": {
+      "person": 2,
+      "race": 2,
+      "number": 2
+    }
+  },
+  {
+    "model": "api.runner",
+    "pk": 3,
+    "fields": {
+      "person": 3,
+      "race": 2,
+      "number": 3
+    }
+  },
+  {
+    "model": "api.runner",
+    "pk": 4,
+    "fields": {
+      "person": 4,
+      "race": 1,
+      "number": 1
+    }
+  },
+  {
+    "model": "api.task",
+    "pk": 1,
+    "fields": {
+      "description": "Buy Water",
+      "completed": true,
+      "person": 3,
+      "race": 1
+    }
+  },
+  {
+    "model": "api.task",
+    "pk": 2,
+    "fields": {
+      "description": "Prepare Podium",
+      "completed": false,
+      "person": null,
+      "race": 1
+    }
+  },
+  {
+    "model": "api.task",
+    "pk": 3,
+    "fields": {
+      "description": "Buy Water",
+      "completed": false,
+      "person": null,
+      "race": 2
+    }
+  }
+]
