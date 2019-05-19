@@ -835,7 +835,7 @@ public class Dashboard extends JFrame {
 				}
 				
 			}
-	
+			Arrays.sort(result);
 		return result;
 		
 	}
