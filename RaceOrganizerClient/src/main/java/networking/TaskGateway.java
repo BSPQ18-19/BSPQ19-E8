@@ -3,13 +3,16 @@ package networking;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import models.Race;
 import models.Task;
@@ -58,7 +61,27 @@ public class TaskGateway extends Gateway {
 	//non modified parameters must be initl as null
 	
 	public boolean editTask(Race r, Task t) {
-		
+    	requestURL = host + "api/races/" + r.getRace_id() + "/" + t.getTask_id();
+    	System.out.println(requestURL);
+    	String json = gson.toJson(t);
+    	try {
+			putRequest.setEntity(new StringEntity(json));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        putRequest.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+        int responseCode = -1;
+        try (CloseableHttpResponse httpResponse = client.execute(putRequest)) {
+            String content = EntityUtils.toString(httpResponse.getEntity());
+     
+            responseCode = httpResponse.getStatusLine().getStatusCode();
+        } catch (IOException e) {
+            //handle exception
+            e.printStackTrace();
+        }
+        
+        return (responseCode == 201);
 	}
 
 }
