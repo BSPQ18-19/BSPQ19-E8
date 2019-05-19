@@ -47,10 +47,10 @@ public class Registration extends JFrame {
 		panel_1.setBorder(new LineBorder(Color.WHITE));
 		panel_1.setOpaque(false);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(10, 60, 331, 374);
+		panel_1.setBounds(10, 46, 331, 388);
 		panel.add(panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.rowHeights = new int[] { 50, 30, 25, 30, 25, 30, 30, 30, 30, 30, 30, 60 };
+		gbl_panel_1.rowHeights = new int[] {50, 30, 10, 30, 25, 30, 30, 30, 30, 30, 30, 70};
 		gbl_panel_1.columnWidths = new int[] { 30, 0, 250, 20 };
 		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0 };
@@ -206,7 +206,7 @@ public class Registration extends JFrame {
 
 		JLabel lblRaceOrganizer = new JLabel("RACE ORGANIZER");
 		lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblRaceOrganizer.setBounds(27, 22, 230, 27);
+		lblRaceOrganizer.setBounds(27, 11, 230, 27);
 		panel.add(lblRaceOrganizer);
 
 		JPanel panel_2 = new JPanel();
