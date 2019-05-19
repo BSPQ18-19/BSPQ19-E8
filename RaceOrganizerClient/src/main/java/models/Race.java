@@ -15,9 +15,10 @@ public class Race implements Comparable<Race>{
 	
 	private Runner[] runners;
 	private User[] helpers;
+	private Task[] tasks;
 	
 	public Race(int race_id, String edition, String sponsor, String place, Date time, float price, float prize,
-			Runner[] runners, User[] helpers) {
+			Runner[] runners, User[] helpers, Task[] tasks) {
 		super();
 		this.race_id = race_id;
 		this.edition = edition;
@@ -28,12 +29,12 @@ public class Race implements Comparable<Race>{
 		this.prize = prize;
 		this.runners = runners;
 		this.helpers = helpers;
+		this.tasks = tasks;
 	}
 	
 	public Race(String edition, String sponsor, String place, Date time, float price, float prize,
-			Runner[] runners, User[] helpers) {
+			Runner[] runners, User[] helpers, Task[] tasks) {
 		super();
-		this.race_id = race_id;
 		this.edition = edition;
 		this.sponsor = sponsor;
 		this.place = place;
@@ -42,9 +43,18 @@ public class Race implements Comparable<Race>{
 		this.prize = prize;
 		this.runners = runners;
 		this.helpers = helpers;
+		this.tasks = tasks;
 	}
 	
 	
+
+	public Task[] getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Task[] tasks) {
+		this.tasks = tasks;
+	}
 
 	public int getRace_id() {
 		return race_id;
