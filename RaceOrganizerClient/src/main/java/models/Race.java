@@ -3,128 +3,141 @@ package models;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Race {
-	
-	private int race_id;
-	private String edition;
-	private String sponsor;
-	private String place;
-	private Date time;
-	private float price;
-	private float prize;
-	
-	private Runner[] runners;
-	private User[] helpers;
-	
-	public Race(int race_id, String edition, String sponsor, String place, Date time, float price, float prize,
-			Runner[] runners, User[] helpers) {
-		super();
-		this.race_id = race_id;
-		this.edition = edition;
-		this.sponsor = sponsor;
-		this.place = place;
-		this.time = time;
-		this.price = price;
-		this.prize = prize;
-		this.runners = runners;
-		this.helpers = helpers;
-	}
-	
-	public Race(String edition, String sponsor, String place, Date time, float price, float prize,
-			Runner[] runners, User[] helpers) {
-		super();
-		this.race_id = race_id;
-		this.edition = edition;
-		this.sponsor = sponsor;
-		this.place = place;
-		this.time = time;
-		this.price = price;
-		this.prize = prize;
-		this.runners = runners;
-		this.helpers = helpers;
-	}
-	
-	
+public class Race implements Comparable<Race> {
 
-	public int getRace_id() {
-		return race_id;
-	}
+    private int race_id;
+    private String edition;
+    private String sponsor;
+    private String place;
+    private Date time;
+    private float price;
+    private float prize;
 
-	public void setRace_id(int race_id) {
-		this.race_id = race_id;
-	}
+    private Runner[] runners;
+    private User[] helpers;
+    private Task[] tasks;
 
-	public String getEdition() {
-		return edition;
-	}
+    public Race(int race_id, String edition, String sponsor, String place, Date time, float price, float prize,
+                Runner[] runners, User[] helpers, Task[] tasks) {
+        super();
+        this.race_id = race_id;
+        this.edition = edition;
+        this.sponsor = sponsor;
+        this.place = place;
+        this.time = time;
+        this.price = price;
+        this.prize = prize;
+        this.runners = runners;
+        this.helpers = helpers;
+        this.tasks = tasks;
+    }
 
-	public void setEdition(String edition) {
-		this.edition = edition;
-	}
+    public Race(String edition, String sponsor, String place, Date time, float price, float prize,
+                Runner[] runners, User[] helpers, Task[] tasks) {
+        super();
+        this.edition = edition;
+        this.sponsor = sponsor;
+        this.place = place;
+        this.time = time;
+        this.price = price;
+        this.prize = prize;
+        this.runners = runners;
+        this.helpers = helpers;
+        this.tasks = tasks;
+    }
 
-	public String getSponsor() {
-		return sponsor;
-	}
 
-	public void setSponsor(String sponsor) {
-		this.sponsor = sponsor;
-	}
+    public Task[] getTasks() {
+        return tasks;
+    }
 
-	public String getPlace() {
-		return place;
-	}
+    public void setTasks(Task[] tasks) {
+        this.tasks = tasks;
+    }
 
-	public void setPlace(String place) {
-		this.place = place;
-	}
+    public int getRace_id() {
+        return race_id;
+    }
 
-	public Date getTime() {
-		return time;
-	}
+    public void setRace_id(int race_id) {
+        this.race_id = race_id;
+    }
 
-	public void setTime(Date time) {
-		this.time = time;
-	}
+    public String getEdition() {
+        return edition;
+    }
 
-	public float getPrice() {
-		return price;
-	}
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
 
-	public void setPrice(float price) {
-		this.price = price;
-	}
+    public String getSponsor() {
+        return sponsor;
+    }
 
-	public float getPrize() {
-		return prize;
-	}
+    public void setSponsor(String sponsor) {
+        this.sponsor = sponsor;
+    }
 
-	public void setPrize(float prize) {
-		this.prize = prize;
-	}
+    public String getPlace() {
+        return place;
+    }
 
-	public Runner[] getRunners() {
-		return runners;
-	}
+    public void setPlace(String place) {
+        this.place = place;
+    }
 
-	public void setRunners(Runner[] runners) {
-		this.runners = runners;
-	}
+    public Date getTime() {
+        return time;
+    }
 
-	public User[] getHelpers() {
-		return helpers;
-	}
+    public void setTime(Date time) {
+        this.time = time;
+    }
 
-	public void setHelpers(User[] helpers) {
-		this.helpers = helpers;
-	}
+    public float getPrice() {
+        return price;
+    }
 
-	@Override
-	public String toString() {
-		return "Race [race_id=" + race_id + ", edition=" + edition + ", sponsor=" + sponsor + ", place=" + place
-				+ ", time=" + time + ", price=" + price + ", prize=" + prize + ", runners=" + Arrays.toString(runners)
-				+ ", helpers=" + Arrays.toString(helpers) + "]";
-	}
-	
-	
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
+    public float getPrize() {
+        return prize;
+    }
+
+    public void setPrize(float prize) {
+        this.prize = prize;
+    }
+
+    public Runner[] getRunners() {
+        return runners;
+    }
+
+    public void setRunners(Runner[] runners) {
+        this.runners = runners;
+    }
+
+    public User[] getHelpers() {
+        return helpers;
+    }
+
+    public void setHelpers(User[] helpers) {
+        this.helpers = helpers;
+    }
+
+    @Override
+    public String toString() {
+        return "Race [race_id=" + race_id + ", edition=" + edition + ", sponsor=" + sponsor + ", place=" + place
+                + ", time=" + time + ", price=" + price + ", prize=" + prize + ", runners=" + Arrays.toString(runners)
+                + ", helpers=" + Arrays.toString(helpers) + "]";
+    }
+
+    @Override
+    public int compareTo(Race r) {
+        if (getTime() == null || r.getTime() == null)
+            return 0;
+        return getTime().compareTo(r.getTime());
+    }
 }
