@@ -16,6 +16,10 @@ everything you need to know, allowing you to just focus on getting the best resu
 As an event organizer, RaceOrganizer enables to simplify recruiting helpers for your race and managing the tasks
  needed for your race to go smoothly.
  
+##Documentation
+
+The documentation for the client was generated using Doxygen, and is available at our [Github Pages](https://bspq18-19.github.io/BSPQ19-E8/).
+
 ## Architecture
 RaceOrganizer uses a simply REST client-server architecture, with a server on Django and a client written in Java.
 
