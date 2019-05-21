@@ -1,0 +1,27 @@
+# Python
+venv/
+ __pycache__/
+ *.py[cod]
+ *$py.class
+
+# Miscellaneos Django Files
+local_settings.py
+
+# Silk Profiles
+*.prof
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+bin/
+out/
+log/
+
+# Eclipse project file
+.settings/
+.classpath
+.project
+/.metadata/
+/.recommenders/
