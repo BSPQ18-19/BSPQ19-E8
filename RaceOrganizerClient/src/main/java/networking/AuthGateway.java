@@ -1,6 +1,5 @@
 package networking;
 
-import models.Race;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -20,33 +19,6 @@ public class AuthGateway extends Gateway {
 
     public AuthGateway() {
         this.init();
-    }
-
-    public static void main(String[] args) {
-        AuthGateway gw = new AuthGateway();
-        System.out.println(gw.login("test", "test"));
-        //UsersGateway ugw = new UsersGateway();
-		/*Runner[] u  = new Runner[1];
-		Organizer[] o = new Organizer[0];
-		u[0] = new Runner(ugw.getLoggedProfile(), 5);
-		Race myRace = new Race("4", "BBK", "Indonesia", new Date(Syst em.currentTimeMillis()), 15f, 1000f, u, o);
-		rgw.addRace(myRace);
-		Race[] serverRaces = rgw.getRaces();
-		for(int i = 0; i < serverRaces.length; i++) {
-			System.out.println(serverRaces[i].toString());
-		}*/
-//		TODO Commenting this to check
-
-        RaceGateway rgw = new RaceGateway();
-        TaskGateway tgw = new TaskGateway();
-        Race race = rgw.getRace(2);
-        //User user = ugw.getUserByID(3);
-        tgw.addTask(race, "Test task 1");
-        //rgw.addUserToRace(user, race, RaceGateway.USER_RUNNER);
-
-        System.out.println(gw.logout());
-
-
     }
 
     public boolean login(String username, String password) {
@@ -98,6 +70,40 @@ public class AuthGateway extends Gateway {
         if (!isLoggedIn) flushSession(); /*Flush session cookies to avoid further errors */
         return (!isLoggedIn);  /*if user is not logged in at the end of logout we assume logout succeeded */
 
+    }
+
+    public boolean register(String username, String password, String firstName, String lastname, String email, String personal_id, String birth_date) {
+
+        requestURL = host + "signup/";
+        client = HttpClients.custom()
+                .setDefaultRequestConfig(RequestConfig.custom()
+                        .setCookieSpec(CookieSpecs.STANDARD).build())
+                .build();
+
+        postRequest = new HttpPost(requestURL);
+
+        params.add(new BasicNameValuePair("username", username));
+        params.add(new BasicNameValuePair("password", password));
+        params.add(new BasicNameValuePair("first_name", firstName));
+        params.add(new BasicNameValuePair("last_name", lastname));
+        params.add(new BasicNameValuePair("email", email));
+        params.add(new BasicNameValuePair("personal_id", personal_id));
+        params.add(new BasicNameValuePair("birth_date", birth_date));
+
+        int responseCode = -1;
+        try {
+            postRequest.setEntity(new UrlEncodedFormEntity(params));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        try {
+            CloseableHttpResponse response = client.execute(postRequest);
+            responseCode = response.getStatusLine().getStatusCode();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return (responseCode == 201);
     }
 
 }

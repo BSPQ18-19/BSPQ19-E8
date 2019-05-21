@@ -576,7 +576,7 @@ public class Dashboard extends JFrame {
 		gbc_lblMyUser_icon.gridheight = 5;
 		gbc_lblMyUser_icon.gridx = 3;
 		gbc_lblMyUser_icon.gridy = 0;
-		lblMyUser_icon.setIcon(new ImageIcon(("resources/icons/icon.png")));
+		lblMyUser_icon.setIcon(new ImageIcon(("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
 		panel_2.add(lblMyUser_icon, gbc_lblMyUser_icon);
 
 		lblMyUser_firstname = new JLabel("First Name: " + actualuser.getFirst_name());
