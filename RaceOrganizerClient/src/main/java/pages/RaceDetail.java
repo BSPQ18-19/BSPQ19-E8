@@ -3,7 +3,7 @@ package pages;
 import models.Race;
 import models.Runner;
 import models.User;
-import networking.RaceGateway;
+import managment.RaceManagement;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -130,8 +130,8 @@ public class RaceDetail extends JFrame {
         btnRun.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                RaceGateway rgw = new RaceGateway();
-                if (rgw.addUserToRace(u, r, 1)) {
+                RaceManagement rgw = new RaceManagement();
+                if (RaceManagement.addUserToRace(u, r, 1)) {
                     JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
                 } else {
                     JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
@@ -157,8 +157,8 @@ public class RaceDetail extends JFrame {
 
         btnHelp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                RaceGateway rgw = new RaceGateway();
-                if (rgw.addUserToRace(u, r, 2)) {
+                RaceManagement rgw = new RaceManagement();
+                if (RaceManagement.addUserToRace(u, r, 2)) {
                     JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to heelp ");
                 } else {
                     JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");

@@ -1,7 +1,7 @@
 package pages;
 
-import networking.AuthGateway;
-import networking.UsersGateway;
+import managment.AuthManagement;
+import managment.UsersManagement;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -227,14 +227,14 @@ public class Registration extends JFrame {
                 String birthdate = "";
                 birthdate += txt_birthdate_day_year.getText() + "-" + txt_birthdate_month.getText() + "-"
                         + txt_birthdate_day.getText();
-                AuthGateway authGateway = new AuthGateway();
-                if (authGateway.register(username.getText(), password, textField_name.getText(),
+
+                if (AuthManagement.register(username.getText(), password, textField_name.getText(),
                         textField_surname.getText(), textField_email.getText(), DNI_TextField.getText(), birthdate)) {
                     Registration.this.setVisible(false);
-                    AuthGateway lgw = new AuthGateway();
-                    if (lgw.login(username.getText(), password)) {
-                        UsersGateway ugw = new UsersGateway();
-                        Dashboard das = new Dashboard(login, ugw.getLoggedProfile());
+
+                    if (AuthManagement.login(username.getText(), password)) {
+                        UsersManagement ugw = new UsersManagement();
+                        Dashboard das = new Dashboard(login, UsersManagement.getLoggedProfile());
                         das.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(Registration.this, "User or password is incorrect");

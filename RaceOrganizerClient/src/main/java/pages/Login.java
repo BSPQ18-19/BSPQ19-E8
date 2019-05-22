@@ -1,14 +1,12 @@
 package pages;
 
-import networking.AuthGateway;
-import networking.UsersGateway;
+import managment.AuthManagement;
+import managment.UsersManagement;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -57,11 +55,10 @@ public class Login extends JFrame {
         btnLogin.setBackground(new Color(255, 255, 255));
         btnLogin.addActionListener(e -> {
             // TODO Auto-generated method stub
-            AuthGateway lgw = new AuthGateway();
-            if (lgw.login(txtUsername.getText(), String.valueOf(passwordField.getPassword()))) {
-                UsersGateway ugw = new UsersGateway();
+            if (AuthManagement.login(txtUsername.getText(), String.valueOf(passwordField.getPassword()))) {
+                UsersManagement ugw = new UsersManagement();
                 Login.this.setVisible(false);
-                Dashboard das = new Dashboard(Login.this, ugw.getLoggedProfile());
+                Dashboard das = new Dashboard(Login.this, UsersManagement.getLoggedProfile());
                 das.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
@@ -71,12 +68,10 @@ public class Login extends JFrame {
 
         JButton btnNewButton_1 = new JButton("Register");
         panel_2.add(btnNewButton_1);
-        btnNewButton_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                Login.this.setVisible(false);
-                Registration res = new Registration(Login.this);
-                res.setVisible(true);
-            }
+        btnNewButton_1.addActionListener(arg0 -> {
+            Login.this.setVisible(false);
+            Registration res = new Registration(Login.this);
+            res.setVisible(true);
         });
         btnNewButton_1.setBackground(new Color(255, 255, 255));
 

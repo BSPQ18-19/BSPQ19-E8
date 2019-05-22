@@ -4,7 +4,7 @@ import models.Race;
 import models.Runner;
 import models.Task;
 import models.User;
-import networking.RaceGateway;
+import managment.RaceManagement;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -214,7 +214,6 @@ public class CreateRace extends JFrame {
 		panel_2.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RaceGateway rgw = new RaceGateway();
 				DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 				Date date = null;
 				try {
@@ -227,7 +226,7 @@ public class CreateRace extends JFrame {
 				User[] users = null;
 				Task[] tasks = null;
 				Race r = new Race(TxtEdition.getText(), textFieldSponsor.getText(), textField_place.getText(), date, Float.parseFloat(textField_price.getText()), Float.parseFloat(textFieldPrize.getText()), runners, users, tasks);
-				if (rgw.addRace(r)) {
+				if (RaceManagement.addRace(r)) {
 					JOptionPane.showMessageDialog(CreateRace.this, "Race Created");
 				} else {
 					JOptionPane.showMessageDialog(CreateRace.this, "Error while creating the race. Try again");
