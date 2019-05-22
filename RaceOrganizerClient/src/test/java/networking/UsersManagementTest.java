@@ -4,9 +4,15 @@ import managment.AuthManagement;
 import managment.UsersManagement;
 import models.User;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class UsersManagementTest {
+
+    @BeforeAll
+    static void setUp(){
+        AuthManagement.login("a.santiago", "test");
+    }
 
     @Test
     void getUsers() {
@@ -27,8 +33,6 @@ class UsersManagementTest {
 
     @Test
     void getLoggedProfile() {
-        AuthManagement.login("a.santiago", "test");
-
         User user = UsersManagement.getLoggedProfile();
 
         Assertions.assertEquals(user.getUsername(), "a.santiago");
