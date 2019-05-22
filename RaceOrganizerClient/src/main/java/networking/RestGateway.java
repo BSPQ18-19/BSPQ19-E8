@@ -52,7 +52,7 @@ public class RestGateway {
         return instance;
     }
 
-    protected void flushSession() {
+    public void flushSession() {
         cookieStore = new BasicCookieStore();
         httpContext = new BasicHttpContext();
         httpContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
