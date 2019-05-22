@@ -16,7 +16,6 @@ public class RaceManagement {
     private final static int USER_HELPER = 2;
 
     private static DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-    private static String dateString = formatter.format(new Date(System.currentTimeMillis()));
 
     /**
      * GET api/races
@@ -33,18 +32,20 @@ public class RaceManagement {
 
     /**
      * @param r to add
+     * @param datetime
+     * @param price
+     * @param prize
      * @return True if race is added correctly
      */
-    public static boolean addRace(Race r) {
+    public static boolean addRace(String edition, String sponsor, String place, Date datetime, int price, int prize) {
 
         HashMap<String, String> data = new HashMap<>();
-        data.put("edition", r.getEdition());
-        data.put("sponsor", r.getSponsor());
-        data.put("place", r.getPlace());
-        System.out.println(dateString);
-        data.put("time", dateString);
-        data.put("price", ((int) r.getPrice()) + "");
-        data.put("prize", ((int) r.getPrize()) + "");
+        data.put("edition", edition);
+        data.put("sponsor", sponsor);
+        data.put("place", place);
+        data.put("time", formatter.format(datetime));
+        data.put("price", String.valueOf(price));
+        data.put("prize", String.valueOf(prize));
 
         int responseCode = RestGateway.getInstance().post("api/races/", data);
 
@@ -70,20 +71,20 @@ public class RaceManagement {
      * POST api/races/{race_id}/add_helper  && POST api/races/{race_id}/add_runner
      **/
 
-    public static boolean addUserToRace(User u, Race r, int type) {
+    public static boolean addUserToRace(String username, int race_id, int type) {
 
         String url;
 
         if (type == USER_RUNNER) {
-            url = "api/races/" + r.getRace_id() + "/add_runner";
+            url = "api/races/" + race_id + "/add_runner";
         } else if (type == USER_HELPER) {
-            url = "api/races/" + r.getRace_id() + "/add_helper";
+            url = "api/races/" + race_id + "/add_helper";
         } else {
             return false;
         }
 
         HashMap<String, String> data = new HashMap<>();
-        data.put("username", u.getUsername());
+        data.put("username", username);
 
         int responseCode = RestGateway.getInstance().post(url, data);
 

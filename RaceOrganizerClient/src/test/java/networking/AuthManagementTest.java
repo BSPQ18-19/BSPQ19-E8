@@ -17,7 +17,6 @@ class AuthManagementTest {
 
     @Test
     void logout() {
-        /* Test failed logout without login */
         Assertions.assertFalse(AuthManagement.logout());
 
         /* Test Successful logout */

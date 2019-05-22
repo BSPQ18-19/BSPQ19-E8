@@ -3,6 +3,7 @@ package networking;
 import managment.AuthManagement;
 import managment.UsersManagement;
 import models.User;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,11 @@ class UsersManagementTest {
     @BeforeAll
     static void setUp(){
         AuthManagement.login("a.santiago", "test");
+    }
+
+    @AfterAll
+    static void tearDown() {
+        AuthManagement.logout();
     }
 
     @Test
