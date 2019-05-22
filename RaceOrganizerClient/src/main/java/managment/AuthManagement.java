@@ -23,13 +23,10 @@ public class AuthManagement {
 
         int responseCode = Integer.parseInt(responseData.get("response_code"));
 
+
         boolean isLoggedIn = !(responseCode == 200);
-
-        if (!isLoggedIn) {
-            RestGateway.getInstance().flushSession(); /* Flush session cookies to avoid further errors */
-        }
+        if (!isLoggedIn) RestGateway.getInstance().flushSession(); /*Flush session cookies to avoid further errors */
         return (!isLoggedIn);  /*if user is not logged in at the end of logout we assume logout succeeded */
-
     }
 
     public static boolean register(String username, String password, String firstName, String lastname, String email,

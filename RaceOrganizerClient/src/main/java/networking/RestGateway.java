@@ -1,6 +1,5 @@
 package networking;
 
-import com.google.gson.Gson;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -13,10 +12,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
@@ -61,8 +58,15 @@ public class RestGateway {
     private void init() {
         String result = "";
 
-        if (cookieStore == null) {
+        client = HttpClients.custom()
+                .setDefaultRequestConfig(RequestConfig.custom()
+                        .setCookieSpec(CookieSpecs.STANDARD).build())
+                .build();
 
+        if (cookieStore == null) {
+            cookieStore = new BasicCookieStore();
+            httpContext = new BasicHttpContext();
+            httpContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
         }
         try {
             BufferedReader bfr = new BufferedReader(new FileReader(requestURLFile));
@@ -80,8 +84,6 @@ public class RestGateway {
     public HashMap<String, String> get(String url) {
 
         requestURL = host + url;
-
-        client = HttpClientBuilder.create().build();
 
         getRequest = new HttpGet(requestURL);
 
