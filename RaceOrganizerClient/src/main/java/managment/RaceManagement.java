@@ -28,8 +28,6 @@ public class RaceManagement {
 
         HashMap responseData = RestGateway.getInstance().get("api/races/");
 
-        System.out.println("Response: " + responseData.get("result"));
-
         return gson.fromJson(responseData.get("result").toString(), Race[].class);
     }
 
@@ -63,8 +61,6 @@ public class RaceManagement {
         Gson gson = new Gson();
 
         HashMap responseData = RestGateway.getInstance().get("api/races/" + race_id);
-
-        System.out.println("Response: " + responseData.get("result"));
 
         return gson.fromJson(responseData.get("result").toString(), Race.class);
 

@@ -20,8 +20,6 @@ public class UsersManagement {
 
 		HashMap responseData = RestGateway.getInstance().get("api/users/");
 
-		System.out.println("Response: " + responseData.get("result"));
-
 		return gson.fromJson(responseData.get("result").toString(), User[].class);
     }
 
@@ -31,11 +29,7 @@ public class UsersManagement {
 
 		HashMap responseData = RestGateway.getInstance().get("api/users/" + user_id);
 
-		User user = gson.fromJson(responseData.get("result").toString(), User.class);
-
-		System.out.println("Response: " + responseData.get("result"));
-
-		return user;
+		return gson.fromJson(responseData.get("result").toString(), User.class);
     }
 
 	public static User getLoggedProfile() {
@@ -44,10 +38,6 @@ public class UsersManagement {
 
 		HashMap responseData = RestGateway.getInstance().get("api/profile/");
 
-		User user = gson.fromJson(responseData.get("result").toString(), User.class);
-
-		System.out.println("Response: " + responseData.get("result"));
-
-		return user;
+		return gson.fromJson(responseData.get("result").toString(), User.class);
     }
 }

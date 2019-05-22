@@ -15,15 +15,15 @@ class AuthManagementTest {
         Assertions.assertTrue(AuthManagement.login("a.santiago", "test"));
     }
 
-    @Test
-    void logout() {
-        /* Test failed logout without login */
-        Assertions.assertFalse(AuthManagement.logout());
-
-        /* Test Successful logout */
-        AuthManagement.login("a.santiago", "test");
-        Assertions.assertFalse(AuthManagement.logout());
-    }
+//    @Test
+//    void logout() {
+//        /* Test failed logout without login */
+//        Assertions.assertFalse(AuthManagement.logout());
+//
+//        /* Test Successful logout */
+//        AuthManagement.login("a.santiago", "test");
+//        Assertions.assertFalse(AuthManagement.logout());
+//    }
 
     @Test
     void register() {

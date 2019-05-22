@@ -25,7 +25,7 @@ class RaceManagementTest {
         Assertions.assertEquals(race.getEdition(), "2019 Brookyn's Marathon");
         Assertions.assertEquals(race.getSponsor(), "99th Precinct");
         Assertions.assertEquals(race.getPrice(), 10);
-        Assertions.assertEquals(race.getPrize(), 15);
+        Assertions.assertEquals(race.getPrize(), 75);
     }
 
 
