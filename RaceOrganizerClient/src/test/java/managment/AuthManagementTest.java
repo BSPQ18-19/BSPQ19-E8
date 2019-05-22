@@ -1,4 +1,4 @@
-package networking;
+package managment;
 
 import managment.AuthManagement;
 import org.junit.jupiter.api.Assertions;

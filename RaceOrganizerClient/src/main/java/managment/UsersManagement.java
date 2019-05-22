@@ -15,6 +15,11 @@ import java.util.HashMap;
 
 public class UsersManagement {
 
+	/**
+	 * GET /api/users/
+	 *
+	 * @return list of Users with simplified information
+	 */
 	public static User[] getUsers() {
 		Gson gson = new Gson();
 
@@ -23,7 +28,13 @@ public class UsersManagement {
 		return gson.fromJson(responseData.get("result").toString(), User[].class);
     }
 
-    public static User getUser(int user_id) {
+	/**
+	 * GET /api/user/{user_id}
+	 *
+	 * @param user_id id of the User
+	 * @return requested User
+	 */
+	public static User getUser(int user_id) {
 
 		Gson gson = new Gson();
 
@@ -32,6 +43,11 @@ public class UsersManagement {
 		return gson.fromJson(responseData.get("result").toString(), User.class);
     }
 
+	/**
+	 * GET /api/profile/
+	 *
+	 * @return currently logged in User with detailed information
+	 */
 	public static User getLoggedProfile() {
 
 		Gson gson = new Gson();

@@ -2,7 +2,6 @@ package managment;
 
 import com.google.gson.Gson;
 import models.Race;
-import models.User;
 import networking.RestGateway;
 
 import java.text.DateFormat;
@@ -18,9 +17,10 @@ public class RaceManagement {
     private static DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 
     /**
-     * GET api/races
-     **/
-
+     * GET api/races/{race_id}
+     *
+     * @return list of all races with minimal information
+     */
     public static Race[] getRaces() {
 
         Gson gson = new Gson();
@@ -31,11 +31,31 @@ public class RaceManagement {
     }
 
     /**
-     * @param r to add
-     * @param datetime
-     * @param price
-     * @param prize
-     * @return True if race is added correctly
+     * GET api/races/{race_id}
+     *
+     * @param race_id id for the requested race
+     * @return requested race
+     */
+    public static Race getRace(int race_id) {
+
+        Gson gson = new Gson();
+
+        HashMap responseData = RestGateway.getInstance().get("api/races/" + race_id);
+
+        return gson.fromJson(responseData.get("result").toString(), Race.class);
+
+    }
+
+    /**
+     * POST /api/races/
+     *
+     * @param edition  unique name of the race
+     * @param sponsor  who will be paying all race expenses
+     * @param place    where the race will take place
+     * @param datetime when will the race be
+     * @param price    price of entry
+     * @param prize    prize awarded
+     * @return boolean depending on the success of the API query
      */
     public static boolean addRace(String edition, String sponsor, String place, Date datetime, int price, int prize) {
 
@@ -53,24 +73,14 @@ public class RaceManagement {
     }
 
     /**
-     * GET api/races/{race_id}
-     * @param race_id
-     * @return
+     * POST /api/races/{race_id}/add_runner
+     * POST /api/races/{race_id}/add_helper
+     *
+     * @param username username of the user to add
+     * @param race_id  id for the race to add the user to
+     * @param type     1 for adding the user as a runner and 2 as a helper
+     * @return boolean depending on the success of the API query
      */
-    public static Race getRace(int race_id) {
-
-        Gson gson = new Gson();
-
-        HashMap responseData = RestGateway.getInstance().get("api/races/" + race_id);
-
-        return gson.fromJson(responseData.get("result").toString(), Race.class);
-
-    }
-
-    /**
-     * POST api/races/{race_id}/add_helper  && POST api/races/{race_id}/add_runner
-     **/
-
     public static boolean addUserToRace(String username, int race_id, int type) {
 
         String url;

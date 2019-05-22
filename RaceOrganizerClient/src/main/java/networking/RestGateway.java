@@ -12,13 +12,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,32 +30,15 @@ public class RestGateway {
 
     private static CookieStore cookieStore = null;
     private static HttpContext httpContext = new BasicHttpContext();
-    private HttpPost postRequest;
-    private HttpGet getRequest;
-    private HttpPut putRequest;
     private String host;
     private String requestURL;
-    private List<NameValuePair> params = new ArrayList<NameValuePair>();
+    private List<NameValuePair> params = new ArrayList<>();
     private CloseableHttpClient client;
     private File requestURLFile = new File("res/serverhost.txt");
 
     private static RestGateway instance = new RestGateway();
 
     private RestGateway() {
-        init();
-    }
-
-    public static RestGateway getInstance() {
-        return instance;
-    }
-
-    public void flushSession() {
-        cookieStore = new BasicCookieStore();
-        httpContext = new BasicHttpContext();
-        httpContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
-    }
-
-    private void init() {
         String result = "";
 
         client = HttpClients.custom()
@@ -81,11 +64,30 @@ public class RestGateway {
         host = result;
     }
 
+    public static RestGateway getInstance() {
+        return instance;
+    }
+
+    /**
+     * Clears all cookies
+     */
+    public void flushSession() {
+        cookieStore = new BasicCookieStore();
+        httpContext = new BasicHttpContext();
+        httpContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
+    }
+
+    /**
+     * Send GET request
+     *
+     * @param url target url
+     * @return response code of the request
+     */
     public HashMap<String, String> get(String url) {
 
         requestURL = host + url;
 
-        getRequest = new HttpGet(requestURL);
+        HttpGet getRequest = new HttpGet(requestURL);
 
         HttpResponse response = null;
 
@@ -95,6 +97,7 @@ public class RestGateway {
             e.printStackTrace();
         }
 
+        assert response != null;
         int responseCode = response.getStatusLine().getStatusCode();
 
         /*Read response*/
@@ -107,9 +110,11 @@ public class RestGateway {
             e1.printStackTrace();
         }
 
-        StringBuffer result = new StringBuffer();
-        String line = "";
+        StringBuilder result = new StringBuilder();
+        String line;
+
         try {
+            assert rd != null;
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
@@ -128,7 +133,13 @@ public class RestGateway {
         return responseData;
     }
 
-
+    /**
+     * Send POST request
+     *
+     * @param url target url
+     * @param data data to send in the post
+     * @return response code of the request
+     */
     public int post(String url, HashMap<String, String> data) {
         /* POST Request initialisation */
         requestURL = host + url;
@@ -142,7 +153,7 @@ public class RestGateway {
             params.add(new BasicNameValuePair(parameter, data.get(parameter)));
         }
 
-        postRequest = new HttpPost(requestURL);
+        HttpPost postRequest = new HttpPost(requestURL);
 
         /* POST Request initialisation end */
         int responseCode = -1;
@@ -163,30 +174,44 @@ public class RestGateway {
         return responseCode;
     }
 
-    public int put(String url, HashMap<String, String> data) {
+    /**
+     * Send PUT request
+     *
+     * @param url target url
+     * @param json data to send in the put
+     * @return response code of the request
+     */
+    public int put(String url, String json) {
 
-        requestURL = host + "api/races/" + url;
-        System.out.println(requestURL);
+        requestURL = host + url;
 
-        for (String parameter : data.keySet()) {
-            params.add(new BasicNameValuePair(parameter, data.get(parameter)));
+        client = HttpClients.custom()
+                .setDefaultRequestConfig(RequestConfig.custom()
+                        .setCookieSpec(CookieSpecs.STANDARD).build())
+                .build();
+
+        HttpPut putRequest = new HttpPut(requestURL);
+
+        try {
+            putRequest.setEntity(new StringEntity(json));
+        } catch (UnsupportedEncodingException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
         }
 
         putRequest.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
-        try {
-            postRequest.setEntity(new UrlEncodedFormEntity(params));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+
         int responseCode = -1;
+
         try (CloseableHttpResponse httpResponse = client.execute(putRequest)) {
-            String content = EntityUtils.toString(httpResponse.getEntity());
 
             responseCode = httpResponse.getStatusLine().getStatusCode();
         } catch (IOException e) {
             //handle exception
             e.printStackTrace();
         }
+
+        System.out.println("PUT: " + requestURL + " " + responseCode);
 
         return responseCode;
     }

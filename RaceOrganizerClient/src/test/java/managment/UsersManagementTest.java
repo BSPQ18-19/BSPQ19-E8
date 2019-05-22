@@ -1,4 +1,4 @@
-package networking;
+package managment;
 
 import managment.AuthManagement;
 import managment.UsersManagement;
