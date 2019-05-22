@@ -1,8 +1,7 @@
 package pages;
 
-import networking.AuthGateway;
-import networking.SignupGateway;
-import networking.UsersGateway;
+import managment.AuthManagement;
+import managment.UsersManagement;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -68,7 +67,7 @@ public class Registration extends JFrame {
         gbc_lblUser.gridx = 1;
         gbc_lblUser.gridy = 1;
         panel_1.add(lblUser, gbc_lblUser);
-        lblUser.setIcon(new ImageIcon("resources/icons/user.png"));
+        lblUser.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/user.png"));
 
         username = new HintTextField("Username");
         username.setToolTipText("Username");
@@ -89,7 +88,7 @@ public class Registration extends JFrame {
         gbc_lblPassword.gridx = 1;
         gbc_lblPassword.gridy = 2;
         panel_1.add(lblPassword, gbc_lblPassword);
-        lblPassword.setIcon(new ImageIcon("resources/icons/key.png"));
+        lblPassword.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/key.png"));
 
         JLabel lblPassword_1 = new JLabel("Password");
         GridBagConstraints gbc_lblPassword_1 = new GridBagConstraints();
@@ -137,7 +136,7 @@ public class Registration extends JFrame {
         panel_1.add(DNI_TextField, gbc_DNI_TextField);
 
         JLabel lblemail = new JLabel("");
-        lblemail.setIcon(new ImageIcon("resources/icons/envelope.png"));
+        lblemail.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/envelope.png"));
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
@@ -198,7 +197,7 @@ public class Registration extends JFrame {
         lblicon.setBounds(370, 46, 222, 212);
         panel.add(lblicon);
         lblicon.setHorizontalAlignment(SwingConstants.CENTER);
-        lblicon.setIcon(new ImageIcon("resources/icons/icon.png"));
+        lblicon.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"));
 
         JLabel lblRaceOrganizer = new JLabel("RACE ORGANIZER");
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -228,14 +227,14 @@ public class Registration extends JFrame {
                 String birthdate = "";
                 birthdate += txt_birthdate_day_year.getText() + "-" + txt_birthdate_month.getText() + "-"
                         + txt_birthdate_day.getText();
-                SignupGateway sgw = new SignupGateway(username.getText(), password, textField_name.getText(),
-                        textField_surname.getText(), textField_email.getText(), DNI_TextField.getText(), birthdate);
-                if (sgw.signUp()) {
+
+                if (AuthManagement.register(username.getText(), password, textField_name.getText(),
+                        textField_surname.getText(), textField_email.getText(), DNI_TextField.getText(), birthdate)) {
                     Registration.this.setVisible(false);
-                    AuthGateway lgw = new AuthGateway();
-                    if (lgw.login(username.getText(), password)) {
-                        UsersGateway ugw = new UsersGateway();
-                        Dashboard das = new Dashboard(login, ugw.getLoggedProfile());
+
+                    if (AuthManagement.login(username.getText(), password)) {
+                        UsersManagement ugw = new UsersManagement();
+                        Dashboard das = new Dashboard(login, UsersManagement.getLoggedProfile());
                         das.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(Registration.this, "User or password is incorrect");

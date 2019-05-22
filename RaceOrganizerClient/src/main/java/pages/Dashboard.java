@@ -2,7 +2,8 @@ package pages;
 
 import models.Race;
 import models.User;
-import networking.RaceGateway;
+import managment.AuthManagement;
+import managment.RaceManagement;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -57,7 +58,7 @@ public class Dashboard extends JFrame {
 	private JTextField textField_search_place;
 	private JPanel panel_search_results;
 	private JScrollPane scrollPane_search_results;
-	private RaceGateway rgw;
+	private RaceManagement RaceManagement;
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JLabel lblWelcome_myuser;
@@ -79,7 +80,7 @@ public class Dashboard extends JFrame {
 	 * @param user  user that has logged in
 	 */
 	public Dashboard(Login login, User user) {
-		rgw = new RaceGateway();
+		RaceManagement = new RaceManagement();
 
 		/*
 		 * Datos de prueba
@@ -140,14 +141,11 @@ public class Dashboard extends JFrame {
 		btnlogout.setOpaque(false);
 		btnlogout.setContentAreaFilled(false);
 		btnlogout.setBorderPainted(false);
-		btnlogout.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Dashboard.this.dispose();
-				login.setVisible(true);
-			}
+		btnlogout.addActionListener(e -> {
+			// TODO Auto-generated method stub
+			AuthManagement.logout();
+			Dashboard.this.dispose();
+			login.setVisible(true);
 		});
 
 		JLabel lblRaceOrganizer = new JLabel("Race Organizer");
@@ -229,7 +227,7 @@ public class Dashboard extends JFrame {
 
 		if (actualuser.getRunner_races() != null) {
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces next_race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces next_race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
 				panel_next_races.add(next_race);
 			}
 		} else {
@@ -326,7 +324,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getRunner_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -378,7 +376,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getHelper_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getHelper_races())) {
-				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -497,11 +495,11 @@ public class Dashboard extends JFrame {
 		gbc_scrollPane_search_results.gridy = 1;
 		panel_search_mid.add(scrollPane_search_results, gbc_scrollPane_search_results);
 
-		Race[] allraces = rgw.getRaces();
+		Race[] allraces = RaceManagement.getRaces();
 		if (allraces != null) {
 			int i = 0;
 			for (Race r : allraces) {
-				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -576,7 +574,7 @@ public class Dashboard extends JFrame {
 		gbc_lblMyUser_icon.gridheight = 5;
 		gbc_lblMyUser_icon.gridx = 3;
 		gbc_lblMyUser_icon.gridy = 0;
-		lblMyUser_icon.setIcon(new ImageIcon(("resources/icons/icon.png")));
+		lblMyUser_icon.setIcon(new ImageIcon(("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
 		panel_2.add(lblMyUser_icon, gbc_lblMyUser_icon);
 
 		lblMyUser_firstname = new JLabel("First Name: " + actualuser.getFirst_name());
@@ -646,7 +644,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getOrganizer_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getOrganizer_races())) {
-				PanelRaces race = new PanelRaces(rgw.getRace(r.getRace_id()), actualuser, 2);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 2);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;

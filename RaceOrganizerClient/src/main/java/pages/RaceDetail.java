@@ -1,9 +1,9 @@
 package pages;
 
+import managment.RaceManagement;
 import models.Race;
 import models.Runner;
 import models.User;
-import networking.RaceGateway;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -130,8 +130,8 @@ public class RaceDetail extends JFrame {
         btnRun.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                RaceGateway rgw = new RaceGateway();
-                if (rgw.addUserToRace(u, r, 1)) {
+                RaceManagement rgw = new RaceManagement();
+                if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 1)) {
                     JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
                 } else {
                     JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
@@ -157,8 +157,8 @@ public class RaceDetail extends JFrame {
 
         btnHelp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                RaceGateway rgw = new RaceGateway();
-                if (rgw.addUserToRace(u, r, 2)) {
+                RaceManagement rgw = new RaceManagement();
+                if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 2)) {
                     JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to heelp ");
                 } else {
                     JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
@@ -179,7 +179,7 @@ public class RaceDetail extends JFrame {
         lblicon.setBounds(370, 85, 222, 212);
         panel.add(lblicon);
         lblicon.setHorizontalAlignment(SwingConstants.CENTER);
-        lblicon.setIcon(new ImageIcon("resources/icons/icon.png"))
+        lblicon.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"))
         ;
 
         JLabel lblRaceOrganizer = new JLabel("Create Race");
