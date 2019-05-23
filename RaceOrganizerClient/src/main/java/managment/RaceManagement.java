@@ -3,6 +3,8 @@ package managment;
 import com.google.gson.Gson;
 import models.Race;
 import networking.RestGateway;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,8 @@ public class RaceManagement {
 
     private static DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 
+    private static Logger log = LogManager.getLogger(RaceManagement.class.getName());
+
     /**
      * GET api/races/{race_id}
      *
@@ -26,6 +30,17 @@ public class RaceManagement {
         Gson gson = new Gson();
 
         HashMap responseData = RestGateway.getInstance().get("api/races/");
+
+        int responseCode = Integer.parseInt((String) responseData.get("response_code"));
+
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("Successfully got race list");
+        } else {
+            log.error("Error getting race list " + responseCode);
+            return (new Race[1]);
+        }
 
         return gson.fromJson(responseData.get("result").toString(), Race[].class);
     }
@@ -41,6 +56,17 @@ public class RaceManagement {
         Gson gson = new Gson();
 
         HashMap responseData = RestGateway.getInstance().get("api/races/" + race_id);
+
+        int responseCode = Integer.parseInt((String) responseData.get("response_code"));
+
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("Successfully got race");
+        } else {
+            log.error("Error getting race " + responseCode);
+            return null;
+        }
 
         return gson.fromJson(responseData.get("result").toString(), Race.class);
 
@@ -69,7 +95,15 @@ public class RaceManagement {
 
         int responseCode = RestGateway.getInstance().post("api/races/", data);
 
-        return (responseCode == 201);
+        boolean success = responseCode == 201;
+
+        if (success) {
+            log.info("Successfully registered new user");
+        } else {
+            log.error("Error registering new user " + responseCode);
+        }
+
+        return (success);
     }
 
     /**
@@ -98,6 +132,14 @@ public class RaceManagement {
 
         int responseCode = RestGateway.getInstance().post(url, data);
 
-        return (responseCode == 201);
+        boolean success = responseCode == 201;
+
+        if (success) {
+            log.info("Successfully created new race");
+        } else {
+            log.error("Error creating new race " + responseCode);
+        }
+
+        return (success);
     }
 }

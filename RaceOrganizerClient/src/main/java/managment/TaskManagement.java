@@ -3,10 +3,14 @@ package managment;
 import com.google.gson.Gson;
 import models.Task;
 import networking.RestGateway;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 
 public class TaskManagement {
+
+    private static Logger log = LogManager.getLogger(TaskManagement.class.getName());
 
     /**
      * POST /api/races/{race_id}/new_task
@@ -22,7 +26,15 @@ public class TaskManagement {
 
         int responseCode = RestGateway.getInstance().post("api/races/" + race_id + "/new_task", data);
 
-        return (responseCode == 201);
+        boolean success = responseCode == 201;
+
+        if (success) {
+            log.info("Successfully created new task");
+        } else {
+            log.error("Error creating new task " + responseCode);
+        }
+
+        return (success);
     }
 
     /**
@@ -40,6 +52,14 @@ public class TaskManagement {
 
         int responseCode = RestGateway.getInstance().put(url, json);
 
-        return (responseCode == 200);
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("Successfully modified task");
+        } else {
+            log.error("Error modifying task " + responseCode);
+        }
+
+        return (success);
     }
 }

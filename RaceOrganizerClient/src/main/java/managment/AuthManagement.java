@@ -1,16 +1,18 @@
 package managment;
 
 import networking.RestGateway;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 
 public class AuthManagement {
 
-    private static Logger log = Logger.getLogger(RestGateway.class.getName());
+    private static Logger log = LogManager.getLogger(AuthManagement.class.getName());
 
     /**
      * POST: /login/
+     *
      * @param username username of the user
      * @param password password of the user
      * @return boolean depending on the success of the API query
@@ -26,9 +28,9 @@ public class AuthManagement {
         boolean success = responseCode == 200;
 
         if (success) {
-            log.info("# AuthManagement: Successfully logged in");
+            log.info("Successfully logged in");
         } else {
-            log.error("$ AuthManagement: Error login in " + responseCode);
+            log.error("Error login in " + responseCode);
         }
 
         return (success);
@@ -49,9 +51,9 @@ public class AuthManagement {
 
         if (success) {
             RestGateway.getInstance().flushSession(); /*Flush session cookies to avoid further errors */
-            log.info("# AuthManagement: Successfully logged out");
+            log.info("Successfully logged out");
         } else {
-            log.error("$ AuthManagement: Error login out " + responseCode);
+            log.error("Error login out " + responseCode);
         }
 
         return (success);  /*if user is not logged in at the end of logout we assume logout succeeded */
@@ -60,13 +62,13 @@ public class AuthManagement {
     /**
      * POST: /signup/
      *
-     * @param username username of the new user
-     * @param password password of the new user
-     * @param firstName first name of the new user
-     * @param lastname last name of the new user
-     * @param email email of the new user
+     * @param username    username of the new user
+     * @param password    password of the new user
+     * @param firstName   first name of the new user
+     * @param lastname    last name of the new user
+     * @param email       email of the new user
      * @param personal_id personal id of the new user
-     * @param birth_date birth date of the new user
+     * @param birth_date  birth date of the new user
      * @return boolean depending on the success of the API query
      */
     public static boolean register(String username, String password, String firstName, String lastname, String email,
@@ -86,9 +88,9 @@ public class AuthManagement {
         boolean success = responseCode == 201;
 
         if (success) {
-            log.info("$ AuthManagement: Successfully registered new user");
+            log.info("Successfully registered new user");
         } else {
-            log.error("$ AuthManagement: Error registering new user " + responseCode);
+            log.error("Error registering new user " + responseCode);
         }
 
         return (success);

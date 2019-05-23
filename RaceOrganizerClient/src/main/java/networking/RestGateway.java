@@ -19,7 +19,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,17 +31,16 @@ import java.util.List;
 public class RestGateway {
 
 
-    private static Logger log = Logger.getLogger(RestGateway.class.getName());
+    private static Logger log = LogManager.getLogger(RestGateway.class.getName());
 
     private static CookieStore cookieStore = null;
     private static HttpContext httpContext = new BasicHttpContext();
+    private static RestGateway instance = new RestGateway();
     private String host;
     private String requestURL;
     private List<NameValuePair> params = new ArrayList<>();
     private CloseableHttpClient client;
     private File requestURLFile = new File("config/serverhost.txt");
-
-    private static RestGateway instance = new RestGateway();
 
     private RestGateway() {
         String result = "";
@@ -111,7 +111,7 @@ public class RestGateway {
                     new InputStreamReader(response.getEntity().getContent()));
         } catch (UnsupportedOperationException | IOException e1) {
             // TODO Auto-generated catch block
-            e1.printStackTrace();
+            log.error(e1.getMessage());
         }
 
         StringBuilder result = new StringBuilder();
@@ -132,7 +132,7 @@ public class RestGateway {
         responseData.put("response_code", Integer.toString(responseCode));
         responseData.put("result", result.toString());
 
-        log.info(" - RestGateway: GET " + requestURL + " " + responseCode);
+        log.info("GET " + requestURL + " " + responseCode);
 
         return responseData;
     }
@@ -140,7 +140,7 @@ public class RestGateway {
     /**
      * Send POST request
      *
-     * @param url target url
+     * @param url  target url
      * @param data data to send in the post
      * @return response code of the request
      */
@@ -173,7 +173,7 @@ public class RestGateway {
             log.error(e.getMessage());
         }
 
-        log.info(" - RestGateway: POST " + requestURL + " " + responseCode);
+        log.info("POST " + requestURL + " " + responseCode);
 
         return responseCode;
     }
@@ -181,7 +181,7 @@ public class RestGateway {
     /**
      * Send PUT request
      *
-     * @param url target url
+     * @param url  target url
      * @param json data to send in the put
      * @return response code of the request
      */
@@ -200,7 +200,7 @@ public class RestGateway {
             putRequest.setEntity(new StringEntity(json));
         } catch (UnsupportedEncodingException e1) {
             // TODO Auto-generated catch block
-            e1.printStackTrace();
+            log.error(e1.getMessage());
         }
 
         putRequest.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
@@ -215,7 +215,7 @@ public class RestGateway {
             log.error(e.getMessage());
         }
 
-        log.info(" - RestGateway: PUT " + requestURL + " " + responseCode);
+        log.info("PUT " + requestURL + " " + responseCode);
 
         return responseCode;
     }

@@ -3,57 +3,87 @@ package managment;
 import com.google.gson.Gson;
 import models.User;
 import networking.RestGateway;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UsersManagement {
 
-	/**
-	 * GET /api/users/
-	 *
-	 * @return list of Users with simplified information
-	 */
-	public static User[] getUsers() {
-		Gson gson = new Gson();
+    private static Logger log = LogManager.getLogger(UsersManagement.class.getName());
 
-		HashMap responseData = RestGateway.getInstance().get("api/users/");
+    /**
+     * GET /api/users/
+     *
+     * @return list of Users with simplified information
+     */
+    public static User[] getUsers() {
+        Gson gson = new Gson();
 
-		return gson.fromJson(responseData.get("result").toString(), User[].class);
+        HashMap responseData = RestGateway.getInstance().get("api/users/");
+
+        int responseCode = Integer.parseInt((String) responseData.get("response_code"));
+
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("Successfully got user list");
+        } else {
+            log.error("Error getting user list " + responseCode);
+            return (new User[1]);
+        }
+
+        return gson.fromJson(responseData.get("result").toString(), User[].class);
     }
 
-	/**
-	 * GET /api/user/{user_id}
-	 *
-	 * @param user_id id of the User
-	 * @return requested User
-	 */
-	public static User getUser(int user_id) {
+    /**
+     * GET /api/user/{user_id}
+     *
+     * @param user_id id of the User
+     * @return requested User
+     */
+    public static User getUser(int user_id) {
 
-		Gson gson = new Gson();
+        Gson gson = new Gson();
 
-		HashMap responseData = RestGateway.getInstance().get("api/users/" + user_id);
+        HashMap responseData = RestGateway.getInstance().get("api/users/" + user_id);
 
-		return gson.fromJson(responseData.get("result").toString(), User.class);
+        int responseCode = Integer.parseInt((String) responseData.get("response_code"));
+
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("Successfully got user");
+        } else {
+            log.error("Error getting user " + responseCode);
+            return null;
+        }
+
+        return gson.fromJson(responseData.get("result").toString(), User.class);
     }
 
-	/**
-	 * GET /api/profile/
-	 *
-	 * @return currently logged in User with detailed information
-	 */
-	public static User getLoggedProfile() {
+    /**
+     * GET /api/profile/
+     *
+     * @return currently logged in User with detailed information
+     */
+    public static User getLoggedProfile() {
 
-		Gson gson = new Gson();
+        Gson gson = new Gson();
 
-		HashMap responseData = RestGateway.getInstance().get("api/profile/");
+        HashMap responseData = RestGateway.getInstance().get("api/profile/");
 
-		return gson.fromJson(responseData.get("result").toString(), User.class);
+        int responseCode = Integer.parseInt((String) responseData.get("response_code"));
+
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("Successfully got profile");
+        } else {
+            log.error("Error getting profile " + responseCode);
+            return null;
+        }
+
+        return gson.fromJson(responseData.get("result").toString(), User.class);
     }
 }
