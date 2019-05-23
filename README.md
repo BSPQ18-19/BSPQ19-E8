@@ -22,7 +22,7 @@ RaceOrganizer uses a simply REST client-server architecture, with a server on Dj
 RaceOrganizer uses Django's MariaDB integration in order to store the information using the model in the following
 diagram:
 
-![Class diagram](https://github.com/BSPQ18-19/BSPQ19-E8/blob/master/.web/ClassDiagram.png)
+![Class diagram](https://bspq18-19.github.io/BSPQ19-E8/images/ClassDiagram.png)
 
 ## Documentation
 - The documentation for the client was generated using Doxygen, and is available at [Doxygen](https://bspq18-19.github.io/BSPQ19-E8/doxygen/index.html).
