@@ -14,7 +14,9 @@ RaceOrganizer is a platform that allows you to discover new races and signup to 
 everything you need to know, allowing you to just focus on getting the best results.
 
 As an event organizer, RaceOrganizer enables to simplify recruiting helpers for your race and managing the tasks
- needed for your race to go smoothly.
+needed for your race to go smoothly.
+
+You can download a product presentation [here](https://github.com/BSPQ18-19/BSPQ19-E8/blob/gh-pages/resources/RaceOrganizer_Presentation.pptx)
 
 ## Architecture
 RaceOrganizer uses a simply REST client-server architecture, with a server on Django and a client written in Java.
