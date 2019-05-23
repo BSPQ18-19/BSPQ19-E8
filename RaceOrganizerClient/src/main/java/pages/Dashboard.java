@@ -1,6 +1,8 @@
 package pages;
 
 import models.Race;
+import models.Runner;
+import models.Task;
 import models.User;
 import managment.AuthManagement;
 import managment.RaceManagement;
@@ -9,12 +11,16 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Dashboard extends JFrame {
 
@@ -73,6 +79,7 @@ public class Dashboard extends JFrame {
 
 	private JScrollPane scrollPane_organised_races;
 
+	private Login pWindow;
 	/**
 	 * Main Window
 	 *
@@ -80,29 +87,10 @@ public class Dashboard extends JFrame {
 	 * @param user  user that has logged in
 	 */
 	public Dashboard(Login login, User user) {
+		pWindow=login;
 		RaceManagement = new RaceManagement();
-
-		/*
-		 * Datos de prueba
-		 */
-
-//		User user1 = new User(1, "user", "Usuario", "Usuario", "user@email.com", "1998/01/01");
-//		User user2 = new User(2, "user2", "Usuario", "Usuario", "user@email.com", "1998/01/01");
-//		Runner[] runners = { new Runner(user1, 1) };
-//		Runner[] runners2 = { new Runner(user2, 1) };
-//		User[] users = { user2 };
-//		Race[] runraces = {
-//				new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
-//						runners, users),
-//				new Race("2nd Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
-//						runners2, users) };
-//		Race[] runraces2 = { new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f,
-//				1500.0f, runners, users) };
-//		user1.setRunner_races(runraces2);
-//		user1.setOrganizer_races(runraces);
-//		user1.setHelper_races(runraces2);
-
-		/* Si conectado cambiar user1 por user */
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.forLanguageTag(Translation.actual_language));
+		
 		actualuser = user;
 
 		setBounds(100, 100, 1050, 855);
@@ -134,8 +122,20 @@ public class Dashboard extends JFrame {
 		JPanel panel = new JPanel();
 		panel_top.add(panel, BorderLayout.EAST);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JComboBox comboBox = new JComboBox(Translation.languages);
+		comboBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Translation.changeLanguage((String)comboBox.getItemAt(comboBox.getSelectedIndex()));
+				refresh();
+			}
+		});
+		panel.add(comboBox);
 
-		JButton btnlogout = new JButton("Log out");
+		JButton btnlogout = new JButton(Translation.getString("log_out"));
 		panel.add(btnlogout);
 		btnlogout.setBackground(Color.WHITE);
 		btnlogout.setOpaque(false);
@@ -188,7 +188,7 @@ public class Dashboard extends JFrame {
 		gbl_panel_dashboard_top.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gbl_panel_dashboard_top.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_dashboard_top.setLayout(gbl_panel_dashboard_top);
-		JLabel lblDashboard_1 = new JLabel("Welcome " + actualuser.getFirst_name());
+		JLabel lblDashboard_1 = new JLabel(Translation.getString("welcome") + actualuser.getFirst_name());
 		lblDashboard_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblDashboard_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblDashboard_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -211,7 +211,7 @@ public class Dashboard extends JFrame {
 		gbl_panel_dashboard_mid.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_dashboard_mid.setLayout(gbl_panel_dashboard_mid);
 
-		lblNextRaces = new JLabel("Next Races");
+		lblNextRaces = new JLabel(Translation.getString("next_races"));
 		lblNextRaces.setFont(new Font("Tahoma", Font.BOLD, 24));
 		GridBagConstraints gbc_lblNextRaces = new GridBagConstraints();
 		gbc_lblNextRaces.insets = new Insets(0, 0, 5, 5);
@@ -227,11 +227,11 @@ public class Dashboard extends JFrame {
 
 		if (actualuser.getRunner_races() != null) {
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces next_race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces next_race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1, Dashboard.this);
 				panel_next_races.add(next_race);
 			}
 		} else {
-			JLabel lblNoraces = new JLabel("No Next Races");
+			JLabel lblNoraces = new JLabel(Translation.getString("no_races_found"));
 			lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			panel_next_races.add(lblNoraces);
 
@@ -246,7 +246,7 @@ public class Dashboard extends JFrame {
 		gbc_scrollPane.gridy = 1;
 		panel_dashboard_mid.add(scrollPane, gbc_scrollPane);
 
-		btnAddRace = new JButton("Create Race");
+		btnAddRace = new JButton(Translation.getString("create_race"));
 		btnAddRace.setFont(new Font("Tahoma", Font.BOLD, 24));
 		btnAddRace.setBackground(Color.WHITE);
 		btnAddRace.setPreferredSize(new Dimension(240, 40));
@@ -294,7 +294,7 @@ public class Dashboard extends JFrame {
 		 * Panel for races as runner
 		 */
 
-		lblMyRacesRunner = new JLabel("Races Im running");
+		lblMyRacesRunner = new JLabel(Translation.getString("races_running"));
 		GridBagConstraints gbc_lblMyRacesRunner = new GridBagConstraints();
 		gbc_lblMyRacesRunner.anchor = GridBagConstraints.WEST;
 		gbc_lblMyRacesRunner.insets = new Insets(0, 0, 5, 0);
@@ -324,7 +324,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getRunner_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getRunner_races())) {
-				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1, Dashboard.this);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -334,7 +334,7 @@ public class Dashboard extends JFrame {
 				i++;
 			}
 		} else {
-			JLabel lblNoraces = new JLabel("No Races Found");
+			JLabel lblNoraces = new JLabel(Translation.getString("no_races_found"));
 			lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			panel_races_runner.add(lblNoraces);
 
@@ -348,7 +348,7 @@ public class Dashboard extends JFrame {
 		 * Panel for races as helper
 		 */
 
-		lblRacesIveVolunteered = new JLabel("Races I've Volunteered");
+		lblRacesIveVolunteered = new JLabel(Translation.getString("races_helping"));
 		GridBagConstraints gbc_lblRacesIveVolunteered = new GridBagConstraints();
 		gbc_lblRacesIveVolunteered.anchor = GridBagConstraints.WEST;
 		gbc_lblRacesIveVolunteered.insets = new Insets(0, 0, 5, 0);
@@ -376,7 +376,8 @@ public class Dashboard extends JFrame {
 		if (actualuser.getHelper_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getHelper_races())) {
-				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces race = new PanelRaces(r, actualuser, 1,Dashboard.this);
+				//PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -386,7 +387,7 @@ public class Dashboard extends JFrame {
 				i++;
 			}
 		} else {
-			JLabel lblNoraces = new JLabel("No Races Found");
+			JLabel lblNoraces = new JLabel(Translation.getString("no_races_found"));
 			lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			panel_races_helper.add(lblNoraces);
 
@@ -423,7 +424,7 @@ public class Dashboard extends JFrame {
 		gbl_panel_search_top.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_search_top.setLayout(gbl_panel_search_top);
 
-		lblSearch_edition = new JLabel("Edition");
+		lblSearch_edition = new JLabel(Translation.getString("edition"));
 		GridBagConstraints gbc_lblSearch_edition = new GridBagConstraints();
 		gbc_lblSearch_edition.anchor = GridBagConstraints.EAST;
 		gbc_lblSearch_edition.insets = new Insets(0, 0, 5, 5);
@@ -440,7 +441,7 @@ public class Dashboard extends JFrame {
 		panel_search_top.add(textField_search_edition, gbc_textField_search_edition);
 		textField_search_edition.setColumns(10);
 
-		lblSearch_place = new JLabel("Place");
+		lblSearch_place = new JLabel(Translation.getString("place"));
 		GridBagConstraints gbc_lblSearch_place = new GridBagConstraints();
 		gbc_lblSearch_place.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSearch_place.anchor = GridBagConstraints.EAST;
@@ -458,7 +459,7 @@ public class Dashboard extends JFrame {
 		gbc_textField_search_place.gridy = 2;
 		panel_search_top.add(textField_search_place, gbc_textField_search_place);
 
-		btnSeach = new JButton("Search");
+		btnSeach = new JButton(Translation.getString("search"));
 		btnSeach.setBackground(new Color(51, 102, 153));
 		GridBagConstraints gbc_btnSeach = new GridBagConstraints();
 		gbc_btnSeach.insets = new Insets(0, 0, 5, 0);
@@ -496,22 +497,22 @@ public class Dashboard extends JFrame {
 		panel_search_mid.add(scrollPane_search_results, gbc_scrollPane_search_results);
 
 		Race[] allraces = RaceManagement.getRaces();
+
 		if (allraces != null) {
 			int i = 0;
 			for (Race r : allraces) {
-				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1, Dashboard.this);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
 				gbc_races.gridx = 0;
 				gbc_races.gridy = i;
 				panel_search_results.add(race, gbc_races);
-				System.out.println("DSGsag");
 				i++;
 
 			}
 		} else {
-			JLabel lblNoraces = new JLabel("No Races Found");
+			JLabel lblNoraces = new JLabel(Translation.getString("no_races_found"));
 			lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			panel_races_helper.add(lblNoraces);
 
@@ -545,7 +546,7 @@ public class Dashboard extends JFrame {
 		flowLayout_1.setVgap(30);
 		panelmyUser.add(panel_1, BorderLayout.NORTH);
 
-		lblWelcome_myuser = new JLabel("Welcome to your private space");
+		lblWelcome_myuser = new JLabel(Translation.getString("welcome_myuser"));
 		lblWelcome_myuser.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panel_1.add(lblWelcome_myuser);
 
@@ -559,7 +560,7 @@ public class Dashboard extends JFrame {
 				Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 
-		lblMyUser_username = new JLabel("Username: " + actualuser.getUsername());
+		lblMyUser_username = new JLabel(Translation.getString("username") + actualuser.getUsername());
 		lblMyUser_username.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblMyUser_username = new GridBagConstraints();
 		gbc_lblMyUser_username.anchor = GridBagConstraints.WEST;
@@ -577,7 +578,7 @@ public class Dashboard extends JFrame {
 		lblMyUser_icon.setIcon(new ImageIcon(("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
 		panel_2.add(lblMyUser_icon, gbc_lblMyUser_icon);
 
-		lblMyUser_firstname = new JLabel("First Name: " + actualuser.getFirst_name());
+		lblMyUser_firstname = new JLabel(Translation.getString("first_name") + actualuser.getFirst_name());
 		lblMyUser_firstname.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblMyUser_firstname = new GridBagConstraints();
 		gbc_lblMyUser_firstname.anchor = GridBagConstraints.WEST;
@@ -586,7 +587,7 @@ public class Dashboard extends JFrame {
 		gbc_lblMyUser_firstname.gridy = 1;
 		panel_2.add(lblMyUser_firstname, gbc_lblMyUser_firstname);
 
-		lblMyUser_LastName = new JLabel("Last Name: " + actualuser.getLast_name());
+		lblMyUser_LastName = new JLabel(Translation.getString("last_name") + actualuser.getLast_name());
 		lblMyUser_LastName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblMyUser_LastName = new GridBagConstraints();
 		gbc_lblMyUser_LastName.anchor = GridBagConstraints.WEST;
@@ -595,7 +596,7 @@ public class Dashboard extends JFrame {
 		gbc_lblMyUser_LastName.gridy = 2;
 		panel_2.add(lblMyUser_LastName, gbc_lblMyUser_LastName);
 
-		lblMyUser_MyBirthday = new JLabel("My Birthday: " + actualuser.getBirth_date());
+		lblMyUser_MyBirthday = new JLabel(Translation.getString("my_birthday") + actualuser.getBirth_date());
 		lblMyUser_MyBirthday.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblMyUser_MyBirthday = new GridBagConstraints();
 		gbc_lblMyUser_MyBirthday.anchor = GridBagConstraints.WEST;
@@ -604,7 +605,7 @@ public class Dashboard extends JFrame {
 		gbc_lblMyUser_MyBirthday.gridy = 3;
 		panel_2.add(lblMyUser_MyBirthday, gbc_lblMyUser_MyBirthday);
 
-		lblMyUser_email = new JLabel("Email: " + actualuser.getEmail());
+		lblMyUser_email = new JLabel(Translation.getString("email") + actualuser.getEmail());
 		lblMyUser_email.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblMyUser_email = new GridBagConstraints();
 		gbc_lblMyUser_email.anchor = GridBagConstraints.WEST;
@@ -613,7 +614,7 @@ public class Dashboard extends JFrame {
 		gbc_lblMyUser_email.gridy = 4;
 		panel_2.add(lblMyUser_email, gbc_lblMyUser_email);
 
-		lblMyUser_myorganisedraces = new JLabel("Races I've Organised: ");
+		lblMyUser_myorganisedraces = new JLabel(Translation.getString("races_organised"));
 		lblMyUser_myorganisedraces.setFont(new Font("Tahoma", Font.BOLD, 15));
 		GridBagConstraints gbc_lblMyUser_myorganisedraces = new GridBagConstraints();
 		gbc_lblMyUser_myorganisedraces.anchor = GridBagConstraints.WEST;
@@ -644,7 +645,7 @@ public class Dashboard extends JFrame {
 		if (actualuser.getOrganizer_races() != null) {
 			int i = 0;
 			for (Race r : getNextRaces(actualuser.getOrganizer_races())) {
-				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 2);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1, Dashboard.this);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -654,7 +655,7 @@ public class Dashboard extends JFrame {
 				i++;
 			}
 		} else {
-			JLabel lblNoraces = new JLabel("No Races Found");
+			JLabel lblNoraces = new JLabel(Translation.getString("no_races_found"));
 			lblNoraces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			panel_organised_races.add(lblNoraces);
 
@@ -687,7 +688,7 @@ public class Dashboard extends JFrame {
 		gbc_lblNewLabel.gridy = 1;
 		menu_bar.add(lblNewLabel, gbc_lblNewLabel);
 
-		btnDashboard = new JButton("Dashboard");
+		btnDashboard = new JButton(Translation.getString("dashboard"));
 		btnDashboard.setForeground(Color.WHITE);
 		btnDashboard.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnDashboard.setOpaque(false);
@@ -700,7 +701,7 @@ public class Dashboard extends JFrame {
 		gbc_btnDashboard.gridy = 1;
 		menu_bar.add(btnDashboard, gbc_btnDashboard);
 
-		btnRaces = new JButton("My Races");
+		btnRaces = new JButton(Translation.getString("my_races"));
 		btnRaces.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnRaces.setOpaque(false);
 		btnRaces.setContentAreaFilled(false);
@@ -712,7 +713,7 @@ public class Dashboard extends JFrame {
 		gbc_btnRaces.gridy = 2;
 		menu_bar.add(btnRaces, gbc_btnRaces);
 
-		buttonSearch = new JButton("Search Races");
+		buttonSearch = new JButton(Translation.getString("search_races"));
 		buttonSearch.setOpaque(false);
 		buttonSearch.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		buttonSearch.setContentAreaFilled(false);
@@ -724,7 +725,7 @@ public class Dashboard extends JFrame {
 		gbc_buttonSearch.gridy = 3;
 		menu_bar.add(buttonSearch, gbc_buttonSearch);
 
-		btnMyUser = new JButton("My User");
+		btnMyUser = new JButton(Translation.getString("my_user"));
 		btnMyUser.setBackground(Color.WHITE);
 		btnMyUser.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnMyUser.setOpaque(false);
@@ -850,7 +851,7 @@ public class Dashboard extends JFrame {
 			public void windowClosing(WindowEvent e) {
 
 				int result = JOptionPane.showConfirmDialog(Dashboard.this,
-						"Are you sure you want to exit the application?", "Exit Application",
+						resourceBundle.getString("exit_msg"), resourceBundle.getString("exit_msg_title"),
 						JOptionPane.YES_NO_OPTION);
 
 				if (result == JOptionPane.YES_OPTION)
@@ -861,8 +862,34 @@ public class Dashboard extends JFrame {
 
 	}
 
+	/**
+	 * Main method for development purposes
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		Dashboard das = new Dashboard(null, null);
+		/*
+		 * Datos de prueba
+		 */
+
+		User user1 = new User(1, "user", "Usuario", "Usuario", "user@email.com", "1998/01/01");
+		User user2 = new User(2, "user2", "Usuario", "Usuario", "user@email.com", "1998/01/01");
+		Runner[] runners = { new Runner(user1, 1) };
+		Runner[] runners2 = { new Runner(user2, 1) };
+		User[] users = { user2 };
+		Task[] tasks= {
+				new Task(0,"Task 1",user2, false)
+		};
+		Race[] runraces = {
+				new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
+						runners, users, tasks),
+				new Race("2nd Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f, 1500.0f,
+						runners2, users,tasks) };
+		Race[] runraces2 = { new Race("1st Marathon", "Coca-Cola", "Bilbao", new Date(System.currentTimeMillis()), 5.5f,
+				1500.0f, runners, users,tasks) };
+		user1.setRunner_races(runraces2);
+		user1.setOrganizer_races(runraces);
+		user1.setHelper_races(runraces2);
+		Dashboard das = new Dashboard(null, user1);
 		das.setVisible(true);
 	}
 
@@ -878,7 +905,7 @@ public class Dashboard extends JFrame {
 		panel_search_results.removeAll();
 		for (Race r : races) {
 			if (r.getEdition().equals(searchfield_edition) || r.getPlace().equals(searchfield_places)) {
-				PanelRaces race = new PanelRaces(r, actualuser, 1);
+				PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1, Dashboard.this);
 				GridBagConstraints gbc_races = new GridBagConstraints();
 				gbc_races.insets = new Insets(0, 0, 5, 0);
 				gbc_races.fill = GridBagConstraints.BOTH;
@@ -902,5 +929,11 @@ public class Dashboard extends JFrame {
 		Arrays.sort(races);
 		return races;
 
+	}
+	public void refresh() {
+		//SwingUtilities.updateComponentTreeUI(Dashboard.this);
+		Dashboard.this.dispose();
+		Dashboard das=new Dashboard(pWindow, actualuser);
+		das.setVisible(true);
 	}
 }

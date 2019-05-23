@@ -12,6 +12,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class CreateRace extends JFrame {
 
@@ -31,6 +33,7 @@ public class CreateRace extends JFrame {
      * Window for creating races
      */
     public CreateRace(Dashboard vAnterior) {
+    	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.forLanguageTag(Translation.actual_language));
         setBounds(100, 100, 650, 493);
         contentPanel = new JPanel();
         contentPanel.setLayout(new CardLayout(0, 0));
@@ -56,7 +59,7 @@ public class CreateRace extends JFrame {
                 0.0};
         panel_1.setLayout(gbl_panel_1);
 
-        JLabel lblEdition = new JLabel("Edition");
+        JLabel lblEdition = new JLabel(resourceBundle.getString("edition"));
         GridBagConstraints gbc_lblEdition = new GridBagConstraints();
         gbc_lblEdition.anchor = GridBagConstraints.SOUTHWEST;
         gbc_lblEdition.insets = new Insets(0, 0, 5, 0);
@@ -76,7 +79,7 @@ public class CreateRace extends JFrame {
         TxtEdition.setBorder(new LineBorder(new Color(245, 245, 245)));
         TxtEdition.setColumns(10);
 
-        JLabel lblSponsor = new JLabel("Sponsor");
+        JLabel lblSponsor = new JLabel(resourceBundle.getString("sponsor"));
         GridBagConstraints gbc_lblSponsor = new GridBagConstraints();
         gbc_lblSponsor.anchor = GridBagConstraints.SOUTHWEST;
         gbc_lblSponsor.insets = new Insets(0, 0, 5, 0);
@@ -96,7 +99,7 @@ public class CreateRace extends JFrame {
         gbc_textFieldSponsor.gridy = 3;
         panel_1.add(textFieldSponsor, gbc_textFieldSponsor);
 
-        JLabel labelPlace = new JLabel("Place");
+        JLabel labelPlace = new JLabel(resourceBundle.getString("place"));
         GridBagConstraints gbc_labelPlace = new GridBagConstraints();
         gbc_labelPlace.anchor = GridBagConstraints.WEST;
         gbc_labelPlace.insets = new Insets(0, 0, 5, 0);
@@ -116,7 +119,7 @@ public class CreateRace extends JFrame {
         gbc_textField_place.gridy = 5;
         panel_1.add(textField_place, gbc_textField_place);
 
-        JLabel labeltimedate = new JLabel("Time & Date");
+        JLabel labeltimedate = new JLabel(resourceBundle.getString("time_date"));
         GridBagConstraints gbc_labeltimedate = new GridBagConstraints();
         gbc_labeltimedate.anchor = GridBagConstraints.WEST;
         gbc_labeltimedate.insets = new Insets(0, 0, 5, 0);
@@ -133,7 +136,7 @@ public class CreateRace extends JFrame {
         panel_1.add(textField_time, gbc_textField_time);
         textField_time.setColumns(10);
 
-        JLabel lblPrice = new JLabel("Price");
+        JLabel lblPrice = new JLabel(resourceBundle.getString("price"));
         GridBagConstraints gbc_lblPrice = new GridBagConstraints();
         gbc_lblPrice.anchor = GridBagConstraints.WEST;
         gbc_lblPrice.insets = new Insets(0, 0, 5, 0);
@@ -150,7 +153,7 @@ public class CreateRace extends JFrame {
         panel_1.add(textField_price, gbc_textField_price);
         textField_price.setColumns(10);
 
-        JLabel lblPrize = new JLabel("Prize");
+        JLabel lblPrize = new JLabel(resourceBundle.getString("prize"));
         GridBagConstraints gbc_lblPrize = new GridBagConstraints();
         gbc_lblPrize.anchor = GridBagConstraints.WEST;
         gbc_lblPrize.insets = new Insets(0, 0, 5, 0);
@@ -182,7 +185,7 @@ public class CreateRace extends JFrame {
         lblicon.setHorizontalAlignment(SwingConstants.CENTER);
         lblicon.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"));
 
-        JLabel lblRaceOrganizer = new JLabel("Create Race");
+        JLabel lblRaceOrganizer = new JLabel(resourceBundle.getString("create_race"));
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
         lblRaceOrganizer.setBounds(27, 22, 230, 27);
         panel.add(lblRaceOrganizer);
@@ -192,7 +195,7 @@ public class CreateRace extends JFrame {
         panel.add(panel_2);
         panel_2.setOpaque(false);
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton(resourceBundle.getString("back"));
         panel_2.add(btnBack);
         btnBack.setBackground(new Color(255, 255, 255));
         btnBack.addActionListener(new ActionListener() {
@@ -201,12 +204,12 @@ public class CreateRace extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 CreateRace.this.setVisible(false);
-                vAnterior.revalidate();
+                vAnterior.refresh();;
 
             }
         });
 
-        JButton btnNewButton_1 = new JButton("Create");
+        JButton btnNewButton_1 = new JButton(resourceBundle.getString("create"));
         panel_2.add(btnNewButton_1);
         btnNewButton_1.addActionListener(arg0 -> {
             DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
@@ -220,11 +223,11 @@ public class CreateRace extends JFrame {
 
             if (RaceManagement.addRace(TxtEdition.getText(), textFieldSponsor.getText(), textField_place.getText(),
                     date, Integer.parseInt(textField_price.getText()), Integer.parseInt(textFieldPrize.getText()))) {
-                JOptionPane.showMessageDialog(CreateRace.this, "Race Created");
+                JOptionPane.showMessageDialog(CreateRace.this, resourceBundle.getString("create_race_success"));
             } else {
-                JOptionPane.showMessageDialog(CreateRace.this, "Error while creating the race. Try again");
+                JOptionPane.showMessageDialog(CreateRace.this, resourceBundle.getString("create_race_error"));
             }
-
+            vAnterior.refresh();
         });
         btnNewButton_1.setBackground(new Color(255, 255, 255));
 

@@ -7,8 +7,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Login extends JFrame {
 
@@ -19,6 +23,7 @@ public class Login extends JFrame {
     private JPanel contentPanel;
     private JTextField txtUsername;
     private JPasswordField passwordField;
+	private JLabel lblUserLogin;
 
 
     /**
@@ -26,6 +31,7 @@ public class Login extends JFrame {
      */
 
     public Login() {
+    	new Translation();
         setBounds(100, 100, 650, 400);
         contentPanel = new JPanel();
         contentPanel.setLayout(new CardLayout(0, 0));
@@ -50,7 +56,7 @@ public class Login extends JFrame {
         panel_2.setOpaque(false);
         panel_1.add(panel_2, BorderLayout.SOUTH);
 
-        JButton btnLogin = new JButton("Login");
+        JButton btnLogin = new JButton(Translation.getString("login"));
         panel_2.add(btnLogin);
         btnLogin.setBackground(new Color(255, 255, 255));
         btnLogin.addActionListener(e -> {
@@ -61,12 +67,12 @@ public class Login extends JFrame {
                 Dashboard das = new Dashboard(Login.this, UsersManagement.getLoggedProfile());
                 das.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(Login.this, "User or password is incorrect");
+                JOptionPane.showMessageDialog(Login.this, Translation.getString("login_error"));
             }
 
         });
 
-        JButton btnNewButton_1 = new JButton("Register");
+        JButton btnNewButton_1 = new JButton(Translation.getString("register"));
         panel_2.add(btnNewButton_1);
         btnNewButton_1.addActionListener(arg0 -> {
             Login.this.setVisible(false);
@@ -85,7 +91,7 @@ public class Login extends JFrame {
         gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0};
         panel_3.setLayout(gbl_panel_3);
 
-        JLabel lblUserLogin = new JLabel("User Login");
+        lblUserLogin = new JLabel(Translation.getString("user_login"));
         lblUserLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
         GridBagConstraints gbc_lblUserLogin = new GridBagConstraints();
         gbc_lblUserLogin.anchor = GridBagConstraints.WEST;
@@ -104,7 +110,7 @@ public class Login extends JFrame {
         panel_3.add(lblUser, gbc_lblUser);
 
         txtUsername = new JTextField();
-        txtUsername.setToolTipText("Username");
+        txtUsername.setToolTipText(Translation.getString("username"));
         txtUsername.setBackground(new Color(245, 245, 245));
         txtUsername.setBorder(new LineBorder(new Color(245, 245, 245)));
         GridBagConstraints gbc_txtUsername = new GridBagConstraints();
@@ -125,7 +131,7 @@ public class Login extends JFrame {
         panel_3.add(lblPassword, gbc_lblPassword);
 
         passwordField = new JPasswordField();
-        passwordField.setToolTipText("Password");
+        passwordField.setToolTipText(Translation.getString("password"));
         passwordField.setBackground(new Color(245, 245, 245));
         passwordField.setBorder(new LineBorder(new Color(245, 245, 245)));
         GridBagConstraints gbc_passwordField = new GridBagConstraints();
@@ -143,8 +149,25 @@ public class Login extends JFrame {
 
         JLabel lblRaceOrganizer = new JLabel("RACE ORGANIZER");
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
-        lblRaceOrganizer.setBounds(339, 52, 230, 27);
+        lblRaceOrganizer.setBounds(334, 60, 230, 27);
         panel.add(lblRaceOrganizer);
+        
+        @SuppressWarnings("rawtypes")
+		JComboBox comboBox = new JComboBox(Translation.languages);
+        comboBox.setBounds(558, 24, 52, 22);
+        comboBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Translation.changeLanguage((String)comboBox.getItemAt(comboBox.getSelectedIndex()));
+				Login.this.dispose();
+				Login log=new Login();
+				log.setVisible(true);
+				
+			}
+		});
+        panel.add(comboBox);
 
         addWindowListener(new WindowAdapter() {
 
@@ -154,4 +177,6 @@ public class Login extends JFrame {
             }
         });
     }
+    
+
 }

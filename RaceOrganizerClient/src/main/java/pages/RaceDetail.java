@@ -11,6 +11,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class RaceDetail extends JFrame {
 
@@ -21,8 +23,11 @@ public class RaceDetail extends JFrame {
     private JPanel contentPanel;
     private boolean running = false;
     private boolean helper = false;
+    private Race r;
 
-    public RaceDetail(Race r, User u) {
+    public RaceDetail(Race race, User u, Dashboard das) {
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.forLanguageTag(Translation.actual_language));
+		r=race;
         Runner myrunner = null;
         for (Runner runner : r.getRunners()) {
             if (runner.getUser_id() == u.getUser_id()) {
@@ -62,7 +67,7 @@ public class RaceDetail extends JFrame {
                 0.0};
         panel_1.setLayout(gbl_panel_1);
 
-        JLabel lblEdition = new JLabel("Edition: " + r.getEdition());
+        JLabel lblEdition = new JLabel(resourceBundle.getString("edition") + r.getEdition());
         GridBagConstraints gbc_lblEdition = new GridBagConstraints();
         gbc_lblEdition.anchor = GridBagConstraints.WEST;
         gbc_lblEdition.insets = new Insets(0, 0, 5, 0);
@@ -70,7 +75,7 @@ public class RaceDetail extends JFrame {
         gbc_lblEdition.gridy = 1;
         panel_1.add(lblEdition, gbc_lblEdition);
 
-        JLabel lblSponsor = new JLabel("Sponsor: " + r.getSponsor());
+        JLabel lblSponsor = new JLabel(resourceBundle.getString("sponsor") + r.getSponsor());
         GridBagConstraints gbc_lblSponsor = new GridBagConstraints();
         gbc_lblSponsor.anchor = GridBagConstraints.WEST;
         gbc_lblSponsor.insets = new Insets(0, 0, 5, 0);
@@ -78,7 +83,7 @@ public class RaceDetail extends JFrame {
         gbc_lblSponsor.gridy = 2;
         panel_1.add(lblSponsor, gbc_lblSponsor);
 
-        JLabel labelPlace = new JLabel("Place: " + r.getPlace());
+        JLabel labelPlace = new JLabel(resourceBundle.getString("place") + r.getPlace());
         GridBagConstraints gbc_labelPlace = new GridBagConstraints();
         gbc_labelPlace.anchor = GridBagConstraints.WEST;
         gbc_labelPlace.insets = new Insets(0, 0, 5, 0);
@@ -86,7 +91,7 @@ public class RaceDetail extends JFrame {
         gbc_labelPlace.gridy = 3;
         panel_1.add(labelPlace, gbc_labelPlace);
 
-        JLabel labeltimedate = new JLabel("Time & Date: " + r.getTime().toString());
+        JLabel labeltimedate = new JLabel(resourceBundle.getString("time_date") + r.getTime().toString());
         GridBagConstraints gbc_labeltimedate = new GridBagConstraints();
         gbc_labeltimedate.anchor = GridBagConstraints.WEST;
         gbc_labeltimedate.insets = new Insets(0, 0, 5, 0);
@@ -94,7 +99,7 @@ public class RaceDetail extends JFrame {
         gbc_labeltimedate.gridy = 4;
         panel_1.add(labeltimedate, gbc_labeltimedate);
 
-        JLabel lblPrice = new JLabel("Price: " + r.getPrice());
+        JLabel lblPrice = new JLabel(resourceBundle.getString("price") + r.getPrice());
         GridBagConstraints gbc_lblPrice = new GridBagConstraints();
         gbc_lblPrice.anchor = GridBagConstraints.WEST;
         gbc_lblPrice.insets = new Insets(0, 0, 5, 0);
@@ -102,7 +107,7 @@ public class RaceDetail extends JFrame {
         gbc_lblPrice.gridy = 5;
         panel_1.add(lblPrice, gbc_lblPrice);
 
-        JLabel lblPrize = new JLabel("Prize: " + r.getPrize());
+        JLabel lblPrize = new JLabel(resourceBundle.getString("prize") + r.getPrize());
         GridBagConstraints gbc_lblPrize = new GridBagConstraints();
         gbc_lblPrize.anchor = GridBagConstraints.WEST;
         gbc_lblPrize.insets = new Insets(0, 0, 5, 0);
@@ -110,7 +115,7 @@ public class RaceDetail extends JFrame {
         gbc_lblPrize.gridy = 6;
         panel_1.add(lblPrize, gbc_lblPrize);
 
-        JButton btnRun = new JButton("Run");
+        JButton btnRun = new JButton(resourceBundle.getString("run"));
         GridBagConstraints gbc_btnRun = new GridBagConstraints();
         gbc_btnRun.anchor = GridBagConstraints.WEST;
         gbc_btnRun.insets = new Insets(0, 0, 5, 0);
@@ -119,7 +124,7 @@ public class RaceDetail extends JFrame {
         panel_1.add(btnRun, gbc_btnRun);
         if (running) {
             btnRun.setEnabled(false);
-            JLabel labelNumber = new JLabel("My Number: " + myrunner.getNumber());
+            JLabel labelNumber = new JLabel(resourceBundle.getString("my_number") + myrunner.getNumber());
             GridBagConstraints gbc_labelNumber = new GridBagConstraints();
             gbc_labelNumber.anchor = GridBagConstraints.WEST;
             gbc_labelNumber.insets = new Insets(0, 0, 5, 0);
@@ -132,16 +137,18 @@ public class RaceDetail extends JFrame {
 
                 RaceManagement rgw = new RaceManagement();
                 if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 1)) {
-                    JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to run ");
+                    JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("run_success"));
+                    r=RaceManagement.getRace(r.getRace_id());
+                    RaceDetail.this.contentPanel.repaint();
                 } else {
-                    JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
+                    JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("run_error"));
                 }
 
             }
         });
         btnRun.setBackground(Color.WHITE);
 
-        JButton btnHelp = new JButton("Help");
+        JButton btnHelp = new JButton(resourceBundle.getString("volunteer"));
         btnHelp.setBackground(Color.WHITE);
         GridBagConstraints gbc_btnHelp = new GridBagConstraints();
         gbc_btnHelp.anchor = GridBagConstraints.WEST;
@@ -159,9 +166,11 @@ public class RaceDetail extends JFrame {
             public void actionPerformed(ActionEvent arg0) {
                 RaceManagement rgw = new RaceManagement();
                 if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 2)) {
-                    JOptionPane.showMessageDialog(RaceDetail.this, "You've been registered to heelp ");
+                    JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("register_help_success"));
+                    r=RaceManagement.getRace(r.getRace_id());
+                    RaceDetail.this.contentPanel.repaint();
                 } else {
-                    JOptionPane.showMessageDialog(RaceDetail.this, "There's been an error.");
+                    JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("register_help_error"));
                 }
 
             }
@@ -182,7 +191,7 @@ public class RaceDetail extends JFrame {
         lblicon.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"))
         ;
 
-        JLabel lblRaceOrganizer = new JLabel("Create Race");
+        JLabel lblRaceOrganizer = new JLabel(resourceBundle.getString("race_detail"));
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
         lblRaceOrganizer.setBounds(27, 22, 230, 27);
         panel.add(lblRaceOrganizer);
@@ -192,7 +201,7 @@ public class RaceDetail extends JFrame {
         panel.add(panel_2);
         panel_2.setOpaque(false);
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton(resourceBundle.getString("back"));
         panel_2.add(btnBack);
         btnBack.setBackground(new Color(255, 255, 255));
         btnBack.addActionListener(new ActionListener() {
@@ -201,7 +210,7 @@ public class RaceDetail extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 RaceDetail.this.setVisible(false);
-
+                das.refresh();
             }
         });
 

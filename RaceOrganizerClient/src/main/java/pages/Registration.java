@@ -51,7 +51,7 @@ public class Registration extends JFrame {
         gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0};
         panel_1.setLayout(gbl_panel_1);
 
-        JLabel lblUserLogin = new JLabel("User Registration");
+        JLabel lblUserLogin = new JLabel(Translation.getString("user_registration"));
         GridBagConstraints gbc_lblUserLogin = new GridBagConstraints();
         gbc_lblUserLogin.insets = new Insets(0, 0, 5, 0);
         gbc_lblUserLogin.fill = GridBagConstraints.BOTH;
@@ -69,7 +69,7 @@ public class Registration extends JFrame {
         panel_1.add(lblUser, gbc_lblUser);
         lblUser.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/user.png"));
 
-        username = new HintTextField("Username");
+        username = new HintTextField(Translation.getString("username"));
         username.setToolTipText("Username");
         GridBagConstraints gbc_textField_username = new GridBagConstraints();
         gbc_textField_username.fill = GridBagConstraints.BOTH;
@@ -90,7 +90,7 @@ public class Registration extends JFrame {
         panel_1.add(lblPassword, gbc_lblPassword);
         lblPassword.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/key.png"));
 
-        JLabel lblPassword_1 = new JLabel("Password");
+        JLabel lblPassword_1 = new JLabel(Translation.getString("password"));
         GridBagConstraints gbc_lblPassword_1 = new GridBagConstraints();
         gbc_lblPassword_1.anchor = GridBagConstraints.SOUTHWEST;
         gbc_lblPassword_1.insets = new Insets(0, 0, 5, 0);
@@ -108,7 +108,7 @@ public class Registration extends JFrame {
         passwordField.setBackground(new Color(245, 245, 245));
         passwordField.setBorder(new LineBorder(new Color(245, 245, 245)));
 
-        JLabel lblConfirmPassword = new JLabel("Confirm Password");
+        JLabel lblConfirmPassword = new JLabel(Translation.getString("confirm_password"));
         GridBagConstraints gbc_lblConfirmPassword = new GridBagConstraints();
         gbc_lblConfirmPassword.anchor = GridBagConstraints.SOUTHWEST;
         gbc_lblConfirmPassword.insets = new Insets(0, 0, 5, 0);
@@ -126,7 +126,7 @@ public class Registration extends JFrame {
         passwordField_1.setBorder(new LineBorder(new Color(245, 245, 245)));
         passwordField_1.setBackground(new Color(245, 245, 245));
 
-        HintTextField DNI_TextField = new HintTextField("DNI");
+        HintTextField DNI_TextField = new HintTextField(Translation.getString("id"));
         DNI_TextField.setColumns(10);
         GridBagConstraints gbc_DNI_TextField = new GridBagConstraints();
         gbc_DNI_TextField.insets = new Insets(0, 0, 5, 0);
@@ -144,7 +144,7 @@ public class Registration extends JFrame {
         gbc_lblNewLabel.gridy = 7;
         panel_1.add(lblemail, gbc_lblNewLabel);
 
-        textField_email = new HintTextField("Email");
+        textField_email = new HintTextField(Translation.getString("email"));
         GridBagConstraints gbc_textField_email = new GridBagConstraints();
         gbc_textField_email.insets = new Insets(0, 0, 5, 0);
         gbc_textField_email.fill = GridBagConstraints.BOTH;
@@ -163,19 +163,19 @@ public class Registration extends JFrame {
         gbc_panel_3.gridy = 11;
         panel_1.add(panel_3, gbc_panel_3);
 
-        HintTextField txt_birthdate_day = new HintTextField("Birthdate-day");
+        HintTextField txt_birthdate_day = new HintTextField(Translation.getString("bd_day"));
         panel_3.add(txt_birthdate_day);
         txt_birthdate_day.setColumns(10);
 
-        HintTextField txt_birthdate_month = new HintTextField("Birthdate-month");
+        HintTextField txt_birthdate_month = new HintTextField(Translation.getString("bd_month"));
         txt_birthdate_month.setColumns(10);
         panel_3.add(txt_birthdate_month);
 
-        HintTextField txt_birthdate_day_year = new HintTextField("Birthdate-year");
+        HintTextField txt_birthdate_day_year = new HintTextField(Translation.getString("bd_day"));
         txt_birthdate_day_year.setColumns(10);
         panel_3.add(txt_birthdate_day_year);
 
-        textField_name = new HintTextField("Name");
+        textField_name = new HintTextField(Translation.getString("first_name"));
         GridBagConstraints gbc_textField_name = new GridBagConstraints();
         gbc_textField_name.insets = new Insets(0, 0, 5, 0);
         gbc_textField_name.fill = GridBagConstraints.BOTH;
@@ -184,7 +184,7 @@ public class Registration extends JFrame {
         panel_1.add(textField_name, gbc_textField_name);
         textField_name.setColumns(10);
 
-        textField_surname = new HintTextField("Surname");
+        textField_surname = new HintTextField(Translation.getString("last_name"));
         GridBagConstraints gbc_textField_surname = new GridBagConstraints();
         gbc_textField_surname.insets = new Insets(0, 0, 5, 0);
         gbc_textField_surname.fill = GridBagConstraints.BOTH;
@@ -209,7 +209,7 @@ public class Registration extends JFrame {
         panel.add(panel_2);
         panel_2.setOpaque(false);
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton(Translation.getString("back"));
         panel_2.add(btnBack);
         btnBack.setBackground(new Color(255, 255, 255));
         btnBack.addActionListener(e -> {
@@ -219,7 +219,7 @@ public class Registration extends JFrame {
 
         });
 
-        JButton btnNewButton_1 = new JButton("Register");
+        JButton btnNewButton_1 = new JButton(Translation.getString("register"));
         panel_2.add(btnNewButton_1);
         btnNewButton_1.addActionListener(arg0 -> {
             String password = String.valueOf(passwordField.getPassword());
@@ -233,17 +233,18 @@ public class Registration extends JFrame {
                     Registration.this.setVisible(false);
 
                     if (AuthManagement.login(username.getText(), password)) {
-                        UsersManagement ugw = new UsersManagement();
+                        @SuppressWarnings("unused")
+						UsersManagement ugw = new UsersManagement();
                         Dashboard das = new Dashboard(login, UsersManagement.getLoggedProfile());
                         das.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(Registration.this, "User or password is incorrect");
+                        JOptionPane.showMessageDialog(Registration.this, Translation.getString("login_error"));
                     }
                 } else {
-                    JOptionPane.showMessageDialog(Registration.this, "Error while signup. Try again");
+                    JOptionPane.showMessageDialog(Registration.this,Translation.getString("registration_error1"));
                 }
             } else {
-                JOptionPane.showMessageDialog(Registration.this, "Passwords are not the same. Try again");
+                JOptionPane.showMessageDialog(Registration.this, Translation.getString("registration_error1"));
             }
 
         });

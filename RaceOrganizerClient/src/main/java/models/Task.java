@@ -52,6 +52,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task [description=" + description + ", username=" + person.getUsername() + ", completed=" + completed + "]";
+        return "Task [" + task_id + "]";
     }
 }
