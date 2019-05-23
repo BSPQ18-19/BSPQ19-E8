@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Race.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">client</a> &gt; <a href="index.source.html" class="el_package">models</a> &gt; <span class="el_source">Race.java</span></div><h1>Race.java</h1><pre class="source lang-java linenums">package models;
+
+import java.util.Arrays;
+import java.util.Date;
+
+public class Race implements Comparable&lt;Race&gt; {
+
+    private int race_id;
+    private String edition;
+    private String sponsor;
+    private String place;
+    private Date time;
+    private float price;
+    private float prize;
+
+    private Runner[] runners;
+    private User[] helpers;
+    private Task[] tasks;
+
+    public Race(int race_id, String edition, String sponsor, String place, Date time, float price, float prize,
+                Runner[] runners, User[] helpers, Task[] tasks) {
+<span class="nc" id="L22">        super();</span>
+<span class="nc" id="L23">        this.race_id = race_id;</span>
+<span class="nc" id="L24">        this.edition = edition;</span>
+<span class="nc" id="L25">        this.sponsor = sponsor;</span>
+<span class="nc" id="L26">        this.place = place;</span>
+<span class="nc" id="L27">        this.time = time;</span>
+<span class="nc" id="L28">        this.price = price;</span>
+<span class="nc" id="L29">        this.prize = prize;</span>
+<span class="nc" id="L30">        this.runners = runners;</span>
+<span class="nc" id="L31">        this.helpers = helpers;</span>
+<span class="nc" id="L32">        this.tasks = tasks;</span>
+<span class="nc" id="L33">    }</span>
+
+    public Race(String edition, String sponsor, String place, Date time, float price, float prize,
+                Runner[] runners, User[] helpers, Task[] tasks) {
+<span class="nc" id="L37">        super();</span>
+<span class="nc" id="L38">        this.edition = edition;</span>
+<span class="nc" id="L39">        this.sponsor = sponsor;</span>
+<span class="nc" id="L40">        this.place = place;</span>
+<span class="nc" id="L41">        this.time = time;</span>
+<span class="nc" id="L42">        this.price = price;</span>
+<span class="nc" id="L43">        this.prize = prize;</span>
+<span class="nc" id="L44">        this.runners = runners;</span>
+<span class="nc" id="L45">        this.helpers = helpers;</span>
+<span class="nc" id="L46">        this.tasks = tasks;</span>
+<span class="nc" id="L47">    }</span>
+
+
+    public Task[] getTasks() {
+<span class="nc" id="L51">        return tasks;</span>
+    }
+
+    public void setTasks(Task[] tasks) {
+<span class="nc" id="L55">        this.tasks = tasks;</span>
+<span class="nc" id="L56">    }</span>
+
+    public int getRace_id() {
+<span class="nc" id="L59">        return race_id;</span>
+    }
+
+    public void setRace_id(int race_id) {
+<span class="nc" id="L63">        this.race_id = race_id;</span>
+<span class="nc" id="L64">    }</span>
+
+    public String getEdition() {
+<span class="fc" id="L67">        return edition;</span>
+    }
+
+    public void setEdition(String edition) {
+<span class="nc" id="L71">        this.edition = edition;</span>
+<span class="nc" id="L72">    }</span>
+
+    public String getSponsor() {
+<span class="fc" id="L75">        return sponsor;</span>
+    }
+
+    public void setSponsor(String sponsor) {
+<span class="nc" id="L79">        this.sponsor = sponsor;</span>
+<span class="nc" id="L80">    }</span>
+
+    public String getPlace() {
+<span class="nc" id="L83">        return place;</span>
+    }
+
+    public void setPlace(String place) {
+<span class="nc" id="L87">        this.place = place;</span>
+<span class="nc" id="L88">    }</span>
+
+    public Date getTime() {
+<span class="nc" id="L91">        return time;</span>
+    }
+
+    public void setTime(Date time) {
+<span class="nc" id="L95">        this.time = time;</span>
+<span class="nc" id="L96">    }</span>
+
+    public float getPrice() {
+<span class="fc" id="L99">        return price;</span>
+    }
+
+    public void setPrice(float price) {
+<span class="nc" id="L103">        this.price = price;</span>
+<span class="nc" id="L104">    }</span>
+
+    public float getPrize() {
+<span class="fc" id="L107">        return prize;</span>
+    }
+
+    public void setPrize(float prize) {
+<span class="nc" id="L111">        this.prize = prize;</span>
+<span class="nc" id="L112">    }</span>
+
+    public Runner[] getRunners() {
+<span class="nc" id="L115">        return runners;</span>
+    }
+
+    public void setRunners(Runner[] runners) {
+<span class="nc" id="L119">        this.runners = runners;</span>
+<span class="nc" id="L120">    }</span>
+
+    public User[] getHelpers() {
+<span class="nc" id="L123">        return helpers;</span>
+    }
+
+    public void setHelpers(User[] helpers) {
+<span class="nc" id="L127">        this.helpers = helpers;</span>
+<span class="nc" id="L128">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L132">        return &quot;Race [race_id=&quot; + race_id + &quot;, edition=&quot; + edition + &quot;, sponsor=&quot; + sponsor + &quot;, place=&quot; + place</span>
+<span class="nc" id="L133">                + &quot;, time=&quot; + time + &quot;, price=&quot; + price + &quot;, prize=&quot; + prize + &quot;, runners=&quot; + Arrays.toString(runners)</span>
+<span class="nc" id="L134">                + &quot;, helpers=&quot; + Arrays.toString(helpers) + &quot;]&quot;;</span>
+    }
+
+    @Override
+    public int compareTo(Race r) {
+<span class="nc bnc" id="L139" title="All 4 branches missed.">        if (getTime() == null || r.getTime() == null)</span>
+<span class="nc" id="L140">            return 0;</span>
+<span class="nc" id="L141">        return getTime().compareTo(r.getTime());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

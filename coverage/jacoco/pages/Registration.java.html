@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Registration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">client</a> &gt; <a href="index.source.html" class="el_package">pages</a> &gt; <span class="el_source">Registration.java</span></div><h1>Registration.java</h1><pre class="source lang-java linenums">package pages;
+
+import managment.AuthManagement;
+import managment.UsersManagement;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class Registration extends JFrame {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private JTextField username;
+    private JPasswordField passwordField;
+    private JPasswordField passwordField_1;
+    private JTextField textField_name;
+    private JTextField textField_surname;
+    private JTextField textField_email;
+
+    /**
+     * Create the dialog.
+     */
+<span class="nc" id="L29">    public Registration(Login login) {</span>
+<span class="nc" id="L30">        setBounds(100, 100, 650, 493);</span>
+<span class="nc" id="L31">        JPanel contentPanel = new JPanel();</span>
+<span class="nc" id="L32">        contentPanel.setLayout(new CardLayout(0, 0));</span>
+<span class="nc" id="L33">        contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));</span>
+<span class="nc" id="L34">        setContentPane(contentPanel);</span>
+
+<span class="nc" id="L36">        JPanel panel = new JPanel();</span>
+<span class="nc" id="L37">        panel.setBackground(new Color(102, 153, 204));</span>
+<span class="nc" id="L38">        panel.setLayout(null);</span>
+<span class="nc" id="L39">        contentPanel.add(panel);</span>
+
+<span class="nc" id="L41">        JPanel panel_1 = new JPanel();</span>
+<span class="nc" id="L42">        panel_1.setBorder(new LineBorder(Color.WHITE));</span>
+<span class="nc" id="L43">        panel_1.setOpaque(false);</span>
+<span class="nc" id="L44">        panel_1.setBackground(Color.WHITE);</span>
+<span class="nc" id="L45">        panel_1.setBounds(10, 46, 331, 388);</span>
+<span class="nc" id="L46">        panel.add(panel_1);</span>
+<span class="nc" id="L47">        GridBagLayout gbl_panel_1 = new GridBagLayout();</span>
+<span class="nc" id="L48">        gbl_panel_1.rowHeights = new int[]{50, 30, 10, 30, 25, 30, 30, 30, 30, 30, 30, 70};</span>
+<span class="nc" id="L49">        gbl_panel_1.columnWidths = new int[]{30, 0, 250, 20};</span>
+<span class="nc" id="L50">        gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};</span>
+<span class="nc" id="L51">        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0};</span>
+<span class="nc" id="L52">        panel_1.setLayout(gbl_panel_1);</span>
+
+<span class="nc" id="L54">        JLabel lblUserLogin = new JLabel(&quot;User Registration&quot;);</span>
+<span class="nc" id="L55">        GridBagConstraints gbc_lblUserLogin = new GridBagConstraints();</span>
+<span class="nc" id="L56">        gbc_lblUserLogin.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L57">        gbc_lblUserLogin.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L58">        gbc_lblUserLogin.gridx = 2;</span>
+<span class="nc" id="L59">        gbc_lblUserLogin.gridy = 0;</span>
+<span class="nc" id="L60">        panel_1.add(lblUserLogin, gbc_lblUserLogin);</span>
+<span class="nc" id="L61">        lblUserLogin.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 18));</span>
+
+<span class="nc" id="L63">        JLabel lblUser = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L64">        GridBagConstraints gbc_lblUser = new GridBagConstraints();</span>
+<span class="nc" id="L65">        gbc_lblUser.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L66">        gbc_lblUser.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L67">        gbc_lblUser.gridx = 1;</span>
+<span class="nc" id="L68">        gbc_lblUser.gridy = 1;</span>
+<span class="nc" id="L69">        panel_1.add(lblUser, gbc_lblUser);</span>
+<span class="nc" id="L70">        lblUser.setIcon(new ImageIcon(&quot;/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/user.png&quot;));</span>
+
+<span class="nc" id="L72">        username = new HintTextField(&quot;Username&quot;);</span>
+<span class="nc" id="L73">        username.setToolTipText(&quot;Username&quot;);</span>
+<span class="nc" id="L74">        GridBagConstraints gbc_textField_username = new GridBagConstraints();</span>
+<span class="nc" id="L75">        gbc_textField_username.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L76">        gbc_textField_username.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L77">        gbc_textField_username.gridx = 2;</span>
+<span class="nc" id="L78">        gbc_textField_username.gridy = 1;</span>
+<span class="nc" id="L79">        panel_1.add(username, gbc_textField_username);</span>
+<span class="nc" id="L80">        username.setBackground(new Color(245, 245, 245));</span>
+<span class="nc" id="L81">        username.setBorder(new LineBorder(new Color(245, 245, 245)));</span>
+<span class="nc" id="L82">        username.setColumns(10);</span>
+
+<span class="nc" id="L84">        JLabel lblPassword = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L85">        GridBagConstraints gbc_lblPassword = new GridBagConstraints();</span>
+<span class="nc" id="L86">        gbc_lblPassword.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L87">        gbc_lblPassword.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L88">        gbc_lblPassword.gridx = 1;</span>
+<span class="nc" id="L89">        gbc_lblPassword.gridy = 2;</span>
+<span class="nc" id="L90">        panel_1.add(lblPassword, gbc_lblPassword);</span>
+<span class="nc" id="L91">        lblPassword.setIcon(new ImageIcon(&quot;/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/key.png&quot;));</span>
+
+<span class="nc" id="L93">        JLabel lblPassword_1 = new JLabel(&quot;Password&quot;);</span>
+<span class="nc" id="L94">        GridBagConstraints gbc_lblPassword_1 = new GridBagConstraints();</span>
+<span class="nc" id="L95">        gbc_lblPassword_1.anchor = GridBagConstraints.SOUTHWEST;</span>
+<span class="nc" id="L96">        gbc_lblPassword_1.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L97">        gbc_lblPassword_1.gridx = 2;</span>
+<span class="nc" id="L98">        gbc_lblPassword_1.gridy = 2;</span>
+<span class="nc" id="L99">        panel_1.add(lblPassword_1, gbc_lblPassword_1);</span>
+
+<span class="nc" id="L101">        passwordField = new JPasswordField();</span>
+<span class="nc" id="L102">        GridBagConstraints gbc_passwordField = new GridBagConstraints();</span>
+<span class="nc" id="L103">        gbc_passwordField.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L104">        gbc_passwordField.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L105">        gbc_passwordField.gridx = 2;</span>
+<span class="nc" id="L106">        gbc_passwordField.gridy = 3;</span>
+<span class="nc" id="L107">        panel_1.add(passwordField, gbc_passwordField);</span>
+<span class="nc" id="L108">        passwordField.setBackground(new Color(245, 245, 245));</span>
+<span class="nc" id="L109">        passwordField.setBorder(new LineBorder(new Color(245, 245, 245)));</span>
+
+<span class="nc" id="L111">        JLabel lblConfirmPassword = new JLabel(&quot;Confirm Password&quot;);</span>
+<span class="nc" id="L112">        GridBagConstraints gbc_lblConfirmPassword = new GridBagConstraints();</span>
+<span class="nc" id="L113">        gbc_lblConfirmPassword.anchor = GridBagConstraints.SOUTHWEST;</span>
+<span class="nc" id="L114">        gbc_lblConfirmPassword.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L115">        gbc_lblConfirmPassword.gridx = 2;</span>
+<span class="nc" id="L116">        gbc_lblConfirmPassword.gridy = 4;</span>
+<span class="nc" id="L117">        panel_1.add(lblConfirmPassword, gbc_lblConfirmPassword);</span>
+
+<span class="nc" id="L119">        passwordField_1 = new JPasswordField();</span>
+<span class="nc" id="L120">        GridBagConstraints gbc_passwordField_1 = new GridBagConstraints();</span>
+<span class="nc" id="L121">        gbc_passwordField_1.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L122">        gbc_passwordField_1.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L123">        gbc_passwordField_1.gridx = 2;</span>
+<span class="nc" id="L124">        gbc_passwordField_1.gridy = 5;</span>
+<span class="nc" id="L125">        panel_1.add(passwordField_1, gbc_passwordField_1);</span>
+<span class="nc" id="L126">        passwordField_1.setBorder(new LineBorder(new Color(245, 245, 245)));</span>
+<span class="nc" id="L127">        passwordField_1.setBackground(new Color(245, 245, 245));</span>
+
+<span class="nc" id="L129">        HintTextField DNI_TextField = new HintTextField(&quot;DNI&quot;);</span>
+<span class="nc" id="L130">        DNI_TextField.setColumns(10);</span>
+<span class="nc" id="L131">        GridBagConstraints gbc_DNI_TextField = new GridBagConstraints();</span>
+<span class="nc" id="L132">        gbc_DNI_TextField.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L133">        gbc_DNI_TextField.fill = GridBagConstraints.HORIZONTAL;</span>
+<span class="nc" id="L134">        gbc_DNI_TextField.gridx = 2;</span>
+<span class="nc" id="L135">        gbc_DNI_TextField.gridy = 6;</span>
+<span class="nc" id="L136">        panel_1.add(DNI_TextField, gbc_DNI_TextField);</span>
+
+<span class="nc" id="L138">        JLabel lblemail = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L139">        lblemail.setIcon(new ImageIcon(&quot;/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/envelope.png&quot;));</span>
+<span class="nc" id="L140">        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();</span>
+<span class="nc" id="L141">        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L142">        gbc_lblNewLabel.anchor = GridBagConstraints.EAST;</span>
+<span class="nc" id="L143">        gbc_lblNewLabel.gridx = 1;</span>
+<span class="nc" id="L144">        gbc_lblNewLabel.gridy = 7;</span>
+<span class="nc" id="L145">        panel_1.add(lblemail, gbc_lblNewLabel);</span>
+
+<span class="nc" id="L147">        textField_email = new HintTextField(&quot;Email&quot;);</span>
+<span class="nc" id="L148">        GridBagConstraints gbc_textField_email = new GridBagConstraints();</span>
+<span class="nc" id="L149">        gbc_textField_email.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L150">        gbc_textField_email.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L151">        gbc_textField_email.gridx = 2;</span>
+<span class="nc" id="L152">        gbc_textField_email.gridy = 7;</span>
+<span class="nc" id="L153">        panel_1.add(textField_email, gbc_textField_email);</span>
+<span class="nc" id="L154">        textField_email.setColumns(10);</span>
+
+<span class="nc" id="L156">        JPanel panel_3 = new JPanel();</span>
+<span class="nc" id="L157">        panel_3.setOpaque(false);</span>
+
+<span class="nc" id="L159">        GridBagConstraints gbc_panel_3 = new GridBagConstraints();</span>
+<span class="nc" id="L160">        gbc_panel_3.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L161">        gbc_panel_3.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L162">        gbc_panel_3.gridx = 2;</span>
+<span class="nc" id="L163">        gbc_panel_3.gridy = 11;</span>
+<span class="nc" id="L164">        panel_1.add(panel_3, gbc_panel_3);</span>
+
+<span class="nc" id="L166">        HintTextField txt_birthdate_day = new HintTextField(&quot;Birthdate-day&quot;);</span>
+<span class="nc" id="L167">        panel_3.add(txt_birthdate_day);</span>
+<span class="nc" id="L168">        txt_birthdate_day.setColumns(10);</span>
+
+<span class="nc" id="L170">        HintTextField txt_birthdate_month = new HintTextField(&quot;Birthdate-month&quot;);</span>
+<span class="nc" id="L171">        txt_birthdate_month.setColumns(10);</span>
+<span class="nc" id="L172">        panel_3.add(txt_birthdate_month);</span>
+
+<span class="nc" id="L174">        HintTextField txt_birthdate_day_year = new HintTextField(&quot;Birthdate-year&quot;);</span>
+<span class="nc" id="L175">        txt_birthdate_day_year.setColumns(10);</span>
+<span class="nc" id="L176">        panel_3.add(txt_birthdate_day_year);</span>
+
+<span class="nc" id="L178">        textField_name = new HintTextField(&quot;Name&quot;);</span>
+<span class="nc" id="L179">        GridBagConstraints gbc_textField_name = new GridBagConstraints();</span>
+<span class="nc" id="L180">        gbc_textField_name.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L181">        gbc_textField_name.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L182">        gbc_textField_name.gridx = 2;</span>
+<span class="nc" id="L183">        gbc_textField_name.gridy = 9;</span>
+<span class="nc" id="L184">        panel_1.add(textField_name, gbc_textField_name);</span>
+<span class="nc" id="L185">        textField_name.setColumns(10);</span>
+
+<span class="nc" id="L187">        textField_surname = new HintTextField(&quot;Surname&quot;);</span>
+<span class="nc" id="L188">        GridBagConstraints gbc_textField_surname = new GridBagConstraints();</span>
+<span class="nc" id="L189">        gbc_textField_surname.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L190">        gbc_textField_surname.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L191">        gbc_textField_surname.gridx = 2;</span>
+<span class="nc" id="L192">        gbc_textField_surname.gridy = 10;</span>
+<span class="nc" id="L193">        panel_1.add(textField_surname, gbc_textField_surname);</span>
+<span class="nc" id="L194">        textField_surname.setColumns(10);</span>
+
+<span class="nc" id="L196">        JLabel lblicon = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L197">        lblicon.setBounds(370, 46, 222, 212);</span>
+<span class="nc" id="L198">        panel.add(lblicon);</span>
+<span class="nc" id="L199">        lblicon.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L200">        lblicon.setIcon(new ImageIcon(&quot;/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png&quot;));</span>
+
+<span class="nc" id="L202">        JLabel lblRaceOrganizer = new JLabel(&quot;RACE ORGANIZER&quot;);</span>
+<span class="nc" id="L203">        lblRaceOrganizer.setFont(new Font(&quot;Tahoma&quot;, Font.BOLD, 22));</span>
+<span class="nc" id="L204">        lblRaceOrganizer.setBounds(27, 11, 230, 27);</span>
+<span class="nc" id="L205">        panel.add(lblRaceOrganizer);</span>
+
+<span class="nc" id="L207">        JPanel panel_2 = new JPanel();</span>
+<span class="nc" id="L208">        panel_2.setBounds(353, 388, 257, 35);</span>
+<span class="nc" id="L209">        panel.add(panel_2);</span>
+<span class="nc" id="L210">        panel_2.setOpaque(false);</span>
+
+<span class="nc" id="L212">        JButton btnBack = new JButton(&quot;Back&quot;);</span>
+<span class="nc" id="L213">        panel_2.add(btnBack);</span>
+<span class="nc" id="L214">        btnBack.setBackground(new Color(255, 255, 255));</span>
+<span class="nc" id="L215">        btnBack.addActionListener(e -&gt; {</span>
+            // TODO Auto-generated method stub
+<span class="nc" id="L217">            Registration.this.setVisible(false);</span>
+<span class="nc" id="L218">            login.setVisible(true);</span>
+
+<span class="nc" id="L220">        });</span>
+
+<span class="nc" id="L222">        JButton btnNewButton_1 = new JButton(&quot;Register&quot;);</span>
+<span class="nc" id="L223">        panel_2.add(btnNewButton_1);</span>
+<span class="nc" id="L224">        btnNewButton_1.addActionListener(arg0 -&gt; {</span>
+<span class="nc" id="L225">            String password = String.valueOf(passwordField.getPassword());</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">            if (password.equals(String.valueOf(passwordField_1.getPassword()))) {</span>
+<span class="nc" id="L227">                String birthdate = &quot;&quot;;</span>
+<span class="nc" id="L228">                birthdate += txt_birthdate_day_year.getText() + &quot;-&quot; + txt_birthdate_month.getText() + &quot;-&quot;</span>
+<span class="nc" id="L229">                        + txt_birthdate_day.getText();</span>
+
+<span class="nc bnc" id="L231" title="All 2 branches missed.">                if (AuthManagement.register(username.getText(), password, textField_name.getText(),</span>
+<span class="nc" id="L232">                        textField_surname.getText(), textField_email.getText(), DNI_TextField.getText(), birthdate)) {</span>
+<span class="nc" id="L233">                    Registration.this.setVisible(false);</span>
+
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                    if (AuthManagement.login(username.getText(), password)) {</span>
+<span class="nc" id="L236">                        UsersManagement ugw = new UsersManagement();</span>
+<span class="nc" id="L237">                        Dashboard das = new Dashboard(login, UsersManagement.getLoggedProfile());</span>
+<span class="nc" id="L238">                        das.setVisible(true);</span>
+<span class="nc" id="L239">                    } else {</span>
+<span class="nc" id="L240">                        JOptionPane.showMessageDialog(Registration.this, &quot;User or password is incorrect&quot;);</span>
+                    }
+                } else {
+<span class="nc" id="L243">                    JOptionPane.showMessageDialog(Registration.this, &quot;Error while signup. Try again&quot;);</span>
+                }
+<span class="nc" id="L245">            } else {</span>
+<span class="nc" id="L246">                JOptionPane.showMessageDialog(Registration.this, &quot;Passwords are not the same. Try again&quot;);</span>
+            }
+
+<span class="nc" id="L249">        });</span>
+<span class="nc" id="L250">        btnNewButton_1.setBackground(new Color(255, 255, 255));</span>
+
+<span class="nc" id="L252">        addWindowListener(new WindowAdapter() {</span>
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+<span class="nc" id="L257">                System.exit(0);</span>
+
+<span class="nc" id="L259">            }</span>
+
+        });
+<span class="nc" id="L262">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
