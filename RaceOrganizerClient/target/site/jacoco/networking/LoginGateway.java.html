@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginGateway.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RaceOrganizerClient</a> &gt; <a href="index.source.html" class="el_package">networking</a> &gt; <span class="el_source">LoginGateway.java</span></div><h1>LoginGateway.java</h1><pre class="source lang-java linenums">package networking;
+
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+public class LoginGateway extends Gateway {
+
+
+<span class="nc" id="L17">    public LoginGateway(String username, String password) {</span>
+<span class="nc" id="L18">        requestURL += &quot;login/&quot;;</span>
+<span class="nc" id="L19">        client = HttpClients.custom()</span>
+<span class="nc" id="L20">                .setDefaultRequestConfig(RequestConfig.custom()</span>
+<span class="nc" id="L21">                        .setCookieSpec(CookieSpecs.STANDARD).build())</span>
+<span class="nc" id="L22">                .build();</span>
+<span class="nc" id="L23">        params.add(new BasicNameValuePair(&quot;username&quot;, username));</span>
+<span class="nc" id="L24">        params.add(new BasicNameValuePair(&quot;password&quot;, password));</span>
+
+<span class="nc" id="L26">        request = new HttpPost(requestURL);</span>
+
+<span class="nc" id="L28">    }</span>
+
+    public boolean login() {
+<span class="nc" id="L31">        int responseCode = -1;</span>
+        try {
+<span class="nc" id="L33">            request.setEntity(new UrlEncodedFormEntity(params));</span>
+<span class="nc" id="L34">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L35">            e.printStackTrace();</span>
+<span class="nc" id="L36">        }</span>
+        try {
+<span class="nc" id="L38">            CloseableHttpResponse response = client.execute(request);</span>
+<span class="nc" id="L39">            responseCode = response.getStatusLine().getStatusCode();</span>
+<span class="nc" id="L40">        } catch (IOException e) {</span>
+<span class="nc" id="L41">            e.printStackTrace();</span>
+<span class="nc" id="L42">        }</span>
+
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        return (responseCode == 200);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

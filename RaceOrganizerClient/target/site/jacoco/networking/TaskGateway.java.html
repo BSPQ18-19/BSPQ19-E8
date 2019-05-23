@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskGateway.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">client</a> &gt; <a href="index.source.html" class="el_package">networking</a> &gt; <span class="el_source">TaskGateway.java</span></div><h1>TaskGateway.java</h1><pre class="source lang-java linenums">package networking;
+
+import models.Race;
+import models.Task;
+import org.apache.http.HttpHeaders;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+public class TaskGateway extends Gateway {
+
+<span class="nc" id="L21">    public TaskGateway() {</span>
+<span class="nc" id="L22">        this.init();</span>
+<span class="nc" id="L23">    }</span>
+
+    /**
+     * @param r           Race to add task to
+     * @param description Description of the task
+     * @return True if task is added correctly, false if not
+     * @category POST api/races/{race_id}/new_task
+     **/
+
+    public boolean addTask(Race r, String description) {
+<span class="nc" id="L33">        requestURL = host + &quot;api/races/&quot; + r.getRace_id() + &quot;/new_task&quot;;</span>
+<span class="nc" id="L34">        System.out.println(requestURL);</span>
+<span class="nc" id="L35">        client = HttpClients.custom()</span>
+<span class="nc" id="L36">                .setDefaultRequestConfig(RequestConfig.custom()</span>
+<span class="nc" id="L37">                        .setCookieSpec(CookieSpecs.STANDARD).build())</span>
+<span class="nc" id="L38">                .build();</span>
+<span class="nc" id="L39">        params.add(new BasicNameValuePair(&quot;description&quot;, description));</span>
+
+<span class="nc" id="L41">        postRequest = new HttpPost(requestURL);</span>
+
+<span class="nc" id="L43">        int responseCode = -1;</span>
+        try {
+<span class="nc" id="L45">            postRequest.setEntity(new UrlEncodedFormEntity(params));</span>
+<span class="nc" id="L46">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L47">            e.printStackTrace();</span>
+<span class="nc" id="L48">        }</span>
+        try {
+<span class="nc" id="L50">            CloseableHttpResponse response = client.execute(postRequest, httpContext);</span>
+<span class="nc" id="L51">            responseCode = response.getStatusLine().getStatusCode();</span>
+<span class="nc" id="L52">        } catch (IOException e) {</span>
+<span class="nc" id="L53">            e.printStackTrace();</span>
+<span class="nc" id="L54">        }</span>
+
+
+<span class="nc" id="L57">        System.out.println(&quot;response:&quot; + responseCode);</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        return (responseCode == 201);</span>
+    }
+
+    //non modified parameters must be initl as null
+
+    public boolean editTask(Race r, Task t) {
+<span class="nc" id="L65">        requestURL = host + &quot;api/races/&quot; + r.getRace_id() + &quot;/&quot; + t.getTask_id();</span>
+<span class="nc" id="L66">        System.out.println(requestURL);</span>
+<span class="nc" id="L67">        String json = gson.toJson(t);</span>
+        try {
+<span class="nc" id="L69">            putRequest.setEntity(new StringEntity(json));</span>
+<span class="nc" id="L70">        } catch (UnsupportedEncodingException e1) {</span>
+            // TODO Auto-generated catch block
+<span class="nc" id="L72">            e1.printStackTrace();</span>
+<span class="nc" id="L73">        }</span>
+<span class="nc" id="L74">        putRequest.setHeader(HttpHeaders.CONTENT_TYPE, &quot;application/json&quot;);</span>
+<span class="nc" id="L75">        int responseCode = -1;</span>
+<span class="nc" id="L76">        try (CloseableHttpResponse httpResponse = client.execute(putRequest)) {</span>
+<span class="nc" id="L77">            String content = EntityUtils.toString(httpResponse.getEntity());</span>
+
+<span class="nc" id="L79">            responseCode = httpResponse.getStatusLine().getStatusCode();</span>
+<span class="nc" id="L80">        } catch (IOException e) {</span>
+            //handle exception
+<span class="nc" id="L82">            e.printStackTrace();</span>
+<span class="nc" id="L83">        }</span>
+
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        return (responseCode == 201);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

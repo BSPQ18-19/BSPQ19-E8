@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PanelRaces.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">client</a> &gt; <a href="index.source.html" class="el_package">pages</a> &gt; <span class="el_source">PanelRaces.java</span></div><h1>PanelRaces.java</h1><pre class="source lang-java linenums">package pages;
+
+import models.Race;
+import models.User;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PanelRaces extends JPanel {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+<span class="nc" id="L17">	private final int USER_SETTASK = 2;</span>
+
+
+<span class="nc" id="L20">	public PanelRaces(Race r, User u, int org) {</span>
+<span class="nc" id="L21">		setBackground(Color.LIGHT_GRAY);</span>
+<span class="nc" id="L22">		GridBagLayout gridBagLayout = new GridBagLayout();</span>
+<span class="nc" id="L23">		gridBagLayout.columnWidths = new int[]{180, 100, 0, 30, 0};</span>
+<span class="nc" id="L24">		gridBagLayout.rowHeights = new int[]{30, 30, 30, 30};</span>
+<span class="nc" id="L25">		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};</span>
+<span class="nc" id="L26">		gridBagLayout.rowWeights = new double[]{0.0, 0.0};</span>
+<span class="nc" id="L27">		setLayout(gridBagLayout);</span>
+
+<span class="nc" id="L29">		JLabel lblEdition = new JLabel(&quot;Edition: &quot; + r.getEdition());</span>
+<span class="nc" id="L30">		lblEdition.setHorizontalAlignment(SwingConstants.LEFT);</span>
+<span class="nc" id="L31">		GridBagConstraints gbc_lblEdition = new GridBagConstraints();</span>
+<span class="nc" id="L32">		gbc_lblEdition.anchor = GridBagConstraints.WEST;</span>
+<span class="nc" id="L33">		gbc_lblEdition.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L34">		gbc_lblEdition.gridx = 0;</span>
+<span class="nc" id="L35">		gbc_lblEdition.gridy = 1;</span>
+<span class="nc" id="L36">		add(lblEdition, gbc_lblEdition);</span>
+
+<span class="nc" id="L38">		JLabel lblDate = new JLabel(&quot;Date: &quot; + r.getTime().toString());</span>
+<span class="nc" id="L39">		GridBagConstraints gbc_lblDate = new GridBagConstraints();</span>
+<span class="nc" id="L40">		gbc_lblDate.gridheight = 2;</span>
+<span class="nc" id="L41">		gbc_lblDate.anchor = GridBagConstraints.WEST;</span>
+<span class="nc" id="L42">		gbc_lblDate.gridwidth = 2;</span>
+<span class="nc" id="L43">		gbc_lblDate.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L44">		gbc_lblDate.gridx = 1;</span>
+<span class="nc" id="L45">		gbc_lblDate.gridy = 1;</span>
+<span class="nc" id="L46">		add(lblDate, gbc_lblDate);</span>
+
+<span class="nc" id="L48">		JButton btnNewButton = new JButton(&quot;View&quot;);</span>
+<span class="nc" id="L49">		btnNewButton.setBackground(new Color(51, 102, 204));</span>
+<span class="nc" id="L50">		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();</span>
+<span class="nc" id="L51">		gbc_btnNewButton.gridheight = 2;</span>
+<span class="nc" id="L52">		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L53">		gbc_btnNewButton.gridx = 3;</span>
+<span class="nc" id="L54">		gbc_btnNewButton.gridy = 1;</span>
+<span class="nc" id="L55">		add(btnNewButton, gbc_btnNewButton);</span>
+
+<span class="nc" id="L57">		JLabel lblNewLabel = new JLabel(&quot;Place: &quot; + r.getPlace());</span>
+<span class="nc" id="L58">		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();</span>
+<span class="nc" id="L59">		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;</span>
+<span class="nc" id="L60">		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);</span>
+<span class="nc" id="L61">		gbc_lblNewLabel.gridx = 0;</span>
+<span class="nc" id="L62">		gbc_lblNewLabel.gridy = 2;</span>
+<span class="nc" id="L63">		add(lblNewLabel, gbc_lblNewLabel);</span>
+<span class="nc" id="L64">		btnNewButton.addActionListener(new ActionListener() {</span>
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+<span class="nc" id="L69">				RaceDetail rd = new RaceDetail(r, u);</span>
+<span class="nc" id="L70">				rd.setVisible(true);</span>
+<span class="nc" id="L71">			}</span>
+		});
+
+<span class="nc bnc" id="L74" title="All 2 branches missed.">		if (org == USER_SETTASK) {</span>
+<span class="nc" id="L75">			JButton btnNewButton_1 = new JButton(&quot;Set Task&quot;);</span>
+<span class="nc" id="L76">			btnNewButton_1.setBackground(new Color(51, 102, 153));</span>
+<span class="nc" id="L77">			GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();</span>
+<span class="nc" id="L78">			gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L79">			gbc_btnNewButton_1.gridx = 4;</span>
+<span class="nc" id="L80">			gbc_btnNewButton_1.gridy = 1;</span>
+<span class="nc" id="L81">			add(btnNewButton_1, gbc_btnNewButton_1);</span>
+		}
+
+<span class="nc" id="L84">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
