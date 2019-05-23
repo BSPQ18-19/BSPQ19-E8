@@ -15,7 +15,9 @@ everything you need to know, allowing you to just focus on getting the best resu
 
 As an event organizer, RaceOrganizer enables to simplify recruiting helpers for your race and managing the tasks
  needed for your race to go smoothly.
- 
+
+[Presentation and demo](https://docs.google.com/presentation/d/1XVev7j17lhtCJih7yJ_Xx2XMhm2qa0Ju9fSZw7Xt7a8/edit?usp=sharing)
+
 ## Architecture
 RaceOrganizer uses a simply REST client-server architecture, with a server on Django and a client written in Java.
 
