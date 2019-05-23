@@ -1,10 +1,13 @@
 package managment;
 
 import networking.RestGateway;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 
 public class AuthManagement {
+
+    private static Logger log = Logger.getLogger(RestGateway.class.getName());
 
     /**
      * POST: /login/
@@ -20,7 +23,15 @@ public class AuthManagement {
 
         int responseCode = RestGateway.getInstance().post("login/", data);
 
-        return (responseCode == 200);
+        boolean success = responseCode == 200;
+
+        if (success) {
+            log.info("# AuthManagement: Successfully logged in");
+        } else {
+            log.error("$ AuthManagement: Error login in " + responseCode);
+        }
+
+        return (success);
     }
 
     /**
@@ -34,10 +45,16 @@ public class AuthManagement {
 
         int responseCode = Integer.parseInt(responseData.get("response_code"));
 
+        boolean success = responseCode == 200;
 
-        boolean isLoggedIn = !(responseCode == 200);
-        if (!isLoggedIn) RestGateway.getInstance().flushSession(); /*Flush session cookies to avoid further errors */
-        return (!isLoggedIn);  /*if user is not logged in at the end of logout we assume logout succeeded */
+        if (success) {
+            RestGateway.getInstance().flushSession(); /*Flush session cookies to avoid further errors */
+            log.info("# AuthManagement: Successfully logged out");
+        } else {
+            log.error("$ AuthManagement: Error login out " + responseCode);
+        }
+
+        return (success);  /*if user is not logged in at the end of logout we assume logout succeeded */
     }
 
     /**
@@ -66,7 +83,15 @@ public class AuthManagement {
 
         int responseCode = RestGateway.getInstance().post("signup/", data);
 
-        return (responseCode == 201);
+        boolean success = responseCode == 201;
+
+        if (success) {
+            log.info("$ AuthManagement: Successfully registered new user");
+        } else {
+            log.error("$ AuthManagement: Error registering new user " + responseCode);
+        }
+
+        return (success);
     }
 
 }

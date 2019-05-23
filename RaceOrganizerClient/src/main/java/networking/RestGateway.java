@@ -19,6 +19,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,13 +29,16 @@ import java.util.List;
 
 public class RestGateway {
 
+
+    private static Logger log = Logger.getLogger(RestGateway.class.getName());
+
     private static CookieStore cookieStore = null;
     private static HttpContext httpContext = new BasicHttpContext();
     private String host;
     private String requestURL;
     private List<NameValuePair> params = new ArrayList<>();
     private CloseableHttpClient client;
-    private File requestURLFile = new File("res/serverhost.txt");
+    private File requestURLFile = new File("config/serverhost.txt");
 
     private static RestGateway instance = new RestGateway();
 
@@ -59,7 +63,7 @@ public class RestGateway {
             bfr.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         host = result;
     }
@@ -94,7 +98,7 @@ public class RestGateway {
         try {
             response = client.execute(getRequest, httpContext);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
         assert response != null;
@@ -120,7 +124,7 @@ public class RestGateway {
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
         HashMap<String, String> responseData = new HashMap<>();
@@ -128,7 +132,7 @@ public class RestGateway {
         responseData.put("response_code", Integer.toString(responseCode));
         responseData.put("result", result.toString());
 
-        System.out.println("GET: " + requestURL + " " + responseCode);
+        log.info(" - RestGateway: GET " + requestURL + " " + responseCode);
 
         return responseData;
     }
@@ -160,16 +164,16 @@ public class RestGateway {
         try {
             postRequest.setEntity(new UrlEncodedFormEntity(params));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         try {
             CloseableHttpResponse response = client.execute(postRequest, httpContext);
             responseCode = response.getStatusLine().getStatusCode();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
-        System.out.println("POST: " + requestURL + " " + responseCode);
+        log.info(" - RestGateway: POST " + requestURL + " " + responseCode);
 
         return responseCode;
     }
@@ -208,10 +212,10 @@ public class RestGateway {
             responseCode = httpResponse.getStatusLine().getStatusCode();
         } catch (IOException e) {
             //handle exception
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
-        System.out.println("PUT: " + requestURL + " " + responseCode);
+        log.info(" - RestGateway: PUT " + requestURL + " " + responseCode);
 
         return responseCode;
     }
