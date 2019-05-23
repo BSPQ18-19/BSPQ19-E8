@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33aa5ed1-b266-4f9e-8eee-684dae6bdfdd" name="Default Changelist" comment="Added dumpdata.sh with db example">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_auth_gateway_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_authentication_test_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_controller_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_create_race_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_dashboard_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_gateway_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_helper_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_hint_text_field_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_login_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_organizer_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_panel_races_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_race_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_race_detail_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_race_gateway_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_registration_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_runner_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_signup_gateway_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_task_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_task_gateway_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_user_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_users_gateway_8java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotated.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bc_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bdwn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classcontroller_1_1_controller-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classcontroller_1_1_controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_helper-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_helper.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_helper.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_organizer-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_organizer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_organizer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_race-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_race.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_race.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_runner-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_runner.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_runner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_task-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_user-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classmodels_1_1_user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_auth_gateway-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_auth_gateway.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_auth_gateway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_gateway-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_gateway.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_gateway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_race_gateway-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_race_gateway.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_race_gateway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_signup_gateway-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_signup_gateway.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_signup_gateway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_task_gateway-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_task_gateway.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_task_gateway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_users_gateway-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_users_gateway.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classnetworking_1_1_users_gateway.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_create_race-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_create_race.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_create_race.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_dashboard-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_dashboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_login-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_panel_races-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_panel_races.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_panel_races.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_race_detail-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_race_detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_race_detail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_registration-members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_registration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classpages_1_1_registration.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../closed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_120ed4da3e3217b1e7fc0b4f48568e79.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_1714a351892ddd264025dcd5119145a3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_1e635ac0c1062c5d62e92b4b69b5e6b2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_5eb159725f84c66aafd839904a4acdd0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_68267d1309a1af8e8297ef4c3efbcdba.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_6dbaf61fb05b1b204467d2b4c0b52913.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_750e0732a4faa2f7034aa060c7582428.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_97debbc39e3b917fca663601bb2b0709.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_d7fdfbc101c6a1054c616e26429a7c77.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dir_fd3f6763802dee1ad875f6c80eac0bda.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doxygen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doxygen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dynsections.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../files.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../folderclosed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../folderopen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../functions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../functions_func.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../functions_vars.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hierarchy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../menudata.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../namespacecontroller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../namespacemodels.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../namespacenetworking.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../namespacepages.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../namespaces.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nav_f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nav_g.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nav_h.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../open.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_10.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_b.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_d.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_e.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_f.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/all_f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_b.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/classes_b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_b.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/files_b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_b.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_d.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_e.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_f.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/functions_f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/mag_sel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/namespaces_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/nomatches.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/search.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/search_l.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/search_m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/search_r.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/searchdata.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search/variables_6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../splitbar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sync_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sync_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tab_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tab_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tab_h.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tab_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tabs.css" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_AuthenticationTest_test_get_user.coverage" NAME="Test: api.tests.AuthenticationTest.test_get_user Coverage Results" MODIFIED="1554659488990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$All_Tests.coverage" NAME="All Tests Coverage Results" MODIFIED="1554672098966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__core_tests_LogInTest.coverage" NAME="Test: core.tests.LogInTest Coverage Results" MODIFIED="1554315977135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_AuthenticationTest_test_get_profile.coverage" NAME="Test: api.tests.AuthenticationTest.test_get_profile Coverage Results" MODIFIED="1554659654441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__core_tests_AuthenticationTest_test_signup.coverage" NAME="Test: core.tests.AuthenticationTest.test_signup Coverage Results" MODIFIED="1554317281286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__core_tests_AuthenticationTest_test_login.coverage" NAME="Test: core.tests.AuthenticationTest.test_login Coverage Results" MODIFIED="1554549835317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__core_tests_AuthenticationTest.coverage" NAME="Test: core.tests.AuthenticationTest Coverage Results" MODIFIED="1554567311768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__core_tests_AuthenticationTest_test_signup_post_view.coverage" NAME="Test: core.tests.AuthenticationTest.test_signup_post_view Coverage Results" MODIFIED="1554660197633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="443" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="raceorganizer@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="raceorganizer@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="raceorganizer@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="raceorganizer: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="raceorganizer@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="ExecutionTargetDialog">
+    <checked>
+      <node key="685127a6-c92c-4c3b-8e61-1582167fd8ea" />
+    </checked>
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../CoverageReports" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>client</find>
+      <find>dup</find>
+      <find>succes</find>
+      <find>exis</find>
+      <find>json</find>
+      <find>put</find>
+      <find>get</find>
+      <find>get_pr</find>
+      <find>2</find>
+      <find>race2.task_set</find>
+      <find>print</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>3</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="client" />
+      </map>
+    </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="server" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/core/urls.py" />
+        <option value="$PROJECT_DIR$/core/models.py" />
+        <option value="$PROJECT_DIR$/core/tests.py" />
+        <option value="$PROJECT_DIR$/RaceOrganizerServer/urls.py" />
+        <option value="$PROJECT_DIR$/utils/create_db.sql" />
+        <option value="$PROJECT_DIR$/templates/test_db.json" />
+        <option value="$PROJECT_DIR$/api/urls.py" />
+        <option value="$PROJECT_DIR$/core/views.py" />
+        <option value="$PROJECT_DIR$/api/admin.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/api/models.py" />
+        <option value="$PROJECT_DIR$/api/views.py" />
+        <option value="$PROJECT_DIR$/api/tests.py" />
+        <option value="$PROJECT_DIR$/RaceOrganizerServer/settings.py" />
+        <option value="$PROJECT_DIR$/utils/test_db.json" />
+        <option value="$PROJECT_DIR$/utils/dumpdata.sh" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1680" />
+    <option name="y" value="28" />
+    <option name="width" value="1910" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.RaceOrganizerServer">
+    <configuration name="All Tests" type="DjangoTestsConfigurationType">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: api.tests.APITest.test" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="api.tests.APITest.test" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: api.tests.APITest.test_delete_task" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="api.tests.APITest.test_delete_task" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: api.tests.APITest.test_get_profile" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="api.tests.APITest.test_get_profile" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: api.tests.APITest.test_modify_task" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="api.tests.APITest.test_modify_task" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="/mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/core" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="/mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/core/tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RaceOrganizerServer" type="Python.DjangoServer" factoryName="Django server">
+      <module name="RaceOrganizerServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="RaceOrganizerServer.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.RaceOrganizerServer" />
+      <item itemvalue="Django tests.All Tests" />
+      <item itemvalue="Django tests.Test: api.tests.APITest.test" />
+      <item itemvalue="Django tests.Test: api.tests.APITest.test_modify_task" />
+      <item itemvalue="Django tests.Test: api.tests.APITest.test_delete_task" />
+      <item itemvalue="Django tests.Test: api.tests.APITest.test_get_profile" />
+      <item itemvalue="Python.tests" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tests" />
+        <item itemvalue="Django tests.Test: api.tests.APITest.test_get_profile" />
+        <item itemvalue="Django tests.Test: api.tests.APITest.test_delete_task" />
+        <item itemvalue="Django tests.Test: api.tests.APITest.test_modify_task" />
+        <item itemvalue="Django tests.Test: api.tests.APITest.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33aa5ed1-b266-4f9e-8eee-684dae6bdfdd" name="Default Changelist" comment="" />
+      <created>1554313210898</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554313210898</updated>
+      <workItem from="1554313212197" duration="4263000" />
+      <workItem from="1554549661587" duration="1081000" />
+      <workItem from="1554563938232" duration="4293000" />
+      <workItem from="1554650930419" duration="7392000" />
+      <workItem from="1554672026869" duration="2673000" />
+      <workItem from="1554744895869" duration="3173000" />
+      <workItem from="1554757185939" duration="33000" />
+      <workItem from="1554828090540" duration="1582000" />
+      <workItem from="1555077199200" duration="1206000" />
+      <workItem from="1556201841503" duration="1576000" />
+      <workItem from="1556545795525" duration="15418000" />
+      <workItem from="1557250374588" duration="3810000" />
+      <workItem from="1557255847035" duration="813000" />
+      <workItem from="1558032677936" duration="2086000" />
+      <workItem from="1558110915118" duration="5574000" />
+      <workItem from="1558118506072" duration="727000" />
+      <workItem from="1558119663698" duration="1316000" />
+      <workItem from="1558170286721" duration="4323000" />
+      <workItem from="1558175477083" duration="4734000" />
+      <workItem from="1558195350259" duration="2920000" />
+      <workItem from="1558291760015" duration="3946000" />
+      <workItem from="1558463504469" duration="2500000" />
+      <workItem from="1558525437725" duration="2181000" />
+      <workItem from="1558538362687" duration="5893000" />
+      <workItem from="1558544476685" duration="2637000" />
+      <workItem from="1558624279970" duration="883000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixed login and register post views">
+      <created>1554550339886</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1554550339886</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commented out problematic lines in models.py">
+      <created>1554550457005</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554550457005</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Started work on Rest API">
+      <created>1554568617854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1554568617854</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finished models following Class Diagram">
+      <created>1554657402758</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554657402758</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Linked Person to native User model">
+      <created>1554658091838</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1554658091838</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed API after last commit">
+      <created>1554659714547</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1554659714547</updated>
+    </task>
+    <task id="LOCAL-00007" summary="signup Rest method now also creates a Person">
+      <created>1554660312974</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1554660312974</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed CSRF Error">
+      <created>1554672440043</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1554672440043</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed CSRF error and made API follow documentation">
+      <created>1556547712658</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1556547712658</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed missing response in logout view">
+      <created>1556552993279</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1556552993279</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added tests to API with 92% coverage">
+      <created>1556553928011</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556553928011</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added tests to CORE with 94% coverage">
+      <created>1556555740572</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1556555740572</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add coverage report">
+      <created>1556555914850</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556555914850</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added django-silk profiling tool">
+      <created>1556556612105</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556556612105</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Configuring django-silk profiling tool">
+      <created>1556561293275</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556561293275</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added search methods in Users and Races API methods">
+      <created>1557251364423</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1557251364423</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added test methods to search feature">
+      <created>1557252358321</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1557252358321</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added task model">
+      <created>1557253116340</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1557253116340</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Updated ClassDiagram">
+      <created>1557253709035</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1557253709035</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added migration">
+      <created>1557254159110</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1557254159110</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added travis implementation">
+      <created>1558032716645</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1558032716645</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Finished Task integration">
+      <created>1558120591303</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1558120591303</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Test fix">
+      <created>1558120760450</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1558120760450</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Missing = in requirements.txt">
+      <created>1558172140442</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1558172140442</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Improved tests to a 93%">
+      <created>1558179579962</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1558179579962</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Added dumpdata.sh with db example">
+      <created>1558298117570</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1558298117570</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Updated test_db.json">
+      <created>1558540720546</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1558540720546</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Test__api_tests_APITest_test_modify_task - 2019.05.18 at 13h 19m 01s.xml">
+      <configuration name="Test: api.tests.APITest.test_modify_task" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__api_tests_APITest_test_modify_task - 2019.05.18 at 13h 19m 57s.xml">
+      <configuration name="Test: api.tests.APITest.test_modify_task" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__api_tests_APITest_test_modify_task - 2019.05.18 at 13h 20m 45s.xml">
+      <configuration name="Test: api.tests.APITest.test_modify_task" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.05.18 at 13h 31m 03s.xml">
+      <configuration name="All Tests" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__api_tests_APITest_test_delete_task - 2019.05.18 at 13h 33m 16s.xml">
+      <configuration name="Test: api.tests.APITest.test_delete_task" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.05.18 at 13h 34m 51s.xml">
+      <configuration name="All Tests" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.05.18 at 13h 36m 06s.xml">
+      <configuration name="All Tests" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.05.18 at 13h 37m 21s.xml">
+      <configuration name="All Tests" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.05.18 at 13h 38m 11s.xml">
+      <configuration name="All Tests" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.05.18 at 13h 39m 08s.xml">
+      <configuration name="All Tests" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="87033000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1680" y="28" width="1920" height="1052" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.255603" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49877602" weight="0.28633407" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49877602" weight="0.3286334" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" order="10" sideWeight="0.4994664" weight="0.32900432" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" visible="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.501224" side_tool="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32900432" />
+      <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49597424" weight="0.32977587" />
+      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.5136876" side_tool="true" visible="true" weight="0.2673426" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.4863124" weight="0.30660954" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2497332" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" order="1" sideWeight="0.4994664" weight="0.32900432" />
+      <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.4994664" visible="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50053364" side_tool="true" visible="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.4994664" weight="0.32900432" />
+      <window_info anchor="bottom" id="Python Console" order="6" weight="0.32900432" />
+      <window_info anchor="bottom" id="Message" order="7" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="9" weight="0.32900432" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.32900432" />
+      <window_info anchor="right" id="SciView" order="0" weight="0.32977587" />
+      <window_info anchor="right" id="Database" order="1" weight="0.32977587" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Started work on Rest API" />
+    <MESSAGE value="Finished models following Class Diagram" />
+    <MESSAGE value="Linked Person to native User model" />
+    <MESSAGE value="Fixed API after last commit" />
+    <MESSAGE value="signup Rest method now also creates a Person" />
+    <MESSAGE value="Fixed CSRF Error" />
+    <MESSAGE value="Fixed CSRF error and made API follow documentation" />
+    <MESSAGE value="Fixed missing response in logout view" />
+    <MESSAGE value="Added tests to API with 92% coverage" />
+    <MESSAGE value="Added tests to CORE with 94% coverage" />
+    <MESSAGE value="Add coverage report" />
+    <MESSAGE value="Added django-silk profiling tool" />
+    <MESSAGE value="Configuring django-silk profiling tool" />
+    <MESSAGE value="Added search methods in Users and Races API methods" />
+    <MESSAGE value="Added test methods to search feature" />
+    <MESSAGE value="Added task model" />
+    <MESSAGE value="Updated ClassDiagram" />
+    <MESSAGE value="Added migration" />
+    <MESSAGE value="Added travis implementation" />
+    <MESSAGE value="Finished Task integration" />
+    <MESSAGE value="Test fix" />
+    <MESSAGE value="Missing = in requirements.txt" />
+    <MESSAGE value="Improved tests to a 93%" />
+    <MESSAGE value="Added dumpdata.sh with db example" />
+    <MESSAGE value="Updated test_db.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated test_db.json" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_create_race.coverage" NAME="Test: api.tests.APITest.test_create_race Coverage Results" MODIFIED="1556549519465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_get_race.coverage" NAME="Test: api.tests.APITest.test_get_race Coverage Results" MODIFIED="1556553689969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$All_Tests.coverage" NAME="All Tests Coverage Results" MODIFIED="1558179496520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_userlist.coverage" NAME="Test: api.tests.APITest.test_userlist Coverage Results" MODIFIED="1557252230826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$tests.coverage" NAME="tests Coverage Results" MODIFIED="1556555547227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/core" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_modify_task.coverage" NAME="Test: api.tests.APITest.test_modify_task Coverage Results" MODIFIED="1558178417378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__core_tests_AuthenticationTest_test_logout.coverage" NAME="Test: core.tests.AuthenticationTest.test_logout Coverage Results" MODIFIED="1556555276919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_user_view.coverage" NAME="Test: api.tests.APITest.test_user_view Coverage Results" MODIFIED="1556549181692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test.coverage" NAME="Test: api.tests.APITest.test Coverage Results" MODIFIED="1558114335256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_racelist.coverage" NAME="Test: api.tests.APITest.test_racelist Coverage Results" MODIFIED="1557252289507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_get_profile.coverage" NAME="Test: api.tests.APITest.test_get_profile Coverage Results" MODIFIED="1558175535317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_add_people_to_races.coverage" NAME="Test: api.tests.APITest.test_add_people_to_races Coverage Results" MODIFIED="1556552740622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest.coverage" NAME="Test: api.tests.APITest Coverage Results" MODIFIED="1556553868720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/RaceOrganizerServer$Test__api_tests_APITest_test_delete_task.coverage" NAME="Test: api.tests.APITest.test_delete_task Coverage Results" MODIFIED="1558179165952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/685127a6-c92c-4c3b-8e61-1582167fd8ea/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/RaceOrganizerServer/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/api/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/core/management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/db/migrations/state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="279" selection-start-line="279" selection-end-line="279" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/core/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/test/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="542" selection-start-line="542" selection-end-line="542" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/db/models/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RaceOrganizerServer/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RaceOrganizerServer/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding>
+            <element signature="e#643#675#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/core/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/pip-selfcheck.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test_db.json" />
+    <entry file="file://$PROJECT_DIR$/templates/core/register.html" />
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="317" column="80" selection-start-line="317" selection-start-column="80" selection-end-line="317" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4350">
+          <caret line="295" column="48" selection-start-line="295" selection-start-column="48" selection-end-line="295" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RaceOrganizerServer/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/63B90B282E644F5E/Cloud/Github/BSPQ19-E8/RaceOrganizerServer/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2235">
+          <caret line="157" column="13" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/test_db.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/create_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="14" selection-start-line="7" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/dumpdata.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
