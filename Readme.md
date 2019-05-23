@@ -18,7 +18,7 @@ As an event organizer, RaceOrganizer enables to simplify recruiting helpers for 
  
 ## Documentation
 
-- The documentation for the client was generated using Doxygen, and is available at [Doxygen](/index.html>Doxygen<).
+- The documentation for the client was generated using Doxygen, and is available at [Doxygen](doxygen/index.html).
 
 - Documentation for the API follows the OpenAPI standard and can be found at [SwaggerHub](https://app.swaggerhub.com/apis-docs/rafaelromon/RaceOrganizer/1.0.0#/).
 
