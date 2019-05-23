@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['organizer',['Organizer',['../classmodels_1_1_organizer.html',1,'models']]]
+  ['panelraces',['PanelRaces',['../classpages_1_1_panel_races.html',1,'pages']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['helper',['Helper',['../classmodels_1_1_helper.html',1,'models']]]
+  ['login',['Login',['../classpages_1_1_login.html',1,'pages']]]
 ];

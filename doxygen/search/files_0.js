@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['authenticationtest_2ejava',['AuthenticationTest.java',['../_authentication_test_8java.html',1,'']]],
-  ['authgateway_2ejava',['AuthGateway.java',['../_auth_gateway_8java.html',1,'']]]
+  ['authmanagement_2ejava',['AuthManagement.java',['../_auth_management_8java.html',1,'']]],
+  ['authmanagementtest_2ejava',['AuthManagementTest.java',['../_auth_management_test_8java.html',1,'']]]
 ];

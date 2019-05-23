@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['authgateway',['AuthGateway',['../classnetworking_1_1_auth_gateway.html',1,'networking']]]
+  ['authmanagement',['AuthManagement',['../classmanagment_1_1_auth_management.html',1,'managment']]]
 ];

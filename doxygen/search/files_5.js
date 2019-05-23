@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['login_2ejava',['Login.java',['../_login_8java.html',1,'']]]
+  ['organizer_2ejava',['Organizer.java',['../_organizer_8java.html',1,'']]]
 ];

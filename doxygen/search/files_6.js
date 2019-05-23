@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['organizer_2ejava',['Organizer.java',['../_organizer_8java.html',1,'']]]
+  ['panelraces_2ejava',['PanelRaces.java',['../_panel_races_8java.html',1,'']]]
 ];

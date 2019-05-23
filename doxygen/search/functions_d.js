@@ -24,7 +24,5 @@ var searchData=
   ['settasks',['setTasks',['../classmodels_1_1_race.html#a4564bec0cd4cfe6a874da1412a2a04a2',1,'models::Race']]],
   ['settime',['setTime',['../classmodels_1_1_race.html#ab5127e4a6bb03681daa86ca71154e18b',1,'models::Race']]],
   ['setuser_5fid',['setUser_id',['../classmodels_1_1_user.html#a64b027e0ed6f6d7bab303e88ec3f1846',1,'models::User']]],
-  ['setusername',['setUsername',['../classmodels_1_1_user.html#ac5c492772f1766274b2b8eca20a9af41',1,'models::User']]],
-  ['signup',['signUp',['../classnetworking_1_1_signup_gateway.html#a735a06ad8fa3acde0c1d707aa0a0319e',1,'networking::SignupGateway']]],
-  ['signupgateway',['SignupGateway',['../classnetworking_1_1_signup_gateway.html#a97b721b28a7fa76c8536ce7435b27aa6',1,'networking::SignupGateway']]]
+  ['setusername',['setUsername',['../classmodels_1_1_user.html#ac5c492772f1766274b2b8eca20a9af41',1,'models::User']]]
 ];

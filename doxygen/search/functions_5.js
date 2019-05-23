@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['get',['get',['../classnetworking_1_1_rest_gateway.html#a2959e8770d707e67f08917f89fce555e',1,'networking::RestGateway']]],
   ['getbirth_5fdate',['getBirth_date',['../classmodels_1_1_user.html#af5842d308c1a6b677f067ed9b4a0c088',1,'models::User']]],
   ['getdescription',['getDescription',['../classmodels_1_1_task.html#a470d38197144567e0eb6f748416a525e',1,'models::Task']]],
   ['getedition',['getEdition',['../classmodels_1_1_race.html#aafe2fa9a0283c292d47e542c372c95dc',1,'models::Race']]],
@@ -7,8 +8,9 @@ var searchData=
   ['getfirst_5fname',['getFirst_name',['../classmodels_1_1_user.html#afdfb0327c1c035643a01aed78dc4c823',1,'models::User']]],
   ['gethelper_5fraces',['getHelper_races',['../classmodels_1_1_user.html#aafdfae12d92bd09e6509252dd6f240c0',1,'models::User']]],
   ['gethelpers',['getHelpers',['../classmodels_1_1_race.html#ac55840cdce02186bc0e68b4c41425c67',1,'models::Race']]],
+  ['getinstance',['getInstance',['../classnetworking_1_1_rest_gateway.html#a6ef41f5c7fbc414d8ce7442146eaa466',1,'networking::RestGateway']]],
   ['getlast_5fname',['getLast_name',['../classmodels_1_1_user.html#a1a774c6554d0a5ca0497e29abf270aea',1,'models::User']]],
-  ['getloggedprofile',['getLoggedProfile',['../classnetworking_1_1_users_gateway.html#a4605b400f52bef1d97b8ee37bcce3130',1,'networking::UsersGateway']]],
+  ['getloggedprofile',['getLoggedProfile',['../classmanagment_1_1_users_management.html#a0f1971789f2fd623d0f46fb3296d3252',1,'managment::UsersManagement']]],
   ['getnumber',['getNumber',['../classmodels_1_1_runner.html#a0e35bd41e0cb713147647b5a8aca2940',1,'models::Runner']]],
   ['getorganizer_5fraces',['getOrganizer_races',['../classmodels_1_1_user.html#a5dadd6c9f142738d2e46e87056b6e252',1,'models::User']]],
   ['getperson',['getPerson',['../classmodels_1_1_task.html#a0e8d04fad2abf740aecbba5eaeb12d1a',1,'models::Task']]],
@@ -16,9 +18,9 @@ var searchData=
   ['getplace',['getPlace',['../classmodels_1_1_race.html#a91790e32526abe5d7b6b60c0b4119f6a',1,'models::Race']]],
   ['getprice',['getPrice',['../classmodels_1_1_race.html#adf421156b391ca6e705c85c72692fd9b',1,'models::Race']]],
   ['getprize',['getPrize',['../classmodels_1_1_race.html#ac8358f90d397fd94024263e36df7d36c',1,'models::Race']]],
-  ['getrace',['getRace',['../classnetworking_1_1_race_gateway.html#ab2764c1b04d26afb2d3d6266f18919b1',1,'networking::RaceGateway']]],
+  ['getrace',['getRace',['../classmanagment_1_1_race_management.html#a63a29a7cdedf4ce71eeb397bdfa8108a',1,'managment::RaceManagement']]],
   ['getrace_5fid',['getRace_id',['../classmodels_1_1_race.html#a0a332d38ec7244a575a700875f217b85',1,'models::Race']]],
-  ['getraces',['getRaces',['../classnetworking_1_1_race_gateway.html#aeca40aef2107f7897ec17d97c45bf151',1,'networking::RaceGateway']]],
+  ['getraces',['getRaces',['../classmanagment_1_1_race_management.html#a2c8f96142657b36e464e62fc136bf097',1,'managment::RaceManagement']]],
   ['getrole',['getRole',['../classmodels_1_1_helper.html#a5d6e5979af276fd9f3200a1436a5a6ec',1,'models.Helper.getRole()'],['../classmodels_1_1_organizer.html#aead02488ea08ae19601244527f368858',1,'models.Organizer.getRole()'],['../classmodels_1_1_runner.html#a603f22aa61b622a9dfd57bb48fa8c1ae',1,'models.Runner.getRole()'],['../classmodels_1_1_user.html#a135f4f3be68594133b2135f34e37c747',1,'models.User.getRole()']]],
   ['getrunner_5fraces',['getRunner_races',['../classmodels_1_1_user.html#a75a113c842ddfeeb20df6817a3649daa',1,'models::User']]],
   ['getrunners',['getRunners',['../classmodels_1_1_race.html#af02bae25edcb4dc8cd80634fff765a95',1,'models::Race']]],
@@ -26,8 +28,8 @@ var searchData=
   ['gettask_5fid',['getTask_id',['../classmodels_1_1_task.html#a8d0a04b80843d108452477a33bb16099',1,'models::Task']]],
   ['gettasks',['getTasks',['../classmodels_1_1_race.html#a81887dd2fa4e0aba6e4b27aab58826c1',1,'models::Race']]],
   ['gettime',['getTime',['../classmodels_1_1_race.html#ad64a510f8873eb9ea5cdfb61b41b5e07',1,'models::Race']]],
+  ['getuser',['getUser',['../classmanagment_1_1_users_management.html#a5ae367e1ddc86fbc5fd2ad2df894db0e',1,'managment::UsersManagement']]],
   ['getuser_5fid',['getUser_id',['../classmodels_1_1_user.html#a54774679adf7ee5d4aecd20d6ed5ec40',1,'models::User']]],
-  ['getuserbyid',['getUserByID',['../classnetworking_1_1_users_gateway.html#a8d4080de83f2974a67f4aa490e616b42',1,'networking::UsersGateway']]],
   ['getusername',['getUsername',['../classmodels_1_1_task.html#a2d458494891ee6f04ff9a531b9450862',1,'models.Task.getUsername()'],['../classmodels_1_1_user.html#ab8905f925de3cddcd5f8337d70748a39',1,'models.User.getUsername()']]],
-  ['getusers',['getUsers',['../classnetworking_1_1_users_gateway.html#a7d6867d75f957fe4ae4ee7b2d778f027',1,'networking::UsersGateway']]]
+  ['getusers',['getUsers',['../classmanagment_1_1_users_management.html#a5b6ee031a8935d512baeee6f861842a6',1,'managment::UsersManagement']]]
 ];
