@@ -54,10 +54,8 @@ public class Dashboard extends JFrame {
     private JPanel panel_search_top;
     private JPanel panel_search_mid;
     private JTextField textField_search_edition;
-    private JLabel lblSearch_place;
     private JLabel lblSearch_edition;
     private JButton btnSeach;
-    private JTextField textField_search_place;
     private JPanel panel_search_results;
     private JScrollPane scrollPane_search_results;
     private RaceManagement RaceManagement;
@@ -439,29 +437,11 @@ public class Dashboard extends JFrame {
         panel_search_top.add(textField_search_edition, gbc_textField_search_edition);
         textField_search_edition.setColumns(10);
 
-        lblSearch_place = new JLabel(Translation.getString("place"));
-        GridBagConstraints gbc_lblSearch_place = new GridBagConstraints();
-        gbc_lblSearch_place.insets = new Insets(0, 0, 5, 5);
-        gbc_lblSearch_place.anchor = GridBagConstraints.EAST;
-        gbc_lblSearch_place.gridx = 0;
-        gbc_lblSearch_place.gridy = 2;
-        panel_search_top.add(lblSearch_place, gbc_lblSearch_place);
-
-        textField_search_place = new JTextField();
-        textField_search_place.setToolTipText("");
-        textField_search_place.setColumns(10);
-        GridBagConstraints gbc_textField_search_place = new GridBagConstraints();
-        gbc_textField_search_place.insets = new Insets(0, 0, 5, 5);
-        gbc_textField_search_place.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textField_search_place.gridx = 1;
-        gbc_textField_search_place.gridy = 2;
-        panel_search_top.add(textField_search_place, gbc_textField_search_place);
-
         btnSeach = new JButton(Translation.getString("search"));
         btnSeach.setBackground(new Color(51, 102, 153));
         GridBagConstraints gbc_btnSeach = new GridBagConstraints();
         gbc_btnSeach.insets = new Insets(0, 0, 5, 0);
-        gbc_btnSeach.gridx = 3;
+        gbc_btnSeach.gridx = 1;
         gbc_btnSeach.gridy = 2;
         panel_search_top.add(btnSeach, gbc_btnSeach);
 
@@ -521,7 +501,7 @@ public class Dashboard extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                search(textField_search_edition.getText(), textField_search_place.getText());
+                search(textField_search_edition.getText());
 
             }
         });
@@ -864,9 +844,8 @@ public class Dashboard extends JFrame {
      * Search the array with two criteria and shows the result
      *
      * @param searchfield_edition edition of the race
-     * @param searchfield_places  city of the race
      */
-    private void search(String searchfield_edition, String searchfield_places) {
+    private void search(String searchfield_edition) {
         int i = 0;
         panel_search_results.removeAll();
 
