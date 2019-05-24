@@ -25,11 +25,11 @@ public class RaceManagement {
      *
      * @return list of all races with minimal information
      */
-    public static Race[] getRaces() {
+    public static Race[] getRaces(String search) {
 
         Gson gson = new Gson();
 
-        HashMap responseData = RestGateway.getInstance().get("api/races/");
+        HashMap responseData = RestGateway.getInstance().get("api/races/?s=" + search);
 
         int responseCode = Integer.parseInt((String) responseData.get("response_code"));
 
@@ -43,6 +43,10 @@ public class RaceManagement {
         }
 
         return gson.fromJson(responseData.get("result").toString(), Race[].class);
+    }
+
+    public static Race[] getRaces() {
+        return getRaces("");
     }
 
     /**

@@ -183,7 +183,7 @@ public class CreateRace extends JFrame {
         lblicon.setBounds(370, 85, 222, 212);
         panel.add(lblicon);
         lblicon.setHorizontalAlignment(SwingConstants.CENTER);
-        lblicon.setIcon(new ImageIcon("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"));
+        lblicon.setIcon(new ImageIcon("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png"));
 
         JLabel lblRaceOrganizer = new JLabel(resourceBundle.getString("create_race"));
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));

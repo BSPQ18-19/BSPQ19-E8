@@ -11,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class Login extends JFrame {
 
@@ -62,7 +60,6 @@ public class Login extends JFrame {
         btnLogin.addActionListener(e -> {
             // TODO Auto-generated method stub
             if (AuthManagement.login(txtUsername.getText(), String.valueOf(passwordField.getPassword()))) {
-                UsersManagement ugw = new UsersManagement();
                 Login.this.setVisible(false);
                 Dashboard das = new Dashboard(Login.this, UsersManagement.getLoggedProfile());
                 das.setVisible(true);
@@ -101,7 +98,7 @@ public class Login extends JFrame {
         panel_3.add(lblUserLogin, gbc_lblUserLogin);
 
         JLabel lblUser = new JLabel("");
-        lblUser.setIcon(new ImageIcon(("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/user.png")));
+        lblUser.setIcon(new ImageIcon(("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/user.png")));
         GridBagConstraints gbc_lblUser = new GridBagConstraints();
         gbc_lblUser.insets = new Insets(0, 0, 5, 5);
         gbc_lblUser.anchor = GridBagConstraints.EAST;
@@ -122,7 +119,7 @@ public class Login extends JFrame {
         txtUsername.setColumns(10);
 
         JLabel lblPassword = new JLabel("");
-        lblPassword.setIcon(new ImageIcon(("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/key.png")));
+        lblPassword.setIcon(new ImageIcon(("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/key.png")));
         GridBagConstraints gbc_lblPassword = new GridBagConstraints();
         gbc_lblPassword.insets = new Insets(0, 0, 0, 5);
         gbc_lblPassword.anchor = GridBagConstraints.EAST;
@@ -145,7 +142,7 @@ public class Login extends JFrame {
         lblicon.setBounds(12, 37, 302, 287);
         panel.add(lblicon);
         lblicon.setHorizontalAlignment(SwingConstants.CENTER);
-        lblicon.setIcon(new ImageIcon(("/home/jailander/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
+        lblicon.setIcon(new ImageIcon(("/mnt/70BDB63A6ECBC5EB/Cloud/Github/BSPQ19-E8/RaceOrganizerClient/src/main/java/icons/icon.png")));
 
         JLabel lblRaceOrganizer = new JLabel("RACE ORGANIZER");
         lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 22));
