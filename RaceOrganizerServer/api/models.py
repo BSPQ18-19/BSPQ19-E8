@@ -146,12 +146,15 @@ class Task(models.Model):
 
     def get_person_json(self):
         json = self.get_simple_json()
-        json["person"] = self.person
+        if self.person is not None:
+            json["person"] = self.person.get_simple_json()
+        else:
+            json["person"] = None
 
         return json
 
     def get_race_json(self):
         json = self.get_simple_json()
-        json["race"] = self.race
+        json["race"] = self.race.get_simple_json()
 
         return json
