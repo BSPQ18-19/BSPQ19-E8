@@ -20,9 +20,11 @@ public class RaceManagement {
 
     private static Logger log = LogManager.getLogger(RaceManagement.class.getName());
 
+
     /**
-     * GET api/races/{race_id}
+     * GET api/races/?s={search}
      *
+     * @param search search parameter to filter editions
      * @return list of all races with minimal information
      */
     public static Race[] getRaces(String search) {
@@ -45,6 +47,11 @@ public class RaceManagement {
         return gson.fromJson(responseData.get("result").toString(), Race[].class);
     }
 
+    /**
+     * GET api/races/
+     *
+     * @return list of all races with minimal information
+     */
     public static Race[] getRaces() {
         return getRaces("");
     }
