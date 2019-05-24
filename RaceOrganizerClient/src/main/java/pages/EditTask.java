@@ -32,6 +32,7 @@ public class EditTask extends JFrame {
 	private JTextArea textArea;
 	private boolean creatingnew;
 	private Task actualtask;
+	private JPanel panel_1;
 	final static int USER_RUNNER=1;
 	
 	/**
@@ -55,7 +56,7 @@ public class EditTask extends JFrame {
 		panel.setLayout(null);
 		contentPanel.add(panel);
 
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(Color.WHITE));
 		panel_1.setOpaque(false);
 		panel_1.setBackground(Color.WHITE);
@@ -73,11 +74,6 @@ public class EditTask extends JFrame {
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
 
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridx = 2;
-		gbc_panel_3.gridy = 14;
-		panel_1.add(panel_3, gbc_panel_3);
 
 		JLabel lblRaceOrganizer = new JLabel(resourceBundle.getString("tasks_for") + r.getEdition() + ": " + r.getTime().toString());
 		lblRaceOrganizer.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -171,6 +167,13 @@ public class EditTask extends JFrame {
 					panel_1.removeAll();
 					creatingnew=true;
 			       	JCheckBox chckbxNewCheckBox = new JCheckBox(resourceBundle.getString("completed"));
+			       	GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
+					gbc_chckbxNewCheckBox.anchor = GridBagConstraints.WEST;
+					gbc_chckbxNewCheckBox.insets = new Insets(0, 0, 5, 5);
+					gbc_chckbxNewCheckBox.gridx = 1;
+					gbc_chckbxNewCheckBox.gridy = 1;
+					panel_1.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
+					
 					lbldescription = new JLabel(resourceBundle.getString("description"));
 					GridBagConstraints gbc_lbldescription = new GridBagConstraints();
 					gbc_lbldescription.anchor = GridBagConstraints.WEST;
