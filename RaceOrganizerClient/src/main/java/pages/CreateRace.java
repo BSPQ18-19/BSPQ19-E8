@@ -212,7 +212,7 @@ public class CreateRace extends JFrame {
         JButton btnNewButton_1 = new JButton(resourceBundle.getString("create"));
         panel_2.add(btnNewButton_1);
         btnNewButton_1.addActionListener(arg0 -> {
-            DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+            DateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm");
             Date date = null;
             try {
                 date = formatter.parse(textField_time.getText());

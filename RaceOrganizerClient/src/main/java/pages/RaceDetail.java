@@ -135,7 +135,6 @@ public class RaceDetail extends JFrame {
         btnRun.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                RaceManagement rgw = new RaceManagement();
                 if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 1)) {
                     JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("run_success"));
                     r=RaceManagement.getRace(r.getRace_id());
@@ -143,6 +142,8 @@ public class RaceDetail extends JFrame {
                 } else {
                     JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("run_error"));
                 }
+
+                das.refresh();
 
             }
         });
@@ -162,18 +163,15 @@ public class RaceDetail extends JFrame {
             btnHelp.setEnabled(false);
         }
 
-        btnHelp.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                RaceManagement rgw = new RaceManagement();
-                if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 2)) {
-                    JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("register_help_success"));
-                    r=RaceManagement.getRace(r.getRace_id());
-                    RaceDetail.this.contentPanel.repaint();
-                } else {
-                    JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("register_help_error"));
-                }
-
+        btnHelp.addActionListener(arg0 -> {
+            if (RaceManagement.addUserToRace(u.getUsername(), r.getRace_id(), 2)) {
+                JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("register_help_success"));
+                r = RaceManagement.getRace(r.getRace_id());
+                RaceDetail.this.contentPanel.repaint();
+            } else {
+                JOptionPane.showMessageDialog(RaceDetail.this, resourceBundle.getString("register_help_error"));
             }
+
         });
         JPanel panel_3 = new JPanel();
         panel_3.setOpaque(false);
@@ -209,8 +207,7 @@ public class RaceDetail extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                RaceDetail.this.setVisible(false);
-                das.refresh();
+                RaceDetail.this.dispose();
             }
         });
 
