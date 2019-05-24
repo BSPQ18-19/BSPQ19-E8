@@ -146,9 +146,9 @@ public class RaceManagement {
         boolean success = responseCode == 201;
 
         if (success) {
-            log.info("Successfully created new race");
+            log.info("Successfully added user to race");
         } else {
-            log.error("Error creating new race " + responseCode);
+            log.error("Error adding user to race" + responseCode);
         }
 
         return (success);

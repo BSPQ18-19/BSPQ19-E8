@@ -879,8 +879,8 @@ public class Dashboard extends JFrame {
 
     public void refresh() {
         //SwingUtilities.updateComponentTreeUI(Dashboard.this);
-        Dashboard.this.dispose();
         Dashboard das = new Dashboard(pWindow, actualuser);
         das.setVisible(true);
+        Dashboard.this.dispose();
     }
 }
