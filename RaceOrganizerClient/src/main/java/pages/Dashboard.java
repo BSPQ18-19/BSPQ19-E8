@@ -623,7 +623,7 @@ public class Dashboard extends JFrame {
         if (actualuser.getOrganizer_races() != null) {
             int i = 0;
             for (Race r : getNextRaces(actualuser.getOrganizer_races())) {
-                PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 1, Dashboard.this);
+                PanelRaces race = new PanelRaces(RaceManagement.getRace(r.getRace_id()), actualuser, 2, Dashboard.this);
                 GridBagConstraints gbc_races = new GridBagConstraints();
                 gbc_races.insets = new Insets(0, 0, 5, 0);
                 gbc_races.fill = GridBagConstraints.BOTH;
